@@ -32,16 +32,28 @@ type: kubernetes
 name: pre-build-pipeline
 
 steps:
-- name: test
-  image: node
+- name: setup
+  image: registry.dev.skiosa.de/node-chrome:48963d0
   commands:
   - npm install
-  - npm run test
+
+- name: test
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  commands:
+  - npm run test:ci
+
+- name: code-analysis
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
+      from_secret: sonar_token
+
+image_pull_secrets:
+- dockerconfig
 
 trigger:
-  branch:
-    exclude:
-      - master
   event:
   - pull_request
 
