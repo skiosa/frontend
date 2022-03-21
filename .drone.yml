@@ -1,0 +1,79 @@
+---
+# Default Pipeline
+kind: pipeline
+type: kubernetes
+name: basic-pipeline
+
+steps:
+- name: setup
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  commands:
+  - npm install
+
+- name: test
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  commands:
+  - npm run test:ci
+
+image_pull_secrets:
+- dockerconfig
+
+trigger:
+  branch:
+    exclude:
+      - master
+  event:
+  - push
+
+---
+# PR Pipeline
+kind: pipeline
+type: kubernetes
+name: pre-build-pipeline
+
+steps:
+- name: test
+  image: node
+  commands:
+  - npm install
+  - npm run test
+
+trigger:
+  branch:
+    exclude:
+      - master
+  event:
+  - pull_request
+
+---
+# Master Pipeline
+kind: pipeline
+type: kubernetes
+name: final-build-pipeline
+
+steps:
+- name: docker-build
+  image: plugins/docker
+  settings:
+    registry: registry.dev.skiosa.de
+    repo: registry.dev.skiosa.de/frontend
+    tags: [ latest, "1.0", 1 ]
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+
+- name: code-analysis
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
+      from_secret: sonar_token
+
+trigger:
+  branch:
+  - master
+  event:
+  - push
+  - pull_request
