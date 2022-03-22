@@ -42,12 +42,6 @@ steps:
   commands:
   - npm run test:ci
 
-- name: coverage
-  image: plugins/codecov
-  settings:
-    token:
-      from_secret: codecov-token
-
 - name: code-analysis
   image: aosapps/drone-sonar-plugin
   settings:
