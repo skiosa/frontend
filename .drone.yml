@@ -42,15 +42,13 @@ steps:
   commands:
   - npm run test:ci
 
-- name: code-analysis & coverage
-  image: registry.dev.skiosa.de/node-chrome:48963d0
-  environment:
-    token:
+- name: code-analysis
+  image: aosapps/drone-sonar-plugin
+  settings:
+    sonar_host:
+      from_secret: sonar_host
+    sonar_token:
       from_secret: sonar_token
-  commands:
-  - npm install sonarqube-scanner -g
-  - npm run test:ci
-  - sonar-scanner -Dsonar.pullrequest.key=$${DRONE_PULL_REQUEST} -Dsonar.pullrequest.branch=$${DRONE_SOURCE_BRANCH} -Dsonar.pullrequest.base=$${DRONE_TARGET_BRANCH} -Dsonar.login=$token
 
 image_pull_secrets:
 - dockerconfig
