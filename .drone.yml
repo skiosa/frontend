@@ -49,10 +49,8 @@ steps:
       from_secret: sonar_token
   commands:
   - npm install sonarqube-scanner -g
-  - npm run test:ci
   - sonar-scanner -Dsonar.branch.name=$${DRONE_TARGET_BRANCH} -Dsonar.login=$token
   - sonar-scanner -Dsonar.pullrequest.key=$${DRONE_PULL_REQUEST} -Dsonar.pullrequest.branch=$${DRONE_SOURCE_BRANCH} -Dsonar.pullrequest.base=$${DRONE_TARGET_BRANCH} -Dsonar.login=$token
-
 
 image_pull_secrets:
 - dockerconfig
@@ -73,19 +71,20 @@ steps:
   settings:
     registry: registry.dev.skiosa.de
     repo: registry.dev.skiosa.de/frontend
-    tags: [ latest, "1.0", 1 ]
+    tags: [ latest, "${DRONE_TAG}", "${DRONE_COMMIT_SHA:0:7}" ]
     username:
       from_secret: docker_username
     password:
       from_secret: docker_password
 
 - name: code-analysis
-  image: aosapps/drone-sonar-plugin
-  settings:
-    sonar_host:
-      from_secret: sonar_host
-    sonar_token:
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  environment:
+    token:
       from_secret: sonar_token
+  commands:
+  - npm install sonarqube-scanner -g
+  - sonar-scanner -Dsonar.branch.name=master -Dsonar.login=$token
 
 trigger:
   branch:
