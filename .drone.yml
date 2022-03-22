@@ -77,7 +77,17 @@ steps:
     password:
       from_secret: docker_password
 
-- name: code-analysis
+- name: setup for final analysis
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  commands:
+  - npm install
+
+- name: test for final analysis
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  commands:
+  - npm run test:ci
+
+- name: final code-analysis
   image: registry.dev.skiosa.de/node-chrome:48963d0
   environment:
     token:
