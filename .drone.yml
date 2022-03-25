@@ -5,15 +5,24 @@ type: kubernetes
 name: basic-pipeline
 
 steps:
-- name: setup
+- name: npm setup
   image: registry.dev.skiosa.de/node-chrome:48963d0
   commands:
   - npm install
 
-- name: test
+- name: unit tests
   image: registry.dev.skiosa.de/node-chrome:48963d0
   commands:
   - npm run test:ci
+
+- name: branch specific code-analysis
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  environment:
+    token:
+      from_secret: sonar_token
+  commands:
+  - npm install sonarqube-scanner -g
+  - sonar-scanner -Dsonar.branch.name=$${DRONE_TARGET_BRANCH} -Dsonar.login=$token
 
 image_pull_secrets:
 - dockerconfig
@@ -32,12 +41,12 @@ type: kubernetes
 name: pre-build-pipeline
 
 steps:
-- name: setup
+- name: npm setup
   image: registry.dev.skiosa.de/node-chrome:48963d0
   commands:
   - npm install
 
-- name: test
+- name: unit tests
   image: registry.dev.skiosa.de/node-chrome:48963d0
   commands:
   - npm run test:ci
@@ -77,17 +86,17 @@ steps:
     password:
       from_secret: docker_password
 
-- name: setup for final analysis
+- name: npm setup
   image: registry.dev.skiosa.de/node-chrome:48963d0
   commands:
   - npm install
 
-- name: test for final analysis
+- name: unit tests
   image: registry.dev.skiosa.de/node-chrome:48963d0
   commands:
   - npm run test:ci
 
-- name: final code-analysis
+- name: master code-analysis
   image: registry.dev.skiosa.de/node-chrome:48963d0
   environment:
     token:
