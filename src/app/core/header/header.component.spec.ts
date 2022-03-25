@@ -15,4 +15,13 @@ describe('HeaderComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
+
+  it('should change test var after ngOnInit', () => {
+    const fixture = TestBed.createComponent(HeaderComponent);
+    const app = fixture.componentInstance;
+    expect(app.test).toEqual('header');
+    app.ngOnInit();
+    expect(app.test).toEqual('special-header');
+  });
+
 });

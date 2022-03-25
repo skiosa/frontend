@@ -16,7 +16,12 @@ describe('FooterComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should change test var after ngOnInit'), () => {
-  }
+  it('should change test var after ngOnInit', () => {
+    const fixture = TestBed.createComponent(FooterComponent);
+    const app = fixture.componentInstance;
+    expect(app.test).toEqual('footer');
+    app.ngOnInit();
+    expect(app.test).toEqual('special-footer');
+  });
 
 });
