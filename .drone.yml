@@ -74,6 +74,17 @@ type: kubernetes
 name: final-build-pipeline
 
 steps:
+
+- name: npm setup
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  commands:
+  - npm install
+
+- name: unit tests
+  image: registry.dev.skiosa.de/node-chrome:48963d0
+  commands:
+  - npm run test:ci
+
 - name: docker-build
   image: plugins/docker
   settings:
@@ -85,15 +96,12 @@ steps:
     password:
       from_secret: docker_password
 
-- name: npm setup
-  image: registry.dev.skiosa.de/node-chrome:48963d0
-  commands:
-  - npm install
-
-- name: unit tests
-  image: registry.dev.skiosa.de/node-chrome:48963d0
-  commands:
-  - npm run test:ci
+- name: promote-deployment
+  image: danihodovic/drone-promote
+  settings:
+    drone_token:
+      from_secret: drone_token
+    target: production
 
 - name: master code-analysis
   image: registry.dev.skiosa.de/node-chrome:48963d0
@@ -109,3 +117,41 @@ trigger:
   - master
   event:
   - push
+
+---
+#CD Pipeline
+kind: pipeline
+type: kubernetes
+name: deployment-pipeline
+
+steps:
+  - name: deployment-update
+    image: ubuntu
+    environment:
+      SSH_KEY:
+        from_secret: ssh_key
+      dockerImage: frontend
+      directory: frontend
+      dockerImageVersion: ${DRONE_COMMIT_SHA:0:7}
+    commands:
+    - apt update
+    - apt install -y git
+    - mkdir -p /root/.ssh
+    - echo -n "$SSH_KEY" > /root/.ssh/id_ed25519
+    - chmod 600 /root/.ssh/id_ed25519
+    - ssh-keyscan -t rsa github.com >> /root/.ssh/known_hosts
+    - eval "$(ssh-agent -s)"
+    - ssh-add /root/.ssh/id_ed25519
+    - git clone git@github.com:skiosa/deployments.git
+    - cd deployments
+    - git checkout master
+    - ./update.sh $dockerImage $directory $dockerImageVersion
+    - git add .
+    - git commit -m "updated image version"
+    - git push origin master
+
+trigger:
+  event:
+    - promote
+  target:
+    - production
