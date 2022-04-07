@@ -1,11 +1,16 @@
 import { TestBed, async } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { NgModule } from '@angular/core';
 
 describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         HeaderComponent
+      ],
+      imports: [
+        KeycloakAngularModule
       ],
     }).compileComponents();
   }));
