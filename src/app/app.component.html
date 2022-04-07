@@ -3,9 +3,3 @@
   <router-outlet></router-outlet>
 </div>
 <app-footer></app-footer>
-<div *ngIf="!this.isLoggedIn">
-  <button type="button" (click)="login()">Login</button>
-</div>
-<div *ngIf="this.isLoggedIn">
-  <button type="button" (click)="logout()">Logout</button>
-</div>

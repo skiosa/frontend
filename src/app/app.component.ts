@@ -9,20 +9,13 @@ import { KeycloakService } from 'keycloak-angular';
 export class AppComponent implements OnInit {
   title = 'skiosa-frontend';
 
-  public isLoggedIn = false;
-  constructor(private readonly keycloak: KeycloakService) { };
 
-  public async ngOnInit() {
-    this.isLoggedIn = await this.keycloak.isLoggedIn();
+  constructor() { };
+
+  ngOnInit(): void {
+
   }
 
-  login() {
-    this.keycloak.login();
-  }
-
-  logout() {
-    this.keycloak.logout();
-  }
 }
 
 
