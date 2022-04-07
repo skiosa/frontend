@@ -1,4 +1,7 @@
 export const environment = {
   production: true,
-  api: "https://api.skiosa.de"
+  coreApi: "https://api.skiosa.de/core",
+  keycloakUrl: 'https://keycloak.skiosa.de/auth',
+  keycloakRealm: 'Skiosa',
+  keycloakClientId: 'frontend',
 };

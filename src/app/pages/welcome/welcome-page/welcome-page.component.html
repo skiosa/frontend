@@ -1,2 +1,5 @@
+<div *ngIf="this.isLoggedIn">
+    <p>Welcome {{this.userProfile?.username}}</p>
+</div>
 <p>{{this.joke.joke}}</p>
 <button (click)="getJoke()">New Joke</button>

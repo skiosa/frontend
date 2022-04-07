@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { WelcomeRoutingModule } from './welcome-routing.module';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
   ],
   imports: [
     CommonModule,
-    WelcomeRoutingModule
-  ]
+    WelcomeRoutingModule,
+    HttpClientModule
+  ],
+  providers: []
 })
 export class WelcomeModule { }
