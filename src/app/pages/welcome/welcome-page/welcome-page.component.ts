@@ -8,23 +8,9 @@ import { Joke } from 'src/app/models/joke.model';
   styleUrls: ['./welcome-page.component.css']
 })
 export class WelcomePageComponent implements OnInit {
-
-  joke: Joke = {
-    joke: 'No joke for you!'
-  }
-
-  constructor(private apiService: ApiService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getJoke();
-  }
-
-  getJoke() {
-    this.apiService.getJoke().subscribe(joke => {
-      if (joke != null) {
-        this.joke = joke;
-      }
-    });
   }
 
 }
