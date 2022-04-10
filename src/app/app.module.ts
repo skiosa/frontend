@@ -8,6 +8,8 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { SidebarComponent } from './core/sidebar/sidebar.component';
+import { SharedModule } from './shared/shared.module';
 
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -31,11 +33,14 @@ function initializeKeycloak(keycloak: KeycloakService) {
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    SharedModule
     HttpClientModule,
     KeycloakAngularModule
   ],

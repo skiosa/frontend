@@ -17,5 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: []
+    SharedModule,
+    WelcomeRoutingModule
+  ]
 })
 export class WelcomeModule { }

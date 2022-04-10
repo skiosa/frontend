@@ -1,0 +1,12 @@
+.card-container {
+    background-color: var(--secondary-background);
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1rem;
+    color: var(--primary-text-color);
+}
+
+.card-title {
+    margin: 0;
+    padding: 0;
+}

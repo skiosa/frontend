@@ -1,1 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Ubuntu Mono, sans-serif;
+    background-color: var(--primary-background)
+}
+/*************************************/
+/*         GLOBAL VARIABLES          */
+/*************************************/
+
+/* Sizes */
+:root {
+    --sidebar-width: 18rem;
+    --sidebar-height: 5rem;
+}
+
+/* Common Colors */
+:root {
+  --primary-color: #22322a;
+
+  --pastel-a-color: #5e81ac;
+  --pastel-b-color: #a3be8c;
+  --pastel-c-color: #b48ead;
+  --pastel-d-color: #d08770;
+
+  --sidebar-button-color: #000000;
+  --sidebar-settings-color: #d4b3a7;
+}
+
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary-background: #ececec;
+        --secondary-background: #ffffff;
+
+        --primary-text-color: #000000;
+        --secondary-text-color: #909090;
+
+        --article-card-color: #ececec;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-background: #131c18;
+        --secondary-background: #1f2b25;
+        
+        --primary-text-color: #eceff4;
+        --seconday-text-color: #cbcbcb;
+
+        --article-card-color: #131c18;
+    }
+}
+
+/*************************************/
+/*               FONTS               */
+/*************************************/
+
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url('assets/fonts/UbuntuMono-R.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Ubuntu Mono";
+  src: url('assets/fonts/UbuntuMono-B.ttf');
+  font-weight: bold;
+}

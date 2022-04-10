@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycloakService } from 'keycloak-angular';
-import { KeycloakProfile } from 'keycloak-js';
 import { ApiService } from 'src/app/core/services/api.service';
 import { Joke } from 'src/app/models/joke.model';
 
