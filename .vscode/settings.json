@@ -4,5 +4,9 @@
         "dockerconfig",
         "kubernetes",
         "skiosa"
-    ]
+    ], 
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "eslint.validate": ["javascript"]
 }
