@@ -5,14 +5,14 @@ import { CardComponent } from './card/card.component';
 
 
 @NgModule({
-  declarations: [
-    CardComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-      CardComponent
-  ]
+	declarations: [
+		CardComponent
+	],
+	imports: [
+		CommonModule
+	],
+	exports: [
+		CardComponent
+	]
 })
 export class SharedModule { }
