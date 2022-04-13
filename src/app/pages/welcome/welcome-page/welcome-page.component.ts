@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycloakService } from 'keycloak-angular';
-import { KeycloakProfile } from 'keycloak-js';
-import { ApiService } from 'src/app/core/services/api.service';
-import { Joke } from 'src/app/models/joke.model';
+import { Article } from 'skiosa-orm';
+import { RecomendationService } from 'src/app/core/services/recomendation.service';
 
 @Component({
   selector: 'app-welcome-page',
@@ -10,9 +8,26 @@ import { Joke } from 'src/app/models/joke.model';
   styleUrls: ['./welcome-page.component.css']
 })
 export class WelcomePageComponent implements OnInit {
-  constructor() { }
+  constructor(private recomendationService: RecomendationService) { }
+
+  public recommendedArticles: Article[] = []
 
   ngOnInit(): void {
+      this.recomendationService.getGeneralArticles().subscribe(articles => this.recommendedArticles = articles)
+  }
+
+  public shortenedText(text: string): string {
+      if (text.length <= 80) {
+          return text
+      }
+      else {
+         let trimLen = 77;
+         while (text.charAt(trimLen) !== ' ' || trimLen === 0) {
+             trimLen--
+         }
+
+         return text.substring(0, trimLen) + '...'
+      }
   }
 
 }

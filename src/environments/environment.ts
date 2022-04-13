@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  coreApi: "http://localhost:3000",
+  coreApi: 'http://localhost:8080',
   keycloakUrl: 'https://keycloak.skiosa.de/auth',
-  keycloakRealm: 'Skiosa',
+  keycloakRealm: 'Skiosa-test',
   keycloakClientId: 'frontend',
 };
 

@@ -1,1 +1,10 @@
-<app-card cardTitle='Recomendations'></app-card>
+<div class="welcome-container">
+    <app-card cardTitle='Recomendations'>
+        <div class="welcome-article" *ngFor='let recommendedArticle of recommendedArticles'>
+            <app-article [articleTitle]='shortenedText(recommendedArticle.title)'
+                         [articleDescription]='shortenedText(recommendedArticle.description)'
+                         [colorSeed]="recommendedArticle.id">
+            </app-article>
+        </div>
+    </app-card>
+</div>
