@@ -13,10 +13,10 @@
     font-size: 24px;
 }
 
-@media screen and (min-width: 768) {
+@media screen and (min-width: 768px) {
     .card-container {
         padding: 1rem;
-        margin: 1rem;
+        margin: 1rem 3rem;
         border-radius: 1rem;
     }
     

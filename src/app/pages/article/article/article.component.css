@@ -1,0 +1,25 @@
+.article__details__title {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 40px;
+    font-weight: normal;
+    color: var(--primary-text-color);
+}
+
+.article__details__description {
+    margin: 10px 0;
+    font-size: 24px;
+    color: var(--seconday-text-color);
+}
+
+@media screen and (min-width: 768px) {
+    .article__details__title {
+        margin-top: 2rem;
+        font-size: 48px;
+    }
+
+    .article__details__description { 
+        font-size: 32px;
+    }
+}
+
