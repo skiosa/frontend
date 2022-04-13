@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  api: "http://localhost:3000"
+  coreApi: "http://localhost:3000",
+  keycloakUrl: 'https://keycloak.skiosa.de/auth',
+  keycloakRealm: 'Skiosa',
+  keycloakClientId: 'frontend',
 };
 
 /*
