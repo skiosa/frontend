@@ -16,6 +16,12 @@ export class ArticleComponent implements OnInit {
     ngOnInit(): void {
     }
 
+    /**
+    * @author Amos Gross
+    * @summary fetches color for article
+    * @description preliminary solution for generating colored articles
+    * @returns {string} css class for color
+    */
     getColor(): string {
         switch(this.colorSeed % 4) {
             case 0:

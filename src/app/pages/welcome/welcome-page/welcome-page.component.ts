@@ -11,11 +11,19 @@ export class WelcomePageComponent implements OnInit {
   constructor(private recomendationService: RecomendationService) { }
 
   public recommendedArticles: Article[] = []
+  seed: number = Math.random()
 
   ngOnInit(): void {
-      this.recomendationService.getGeneralArticles().subscribe(articles => this.recommendedArticles = articles)
+      this.recomendationService.getGeneralArticles(this.seed, 0, 10).subscribe(articles => this.recommendedArticles = articles)
   }
 
+  /**
+    * @author Amos Gross
+    * @summary shortens text to 80 chars
+    * @description shortens a given string down and adds '...' if needed
+    * @param {string} text - string to shorten
+    * @returns {string} shortened text
+    */
   public shortenedText(text: string): string {
       if (text.length <= 80) {
           return text
