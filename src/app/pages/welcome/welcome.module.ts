@@ -8,17 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [
-    WelcomePageComponent
-  ],
-  imports: [
-    CommonModule,
-    WelcomeRoutingModule,
-    HttpClientModule
-  ],
-  providers: []
-    SharedModule,
-    WelcomeRoutingModule
-  ]
+	declarations: [
+		WelcomePageComponent
+	],
+	imports: [
+		CommonModule,
+		WelcomeRoutingModule,
+		HttpClientModule
+	],
+	providers: []
 })
 export class WelcomeModule { }

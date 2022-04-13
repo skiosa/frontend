@@ -13,45 +13,45 @@ import { SharedModule } from './shared/shared.module';
 
 
 function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: environment.keycloakUrl,
-        realm: environment.keycloakRealm,
-        clientId: environment.keycloakClientId,
+	return () =>
+		keycloak.init({
+			config: {
+				url: environment.keycloakUrl,
+				realm: environment.keycloakRealm,
+				clientId: environment.keycloakClientId,
 
-      },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
+			},
+			initOptions: {
+				onLoad: 'check-sso',
+				silentCheckSsoRedirectUri:
           window.location.origin + '/assets/silent-check-sso.html'
-      }
-    });
+			}
+		});
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    SharedModule
-    HttpClientModule,
-    KeycloakAngularModule
-  ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
-    }
-  ],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		SidebarComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		HttpClientModule,
+		SharedModule,
+		HttpClientModule,
+		KeycloakAngularModule
+	],
+	providers: [
+		{
+			provide: APP_INITIALIZER,
+			useFactory: initializeKeycloak,
+			multi: true,
+			deps: [KeycloakService]
+		}
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
