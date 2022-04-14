@@ -1,4 +1,8 @@
 {
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "eslint.validate": ["javascript"],
     "cSpell.words": [
         "aosapps",
         "dockerconfig",
