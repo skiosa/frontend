@@ -5,16 +5,11 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent {
 
     @Input() articleTitle = ''
     @Input() articleDescription = ''
     @Input() colorSeed = 0
-
-    constructor() { }
-
-    ngOnInit(): void {
-    }
 
     /**
     * @author Amos Gross
