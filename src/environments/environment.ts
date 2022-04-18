@@ -3,11 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  coreApi: 'http://localhost:8080',
-  keycloakUrl: 'https://keycloak.skiosa.de/auth',
-  keycloakRealm: 'Skiosa-test',
-  keycloakClientId: 'frontend',
+	production: false,
+	coreApi: 'http://localhost:3000',
+	keycloakUrl: 'https://keycloak.skiosa.de/auth',
+	keycloakRealm: 'Skiosa',
+	keycloakClientId: 'frontend',
 };
 
 /*

@@ -3,9 +3,9 @@ import { Article } from 'skiosa-orm';
 import { RecomendationService } from 'src/app/core/services/recomendation.service';
 
 @Component({
-  selector: 'app-welcome-page',
-  templateUrl: './welcome-page.component.html',
-  styleUrls: ['./welcome-page.component.css']
+	selector: 'app-welcome-page',
+	templateUrl: './welcome-page.component.html',
+	styleUrls: ['./welcome-page.component.css']
 })
 export class WelcomePageComponent implements OnInit {
   constructor(private recomendationService: RecomendationService) { }
@@ -37,5 +37,4 @@ export class WelcomePageComponent implements OnInit {
          return text.substring(0, trimLen) + '...'
       }
   }
-
 }
