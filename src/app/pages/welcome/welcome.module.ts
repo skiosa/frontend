@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 	],
 	imports: [
 		CommonModule,
-        SharedModule,
+		SharedModule,
 		WelcomeRoutingModule,
 		HttpClientModule
 	],

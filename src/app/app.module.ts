@@ -32,14 +32,14 @@ function initializeKeycloak(keycloak: KeycloakService) {
 	declarations: [
 		AppComponent,
 		HeaderComponent,
-        SidebarComponent,
+		SidebarComponent,
 		FooterComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-        SharedModule,
+		SharedModule,
 		KeycloakAngularModule
 	],
 	providers: [

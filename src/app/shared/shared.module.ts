@@ -6,16 +6,16 @@ import { ArticleComponent } from './article/article.component';
 
 
 @NgModule({
-  declarations: [
-    CardComponent,
-    ArticleComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    CardComponent,
-    ArticleComponent
-  ]
+	declarations: [
+		CardComponent,
+		ArticleComponent
+	],
+	imports: [
+		CommonModule
+	],
+	exports: [
+		CardComponent,
+		ArticleComponent
+	]
 })
 export class SharedModule { }
