@@ -1,59 +1,58 @@
 .article-container {
-    /*width: 100%;*/
-    background-color: var(--article-card-color);
-    display: flex;
-    flex-direction: row;
-    border-radius: 1rem;
+  /*width: 100%;*/
+  background-color: var(--article-card-color);
+  display: flex;
+  flex-direction: row;
+  border-radius: 1rem;
 }
 
 .article-text {
-    margin: 0;
-    padding: 0;
-    font-size: 1.1rem;
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
 }
 
 .article-content {
-    padding-top: 1rem;
-    padding-bottom: 0.9rem;
+  padding-top: 1rem;
+  padding-bottom: 0.9rem;
 }
 
 .article-color {
-    width: 1rem;
-    flex-shrink: 0;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    margin-right: 0.5rem;
+  width: 1rem;
+  flex-shrink: 0;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  margin-right: 0.5rem;
 }
 
 .article-title {
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .article-description {
-    color: var(--secondary-text-color);
+  color: var(--secondary-text-color);
 }
 
 .article-color-a {
-    background-color: var(--pastel-a-color);
+  background-color: var(--pastel-a-color);
 }
 
 .article-color-b {
-    background-color: var(--pastel-b-color);
+  background-color: var(--pastel-b-color);
 }
 
 .article-color-c {
-    background-color: var(--pastel-c-color);
+  background-color: var(--pastel-c-color);
 }
 
 .article-color-d {
-    background-color: var(--pastel-d-color);
+  background-color: var(--pastel-d-color);
 }
 
 @media only screen and (min-width: 768px) {
-    .article-color {
-        width: 4rem;
-        margin-right: 1rem;
-    }
+  .article-color {
+    width: 4rem;
+    margin-right: 1rem;
+  }
 }
-

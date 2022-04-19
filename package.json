@@ -10,7 +10,8 @@
     "test:ci": "ng test --no-watch --code-coverage --browsers=ChromeHeadlessCI",
     "sonar": "sonar-scanner",
     "lint": "eslint src --ext .ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "lint:prettier": "prettier --write src"
   },
   "private": true,
   "dependencies": {

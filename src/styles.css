@@ -2,7 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Ubuntu Mono, sans-serif;
-  background-color: var(--primary-background)
+  background-color: var(--primary-background);
 }
 
 /*************************************/
@@ -25,7 +25,6 @@ body {
   --sidebar-button-color: #000000;
   --sidebar-settings-color: #d4b3a7;
 }
-
 
 /* Light Mode */
 @media (prefers-color-scheme: light) {
@@ -59,12 +58,12 @@ body {
 
 @font-face {
   font-family: "Ubuntu Mono";
-  src: url('assets/fonts/UbuntuMono-R.ttf');
+  src: url("assets/fonts/UbuntuMono-R.ttf");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Ubuntu Mono";
-  src: url('assets/fonts/UbuntuMono-B.ttf');
+  src: url("assets/fonts/UbuntuMono-B.ttf");
   font-weight: bold;
 }
