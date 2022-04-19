@@ -1,39 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycloakService } from 'keycloak-angular';
-import { KeycloakProfile } from 'keycloak-js';
-import { ApiService } from 'src/app/core/services/api.service';
-import { Joke } from 'src/app/models/joke.model';
+import { Article } from 'skiosa-orm';
+import { RecomendationService } from 'src/app/core/services/recomendation.service';
 
 @Component({
-	selector: 'app-welcome-page',
-	templateUrl: './welcome-page.component.html',
-	styleUrls: ['./welcome-page.component.css']
+  selector: 'app-welcome-page',
+  templateUrl: './welcome-page.component.html',
+  styleUrls: ['./welcome-page.component.css'],
 })
 export class WelcomePageComponent implements OnInit {
-	public isLoggedIn = false;
-	userProfile: KeycloakProfile | undefined;
+  constructor(private recomendationService: RecomendationService) {}
 
-	joke: Joke = {
-		joke: 'No joke for you!'
-	};
+  public recommendedArticles: Article[] = [];
+  seed: number = Math.random();
 
-	constructor(private apiService: ApiService, private readonly keycloak: KeycloakService) { }
+  ngOnInit(): void {
+    this.recomendationService
+      .getGeneralArticles(this.seed, 0, 10)
+      .subscribe((articles) => (this.recommendedArticles = articles));
+  }
 
-	public async ngOnInit() {
-		this.isLoggedIn = await this.keycloak.isLoggedIn();
+  /**
+   * @author Amos Gross
+   * @summary shortens text to 80 chars
+   * @description shortens a given string down and adds '...' if needed
+   * @param {string} text - string to shorten
+   * @returns {string} shortened text
+   */
+  public shortenedText(text: string): string {
+    if (text.length <= 80) {
+      return text;
+    } else {
+      let trimLen = 77;
+      while (text.charAt(trimLen) !== ' ' || trimLen === 0) {
+        trimLen--;
+      }
 
-		if (this.isLoggedIn) {
-			this.userProfile = await this.keycloak.loadUserProfile();
-		}
-		this.getJoke();
-	}
-
-	getJoke() {
-		this.apiService.getJoke().subscribe(joke => {
-			if (joke != null) {
-				this.joke = joke;
-			}
-		});
-	}
-
+      return text.substring(0, trimLen) + '...';
+    }
+  }
 }

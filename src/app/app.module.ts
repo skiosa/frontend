@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SidebarComponent } from './core/sidebar/sidebar.component';
+import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -17,13 +18,12 @@ function initializeKeycloak(keycloak: KeycloakService) {
 				url: environment.keycloakUrl,
 				realm: environment.keycloakRealm,
 				clientId: environment.keycloakClientId,
-
 			},
 			initOptions: {
 				onLoad: 'check-sso',
 				silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html'
-			}
+          window.location.origin + '/assets/silent-check-sso.html',
+			},
 		});
 }
 
@@ -31,22 +31,24 @@ function initializeKeycloak(keycloak: KeycloakService) {
 	declarations: [
 		AppComponent,
 		HeaderComponent,
-		FooterComponent
+		SidebarComponent,
+		FooterComponent,
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-		KeycloakAngularModule
+		SharedModule,
+		KeycloakAngularModule,
 	],
 	providers: [
 		{
 			provide: APP_INITIALIZER,
 			useFactory: initializeKeycloak,
 			multi: true,
-			deps: [KeycloakService]
-		}
+			deps: [KeycloakService],
+		},
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
