@@ -10,6 +10,7 @@ import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { GraphQLModule } from './graphql.module';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -40,6 +41,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 		HttpClientModule,
 		SharedModule,
 		KeycloakAngularModule,
+		GraphQLModule,
 	],
 	providers: [
 		{
