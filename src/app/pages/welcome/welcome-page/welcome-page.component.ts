@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import { Article } from 'skiosa-orm';
 import { GENERAL_RECOMMENDATION_QUERY } from 'src/app/core/queries/recommendation';
 
