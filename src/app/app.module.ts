@@ -10,6 +10,7 @@ import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { PathLocationStrategy } from '@angular/common';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
