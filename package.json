@@ -23,13 +23,16 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "apollo-angular": "^3.0.1",
     "cors": "^2.8.5",
     "keycloak-angular": "^9.1.0",
     "keycloak-js": "^16.1.1",
     "rxjs": "~7.5.0",
     "skiosa-orm": "github:skiosa/orm#v1.0.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@apollo/client": "^3.0.0",
+    "graphql": "^16"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~13.3.0",
