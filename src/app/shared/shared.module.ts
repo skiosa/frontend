@@ -8,6 +8,6 @@ import { SubscriptionFeedComponent } from './subscription-feed/subscription-feed
 @NgModule({
   declarations: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent],
   imports: [CommonModule],
-  exports: [CardComponent, ArticleComponent, SubscriptionFeedComponent],
+  exports: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent],
 })
 export class SharedModule {}
