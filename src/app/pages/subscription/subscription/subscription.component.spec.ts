@@ -1,24 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
+import { ApolloModule } from 'apollo-angular';
+import { KeycloakAngularModule } from 'keycloak-angular';
 
 import { SubscriptionComponent } from './subscription.component';
 
 describe('SubscriptionComponent', () => {
   let component: SubscriptionComponent;
-  let fixture: ComponentFixture<SubscriptionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [SubscriptionComponent],
+      providers: [SubscriptionComponent],
+      imports: [KeycloakAngularModule, HttpClientModule, ApolloModule],
     }).compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SubscriptionComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.inject(SubscriptionComponent);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SubscriptionComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
   });
 });
