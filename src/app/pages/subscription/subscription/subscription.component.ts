@@ -20,7 +20,7 @@ export class SubscriptionComponent implements OnInit {
         query: SUBSCRIPTION_QUERY,
       })
       .valueChanges.subscribe(({ data }: any) => {
-        this.subscriptions = data.feeds;
+        this.subscriptions = data.subscriptions;
       });
   }
 

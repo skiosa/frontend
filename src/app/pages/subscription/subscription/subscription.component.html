@@ -1,5 +1,6 @@
 <div class="main-subscription-container">
   <app-card cardTitle="Subscriptions">
+    <p *ngIf="subscriptions.length === 0">No subscribed feeds could be found :(</p>
     <div class="subscription-container" *ngFor="let feed of subscriptions">
       <div class="subscription-feed">
         <app-subscription-feed

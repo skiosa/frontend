@@ -2,7 +2,7 @@ import { gql } from 'apollo-angular';
 
 export const SUBSCRIPTION_QUERY = gql`
   query subscriptions {
-    feeds {
+    subscriptions {
       id
       name
       link
