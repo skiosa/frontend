@@ -13,7 +13,7 @@ This repository has a Dockerfile and a Docker Compose file. These are Visual Stu
 With the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension you can connect to the Docker Containers.
 
 ### First Steps
-After your cloned the repo and started the Devcontainer you should run ``npm install`` to install all npm dependencies.
+After you've cloned the repo and started the Devcontainer you should run ``npm install`` to install all npm dependencies.
 
 ### Local Build
 To build the project locally just run ``ng serve`` to start a webserver which serves the frontend.
