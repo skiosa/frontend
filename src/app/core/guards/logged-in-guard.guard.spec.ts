@@ -1,13 +1,17 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { KeycloakAngularModule } from 'keycloak-angular';
 
-import { LoggedInGuardGuard } from './logged-in-guard.guard';
+import { LoggedInGuard } from './logged-in-guard.guard';
 
 describe('LoggedInGuardGuard', () => {
-  let guard: LoggedInGuardGuard;
+  let guard: LoggedInGuard;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    guard = TestBed.inject(LoggedInGuardGuard);
+    TestBed.configureTestingModule({
+      imports: [KeycloakAngularModule, HttpClientModule]
+    });
+    guard = TestBed.inject(LoggedInGuard);
   });
 
   it('should be created', () => {
