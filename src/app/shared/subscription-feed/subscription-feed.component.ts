@@ -29,7 +29,6 @@ export class SubscriptionFeedComponent implements OnInit {
   ngOnInit(): void {
     this.color = generateRandomColor(this.colorSeed);
   }
-  constructor() {}
 
   onClick() {
     if (this.isOpen) {
