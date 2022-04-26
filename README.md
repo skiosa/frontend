@@ -1,27 +1,32 @@
-# Skiosa Frontend
+# Skiosa-Frontend
+The Skiosa Frontend Application build with the Angular Framework.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+## Requirements
+- npm / node.js 16
+- chrome-bin / chromium-bin
+- skiosa core-service
 
-## Development server
+## Development
+We would recommend to use the Devcontainer to start developing. All necessary dependencies are installed and you don´t have to install specific tools.
+### Devcontainer
+This repository has a Dockerfile and a Docker Compose file. These are Visual Studio Devcontainers.
+With the [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension you can connect to the Docker Containers.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### First Steps
+After you've cloned the repo and started the Devcontainer you should run ``npm install`` to install all npm dependencies.
 
-## Code scaffolding
+### Local Build
+To build the project locally just run ``ng serve`` to start a webserver which serves the frontend.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Run Tests
+To run all unit-tests use ``npm run test``. If you want code coverage you can use the ci-pipeline command which also works locally ``npm run test:ci``. Keep in mind to run the unit-tests you will need a google-chrome/chromium binary in your environment. Which is currently not provided in the Devcontainer.
 
-## Build
+### Linting
+This repository has a [.eslintrc](.eslintrc) file. Run eslint with ``npm run lint``. To Fix Formatting Issues use ``npm run lint:fix``.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Building Production Containers
+If you want your changes on production you have to create a pull-request. After a merge to master the pipeline will build a new docker-image based on the [Dockerfile](Dockerfile).
+But if you want to build the image your self for local testing purposes run ``docker build -t skiosa-frontend .`` to build the container and ``docker run -p 80:80 skiosa-frontend`` to start the container locally.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Service Lead
+The frontend ``Service-Lead`` is [Simon Morgenstern](https://github.com/simonmorgenstern).
