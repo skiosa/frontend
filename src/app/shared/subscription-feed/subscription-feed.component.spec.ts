@@ -8,9 +8,8 @@ describe('SubscriptionFeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SubscriptionFeedComponent ]
-    })
-    .compileComponents();
+      declarations: [SubscriptionFeedComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -9,4 +9,3 @@ const routes: Routes = [{ path: '', component: SubscriptionComponent }];
   exports: [RouterModule],
 })
 export class SubscriptionRoutingModule {}
-

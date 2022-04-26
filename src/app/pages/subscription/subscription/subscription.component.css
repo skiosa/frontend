@@ -1,32 +1,32 @@
 .main-subscription-container {
-    padding-top: 0.2rem;
+  padding-top: 0.2rem;
 }
 .subscription-container {
-    cursor: pointer;
-    background-color: var(--secondary-subscription-background);
-    border-radius: 1rem;
-    margin-top: 1rem;
+  cursor: pointer;
+  background-color: var(--secondary-subscription-background);
+  border-radius: 1rem;
+  margin-top: 1rem;
 }
 
 .subscription-articles {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .article {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 @media only screen and (min-width: 768px) {
-    .subscription-container {
-        padding: 0.5rem;
-        display: flex;
-    }
-    .subscription-articles {
-        width: 49%;
-        margin-left: auto;
-    }
+  .subscription-container {
+    padding: 0.5rem;
+    display: flex;
+  }
+  .subscription-articles {
+    width: 49%;
+    margin-left: auto;
+  }
 
-    .subscription-feed {
-        width: 49%;
-    }
+  .subscription-feed {
+    width: 49%;
+  }
 }

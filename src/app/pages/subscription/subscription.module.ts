@@ -4,16 +4,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { SubscriptionRoutingModule } from './subscription-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
-
 @NgModule({
-  declarations: [
-    SubscriptionComponent
-  ],
-  imports: [
-    CommonModule,
-    SubscriptionRoutingModule,
-    SharedModule
-  ]
+  declarations: [SubscriptionComponent],
+  imports: [CommonModule, SubscriptionRoutingModule, SharedModule],
 })
-export class SubscriptionModule { }
+export class SubscriptionModule {}

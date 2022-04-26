@@ -1,13 +1,27 @@
-<div class="subscription-feed-container" >
-    <div class="subscription-feed-icon-container" [ngStyle]="{'background-color': color}">
-        <img src="assets/icons/globe.svg" class="subscription-feed-icon"/>
-    </div>
-    <!-- TODO: Add router link as soon as feed overvew page is created -->
-    <div class="subscription-feed-text-container">
-        <p class="subscription-feed-text subscription-feed-name" >{{feed.name}}</p>
-        <p class="subscription-feed-text subscription-feed-description">{{feed.description}}</p>
-    </div>
-    <img class="side-icon subscription-open" (click)="onClick()" [hidden]="isOpen" src="assets/icons/open.svg"/>
-    <img class="side-icon subscription-close" (click)="onClick()" [hidden]="!isOpen" src="assets/icons/close.svg"/>
+<div class="subscription-feed-container">
+  <div
+    class="subscription-feed-icon-container"
+    [ngStyle]="{ 'background-color': color }"
+  >
+    <img src="assets/icons/globe.svg" class="subscription-feed-icon" />
+  </div>
+  <!-- TODO: Add router link as soon as feed overvew page is created -->
+  <div class="subscription-feed-text-container">
+    <p class="subscription-feed-text subscription-feed-name">{{ feed.name }}</p>
+    <p class="subscription-feed-text subscription-feed-description">
+      {{ feed.description }}
+    </p>
+  </div>
+  <img
+    class="side-icon subscription-open"
+    (click)="onClick()"
+    [hidden]="isOpen"
+    src="assets/icons/open.svg"
+  />
+  <img
+    class="side-icon subscription-close"
+    (click)="onClick()"
+    [hidden]="!isOpen"
+    src="assets/icons/close.svg"
+  />
 </div>
-
