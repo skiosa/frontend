@@ -8,7 +8,6 @@
     height: 90px;
     padding: 25px 50px;
     border-radius: 20px 20px 0 0;
-    background-color: var(--pastel-b-color);
 }
 
 .feed_title {
@@ -20,4 +19,21 @@
     padding: 20px 0;
     margin: 0;
 }
+
+.color-a {
+    background-color: var(--pastel-a-color);
+}
+  
+.color-b {
+    background-color: var(--pastel-b-color);
+}
+  
+.color-c {
+    background-color: var(--pastel-c-color);
+}
+  
+.color-d {
+    background-color: var(--pastel-d-color);
+}
+  
 
