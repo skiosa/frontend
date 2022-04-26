@@ -6,7 +6,6 @@ export const DEFAULT_PASTEL_COLOR = 'var(--pastel-a-color)';
  * @returns {string} css color
  */
 export function generateRandomColor(colorSeed: number): string {
-  console.log('hello', colorSeed);
   switch (colorSeed % 4) {
     case 0:
       return 'var(--pastel-a-color)';
