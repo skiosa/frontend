@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Feed } from 'skiosa-orm';
 import {
   DEFAULT_PASTEL_COLOR,
-  generateRandomColor,
+  generateRandomColor
 } from 'src/app/core/utils/randomColor';
 
 @Component({
