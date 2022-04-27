@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import {
@@ -14,7 +14,7 @@ import { Feed, Article } from 'skiosa-orm';
 	templateUrl: './article.component.html',
 	styleUrls: ['./article.component.css'],
 })
-export class ArticleComponent {
+export class ArticleComponent implements OnInit {
 	public article: PartialExcept<Article, 'title' | 'content' | 'url'> & { feed: PartialExcept<Feed, 'id'> } = {
 		title: 'Loading...',
 		content: 'Loading...',
