@@ -5,16 +5,16 @@
       <img class="sidebar_navigation_logo" src="assets/icons/logo_font_dark.svg" alt="Skiosa logo"/>
     </a>
   </div>
-  <a [routerLink]="['/recommendations']">
+  <a class="sidebar_nav-button" [routerLink]="['/recommendations']">
     <app-nav-button text="Recommendations" routerLink="/recommendations"></app-nav-button>
   </a>
-  <a [routerLink]="['/bookmarks']">
+  <a class="sidebar_nav-button" [routerLink]="['/bookmarks']">
     <app-nav-button text="Bookmarks"></app-nav-button>
   </a>
-  <a [routerLink]="['/subscriptions']">
+  <a class="sidebar_nav-button" [routerLink]="['/subscriptions']">
     <app-nav-button text="Subscriptions"></app-nav-button>
   </a>
-  <a [routerLink]="['/explore']">
+  <a class="sidebar_nav-button" [routerLink]="['/explore']">
     <app-nav-button text="Explore" routerLink="/explore"></app-nav-button>
   </a>
   <a class="sidebar_button first" [routerLink]="['/add-feed']">

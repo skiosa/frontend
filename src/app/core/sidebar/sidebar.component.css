@@ -39,6 +39,8 @@
 }
 
 .sidebar_button_text {
+  flex: 1;
+  text-align: center;
   font-size: 24px;
   margin: 0;
 }
@@ -48,6 +50,10 @@
   .sidebar {
     max-height: var(--sidebar-height);
     overflow: hidden;
+  }
+
+  .sidebar_nav-button {
+    margin: 0 10px;
   }
 
   .sidebar_navigation {
