@@ -11,11 +11,14 @@ export type GENERAL_FEED_QUERY_RESPONCE = {
       title: string;
       description: string;
       publishedAt: string;
+      categories: {
+          id: number;
+      }[]
     }[]
   }
 }
 export const GENERAL_FEED_QUERY = gql<GENERAL_FEED_QUERY_RESPONCE, {feedId: number}>`
-query ExampleQuery($feedId: Float!) {
+query GENERAL_FEED_QUERY($feedId: Float!) {
     feed(id: $feedId) {
       id
       link
@@ -26,6 +29,9 @@ query ExampleQuery($feedId: Float!) {
         title
         description
         publishedAt
+        categories {
+          id
+        }
       }
     }
   }

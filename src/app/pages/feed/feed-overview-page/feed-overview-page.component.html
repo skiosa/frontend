@@ -2,6 +2,9 @@
 
 
 <app-card [cardTitle]="feed.name">
+   <button (click)="changeSubscription" >
+       
+   </button> 
 
 </app-card>
 
@@ -10,38 +13,35 @@
     <div
         class="newfeeds"
     >
-        <app-article  *ngFor="let article of newestArticles"
+        <div>
+
+        
+        <app-article *ngFor="let article of newestArticles | slice:0:minNumber(newestArticles.length , 2)"
 
             [articleTitle]="article.title"
             [articleDescription]="article.description"
-            [colorSeed]="article.id"
+            [colorSeed]="article.categories && article.categories.length !== 0 ? article.categories[0].id : 0"
           
         >
         </app-article> 
+        </div>
     </div>
 </app-card>
 <app-card cardTitle="Artikel">
     <div
         class="newfeeds"
     >
-        <app-article
-            articleTitle="How installing linux made me gain 20lbs of muscle"
-            articleDescription="After installing arch linux, I did one pushup every time I told some..."
-            [colorSeed]=firstColor
-        >
-        </app-article>
-        <app-article
-            articleTitle="Mr Olympia 2021 long time gentoo user"
-            articleDescription="After winning the Olympia in 2021, Big Ramy started talking about his distro of choice..."
-            [colorSeed]=secondColor
-        >
-        </app-article>
-        <app-article
-            articleTitle="Mr Olympia 2021 long time gentoo user"
-            articleDescription="After winning the Olympia in 2021, Big Ramy started talking about his distro of choice..."
-            [colorSeed]=secondColor
-        >
-        </app-article>
+    
+    <app-article  *ngFor="let article of feed.articles | slice:2:newestArticles.length"
+
+    [articleTitle]="article.title"
+    [articleDescription]="article.description"
+    [colorSeed]="article.categories && article.categories.length !== 0 ? article.categories[0].id : 0"
+   
+  
+    >
+    
+    </app-article>
     </div>
 </app-card>
 </app-card>     
