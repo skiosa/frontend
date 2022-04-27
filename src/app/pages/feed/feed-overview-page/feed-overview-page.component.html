@@ -1,23 +1,23 @@
 <div class = "feed-overview-container">
 
 
+<app-card [cardTitle]="feed.name">
+
+</app-card>
+
 <app-card>
 <app-card  cardTitle="Neue Beiträge">
     <div
         class="newfeeds"
     >
-        <app-article
-            articleTitle="How installing linux made me gain 20lbs of muscle"
-            articleDescription="After installing arch linux, I did one pushup every time I told some..."
-            [colorSeed]=firstColor
+        <app-article  *ngFor="let article of newestArticles"
+
+            [articleTitle]="article.title"
+            [articleDescription]="article.description"
+            [colorSeed]="article.id"
+          
         >
-        </app-article>
-        <app-article
-            articleTitle="Mr Olympia 2021 long time gentoo user"
-            articleDescription="After winning the Olympia in 2021, Big Ramy started talking about his distro of choice..."
-            [colorSeed]=secondColor
-        >
-        </app-article>
+        </app-article> 
     </div>
 </app-card>
 <app-card cardTitle="Artikel">
