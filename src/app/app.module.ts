@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { SharedModule } from './shared/shared.module';
-
+import { environment } from 'src/environments/environment';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { GraphQLModule } from './graphql.module';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -22,9 +22,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
 			},
 			initOptions: {
 				onLoad: 'check-sso',
-				flow: 'implicit',
-				silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html'
-			}
+				silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html',
+			},
 		});
 }
 
@@ -32,25 +32,25 @@ function initializeKeycloak(keycloak: KeycloakService) {
 	declarations: [
 		AppComponent,
 		HeaderComponent,
+		SidebarComponent,
 		FooterComponent,
-		SidebarComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		SharedModule,
-		HttpClientModule,
-		KeycloakAngularModule
+		KeycloakAngularModule,
+		GraphQLModule,
 	],
 	providers: [
 		{
 			provide: APP_INITIALIZER,
 			useFactory: initializeKeycloak,
 			multi: true,
-			deps: [KeycloakService]
-		}
+			deps: [KeycloakService],
+		},
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,5 +1,15 @@
-<div *ngIf="this.isLoggedIn">
-    <p>Welcome {{this.userProfile?.username}}</p>
+<div class="welcome-container">
+  <app-card cardTitle="Recommendations">
+    <div
+      class="welcome-article"
+      *ngFor="let recommendedArticle of recommendedArticles"
+    >
+      <app-article
+        [articleTitle]="shortenedText(recommendedArticle.title)"
+        [articleDescription]="shortenedText(recommendedArticle.description)"
+        [colorSeed]="recommendedArticle.id"
+      >
+      </app-article>
+    </div>
+  </app-card>
 </div>
-<p>{{this.joke.joke}}</p>
-<button (click)="getJoke()">New Joke</button>

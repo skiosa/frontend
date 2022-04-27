@@ -1,5 +1,5 @@
 .card-container {
-    display: inline-block; 
+    display: inline-block;
     background-color: var(--secondary-background);
     padding: 0.5rem;
     margin: 0.5rem;
@@ -19,7 +19,7 @@
         margin: 1rem 3rem;
         border-radius: 1rem;
     }
-    
+
     .card-title {
         font-size: 36px;
     }

@@ -1,25 +1,30 @@
 .sidebar-container {
-    position: fixed;
-    width: 100vw;
-    height: var(--sidebar-height);
-    top: 0;
+  position: fixed;
+  width: 100vw;
+  height: var(--sidebar-height);
+  top: 0;
 }
 
-.main-content {
-    margin-top: var(--sidebar-height);
+.main-content-container {
+  margin-top: var(--sidebar-height);
 }
 
 @media only screen and (min-width: 768px) {
-    .sidebar-container {
-        width: var(--sidebar-width);
-        height: 100vh;
-        left: 0;
-        margin: 0;
-        padding: 0;
-    }
+  .sidebar-container {
+    width: var(--sidebar-width);
+    height: 100vh;
+    left: 0;
+    margin: 0;
+    padding: 0;
+  }
 
-    .main-content {
-        margin-top: 0;
-        margin-left: var(--sidebar-width);
-    }
-} 
+  .main-content-container {
+    margin-top: 0;
+    margin-left: var(--sidebar-width);
+  }
+
+  .main-content {
+    max-width: 95rem;
+    margin: 0 auto;
+  }
+}

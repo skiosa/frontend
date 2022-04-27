@@ -4,18 +4,17 @@ import { KeycloakService } from 'keycloak-angular';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
-	styleUrls: ['./header.component.css']
+	styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
 	test = 'header';
 
-	constructor(private readonly keycloak: KeycloakService) { }
+	constructor(private readonly keycloak: KeycloakService) {}
 	public isLoggedIn = false;
 
 	async ngOnInit() {
 		this.test = 'special-header';
 		this.isLoggedIn = await this.keycloak.isLoggedIn();
-
 	}
 
 	login() {
@@ -25,5 +24,4 @@ export class HeaderComponent implements OnInit {
 	logout() {
 		this.keycloak.logout();
 	}
-
 }

@@ -1,6 +1,12 @@
 {
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "eslint.validate": ["javascript"],
     "cSpell.words": [
         "aosapps",
+        "Devcontainer",
+        "Devcontainers",
         "dockerconfig",
         "kubernetes",
         "skiosa"
