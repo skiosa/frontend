@@ -1,5 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { Apollo } from 'apollo-angular';
+import { Feed } from 'skiosa-orm';
 import { GENERAL_FEED_QUERY } from '../../../core/queries/feeds';
 
 
@@ -9,25 +10,18 @@ import { GENERAL_FEED_QUERY } from '../../../core/queries/feeds';
 	styleUrls: ['./feed-overview-page.component.css']
 })
 export class FeedOverviewPageComponent implements OnInit {
-  constructor(private apollo: Apollo) { }
+	constructor(private apollo: Apollo) { }
 
-  private seed: number = Math.random();
-	private skip = 0;
-	private take = 10;
+  public recomendedFeed: Feed | undefined;
   private feedID = 1;
 
   ngOnInit(): void {
-    this.apollo
-    .watchQuery({
-      query: GENERAL_FEED_QUERY, variables: {
-        seed: this.seed,
-					PaginationArg: {
-						skip: this.skip,
-						take: this.take,
-					},
-          feedId: this.feedID
-      }
-    })
+  	this.apollo
+  		.watchQuery({
+  			query: GENERAL_FEED_QUERY, variables: {
+  				feedId: this.feedID
+  			}
+  		});
   }
 
 
