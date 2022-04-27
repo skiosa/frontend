@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { GraphQLModule } from './graphql.module';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -34,6 +35,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

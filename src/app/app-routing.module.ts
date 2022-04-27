@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './core/guards/logged-in-guard.guard';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -22,10 +23,7 @@ const routes: Routes = [
   },
   {
     path: '404',
-    loadChildren: () =>
-      import('./pages/not-found/not-found.module').then(
-        (m) => m.NotFoundModule
-      ),
+    component: NotFoundComponent
   },
 ];
 
