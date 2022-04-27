@@ -2,18 +2,15 @@ import { TestBed } from '@angular/core/testing';
 import { KeycloakAngularModule } from 'keycloak-angular';
 import { WelcomePageComponent } from './welcome-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RecomendationService } from 'src/app/core/services/recomendation.service';
+import { ApolloModule } from 'apollo-angular';
 
 describe('WelcomePageComponent', () => {
   let comp: WelcomePageComponent;
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [WelcomePageComponent],
-      providers: [
-        WelcomePageComponent,
-        { provide: RecomendationService, useClass: MockRecomendationService },
-      ],
-      imports: [KeycloakAngularModule, HttpClientModule],
+      providers: [WelcomePageComponent],
+      imports: [KeycloakAngularModule, HttpClientModule, ApolloModule],
     }).compileComponents();
     comp = TestBed.inject(WelcomePageComponent);
   });
@@ -39,7 +36,3 @@ describe('WelcomePageComponent', () => {
     expect(res).toEqual(expected);
   });
 });
-
-class MockRecomendationService {
-  getGeneralArticles = [];
-}

@@ -36,6 +36,8 @@ body {
     --secondary-text-color: #909090;
 
     --article-card-color: #ececec;
+
+    --secondary-subscription-background: #f6f6f6;
   }
 }
 
@@ -49,6 +51,8 @@ body {
     --seconday-text-color: #cbcbcb;
 
     --article-card-color: #131c18;
+
+    --secondary-subscription-background: #000000;
   }
 }
 
