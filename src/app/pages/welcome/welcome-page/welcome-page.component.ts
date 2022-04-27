@@ -27,9 +27,9 @@ export class WelcomePageComponent implements OnInit {
 						take: this.take,
 					},
 				},
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			})
-			.valueChanges.subscribe(({ data }: {recommendedArticles: Article[]}) => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			.valueChanges.subscribe(({ data }: any) => {
 				this.recommendedArticles = data.recommendedArticles;
 			});
 	}

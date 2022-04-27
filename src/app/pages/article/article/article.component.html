@@ -1,8 +1,18 @@
 <app-card class="article__details" cardTitle="Article Details">
     <h1 class="article__details__title">
-        {{title}}
+        {{article.title}}
     </h1>
     <p class="article__details__description">
-        {{description}}
+        {{article.content}}
     </p>
+</app-card>
+
+<app-card cardTitle="Actions">
+
+</app-card>
+<app-card cardTitle="Simmilar Articles" class="article__details">
+    <div *ngFor="let a of recommendedArticles" class="recommended-articles">
+        <app-article [articleTitle]="a.title" [articleDescription]="a.description" [colorSeed]="getColorSeed(a)">
+        </app-article>
+    </div>
 </app-card>

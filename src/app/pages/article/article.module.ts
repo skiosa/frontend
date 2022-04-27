@@ -10,8 +10,8 @@ import { ArticleRoutingModule } from './article-routing.module';
 		ArticleComponent
 	],
 	imports: [
-		CommonModule, 
-		SharedModule, 
+		CommonModule,
+		SharedModule,
 		ArticleRoutingModule
 	]
 })

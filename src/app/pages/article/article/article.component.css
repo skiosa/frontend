@@ -12,14 +12,17 @@
     color: var(--seconday-text-color);
 }
 
+.recommended-articles {
+    margin: 1rem auto;
+}
+
 @media screen and (min-width: 768px) {
     .article__details__title {
         margin-top: 2rem;
         font-size: 48px;
     }
 
-    .article__details__description { 
+    .article__details__description {
         font-size: 32px;
     }
 }
-
