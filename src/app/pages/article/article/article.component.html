@@ -8,11 +8,17 @@
 </app-card>
 
 <app-card cardTitle="Actions">
-
+    <div class="article-action-icon-buttons">
+        <app-icon-button title="Visit" icon="assets/icons/external-link.svg" (click)="redirectToUrl(article.url)"></app-icon-button>
+        <app-icon-button title="Like" icon="assets/icons/heart.svg"></app-icon-button>
+        <app-icon-button title="Bookmark" icon="assets/icons/bookmark.svg"></app-icon-button>
+        <app-icon-button title="Share" icon="assets/icons/share.svg"></app-icon-button>
+        <app-icon-button title="Feed" icon="assets/icons/external-link.svg" (click)="redirectToFeedId(article.feed.id)"></app-icon-button>
+    </div>
 </app-card>
 <app-card cardTitle="Simmilar Articles" class="article__details">
     <div *ngFor="let a of recommendedArticles" class="recommended-articles">
-        <app-article [articleTitle]="a.title" [articleDescription]="a.description" [colorSeed]="getColorSeed(a)">
+        <app-article [articleTitle]="a.title" [articleDescription]="a.description" [colorSeed]="getColorSeed(a)" (click)="redirectToArticleId(a.id)"> 
         </app-article>
     </div>
 </app-card>

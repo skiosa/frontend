@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Feed } from 'skiosa-orm';
+import { Feed } from '../../models/feed.model';
 import { SUBSCRIPTION_QUERY } from 'src/app/core/queries/subscription';
 
 @Component({
@@ -12,7 +12,7 @@ export class SubscriptionComponent implements OnInit {
   subscriptions: Feed[] = [];
   visibleSubscriptions: Set<number> = new Set();
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
     this.apollo

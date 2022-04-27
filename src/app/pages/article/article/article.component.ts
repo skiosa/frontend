@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { Article } from 'skiosa-orm';
 import {
 	SINGLE_ARTICLE_QUERY,
 	SINGLE_ARTICLE_QUERY_RESPONSE,
 } from 'src/app/core/queries/singleArticle';
 
 import { PartialExcept } from 'src/app/util/types';
+import { Feed, Article } from 'skiosa-orm';
 
 @Component({
 	selector: 'app-article-view',
@@ -15,17 +15,20 @@ import { PartialExcept } from 'src/app/util/types';
 	styleUrls: ['./article.component.css'],
 })
 export class ArticleComponent {
-	public article: PartialExcept<Article, 'title' | 'content'> = {
+	public article: PartialExcept<Article, 'title' | 'content' | 'url'> & { feed: PartialExcept<Feed, 'id'> } = {
 		title: 'Loading...',
 		content: 'Loading...',
+		url: '',
+		feed: {
+			id: -1,
+		}
 	};
-	public recommendedArticles: PartialExcept<Article, 'title' | 'description' | 'id' | 'categories'>[] = [];
+	public recommendedArticles: (PartialExcept<Article, 'title' | 'description' | 'id'> & { categories: { id: number, name?: string }[] })[] = [];
 
 	constructor(private route: ActivatedRoute, private apollo: Apollo) { }
 
 	ngOnInit() {
 		const articleId = this.route.snapshot.paramMap.get('articleId');
-		console.log(articleId);
 		if (!articleId || isNaN(+articleId)) {
 			throw new Error('Invalid article id');
 		}
@@ -41,11 +44,21 @@ export class ArticleComponent {
 				this.recommendedArticles = data.similarArticles;
 			});
 	}
-	getColorSeed(article: PartialExcept<Article, 'title' | 'description' | 'id' | 'categories'>): number {
+	getColorSeed(article: PartialExcept<Article, 'title' | 'description' | 'id'> & { categories: { id: number, name?: string }[] }): number {
 		if (article.categories) {
-			return article.categories[0]?.id ?? 0;
+			return article.categories[0].id;
 		}
 		return 0;
+	}
+
+	redirectToArticleId(id: number) {
+		window.location.href = `/article/${id}`;
+	}
+	redirectToFeedId(id: number) {
+		window.location.href = `/feed/${id}`;
+	}
+	redirectToUrl(url: string) {
+		window.location.href = url;
 	}
 }
 

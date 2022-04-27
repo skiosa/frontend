@@ -1,0 +1,20 @@
+.icon-button-container {
+    background-color: var(--primary-background);
+    padding: 0.8rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    color: var(--primary-text-color);
+    width: 6rem;
+    text-align: center;
+}
+
+.icon-button-title {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+}
+
+.icon-button-icon {
+    width: 4rem;
+    margin: auto;
+}
