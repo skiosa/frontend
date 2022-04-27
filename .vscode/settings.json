@@ -5,6 +5,8 @@
     "eslint.validate": ["javascript"],
     "cSpell.words": [
         "aosapps",
+        "Devcontainer",
+        "Devcontainers",
         "dockerconfig",
         "kubernetes",
         "skiosa"
