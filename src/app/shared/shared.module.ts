@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card/card.component';
 import { ArticleComponent } from './article/article.component';
-import { IconButtonComponent } from './icon-button/icon-button.component';
+import { SubscriptionFeedComponent } from './subscription-feed/subscription-feed.component';
 
 @NgModule({
-	declarations: [CardComponent, ArticleComponent, IconButtonComponent],
-	imports: [CommonModule],
-	exports: [CardComponent, ArticleComponent],
+  declarations: [CardComponent, ArticleComponent, SubscriptionFeedComponent],
+  imports: [CommonModule],
+  exports: [CardComponent, ArticleComponent, SubscriptionFeedComponent],
 })
-export class SharedModule {}
+export class SharedModule { }

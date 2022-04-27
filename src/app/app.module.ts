@@ -11,6 +11,9 @@ import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { GraphQLModule } from './graphql.module';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SubscriptionComponent } from './pages/subscription/subscription.component';
+import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -23,7 +26,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 			initOptions: {
 				onLoad: 'check-sso',
 				silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html',
+					window.location.origin + '/assets/silent-check-sso.html',
 			},
 		});
 }
@@ -34,6 +37,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
 		HeaderComponent,
 		SidebarComponent,
 		FooterComponent,
+		NotFoundComponent,
+		SubscriptionComponent,
+		WelcomePageComponent
 	],
 	imports: [
 		BrowserModule,
@@ -53,4 +59,4 @@ function initializeKeycloak(keycloak: KeycloakService) {
 	],
 	bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

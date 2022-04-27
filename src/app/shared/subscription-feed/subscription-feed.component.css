@@ -1,0 +1,78 @@
+.subscription-feed-icon-background {
+  flex-shrink: 0;
+  border-radius: 1rem;
+  margin-right: 1rem;
+}
+
+.subscription-feed-icon {
+  width: 3.5rem;
+  padding: 0.5rem;
+}
+
+.side-icon {
+  align-self: center;
+  height: 1.5rem;
+  margin-left: auto;
+  margin-right: 0.5rem;
+  transform: rotate(90deg);
+}
+
+.subscription-feed-name {
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.subscription-feed-text-container {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0.5rem 0;
+  padding-right: 1.5rem;
+}
+
+.subscription-feed-text {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.subscription-feed-description {
+  -webkit-line-clamp: 2;
+  margin-top: 0.2rem;
+  vertical-align: bottom;
+}
+
+.subscription-feed-container {
+  background-color: var(--article-card-color);
+  display: flex;
+  border-radius: 1rem;
+  height: 4.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .subscription-feed-icon {
+    filter: brightness(0) saturate(100%);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .subscription-feed-name {
+    font-size: 1.1rem;
+  }
+  .subscription-feed-icon {
+    width: 4rem;
+    padding: 1rem;
+  }
+  .subscription-feed-container {
+    height: 6rem;
+  }
+  .subscription-feed-description {
+    -webkit-line-clamp: 3;
+  }
+  .side-icon {
+    height: 2rem;
+    transform: rotate(0deg);
+  }
+}
