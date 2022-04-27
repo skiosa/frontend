@@ -1,4 +1,4 @@
-.sidebar-container {
+.sidebar {
   width: 100%;
   height: 100%;
   background-color: var(--primary-color);
@@ -12,13 +12,13 @@
   width: 100%;
 }
 
-.sidebar_burger {
+.sidebar_navigation_burger {
   margin: 20px;
   height: 40px;
   width: 40px;
 }
 
-.sidebar_logo {
+.sidebar_navigation_logo {
   font-family: OfWildflowersAndWings, sans-serif;
 }
 
@@ -45,7 +45,7 @@
 
 /* media query for navigation bar on mobile devices */
 @media only screen and (max-width: 768px) {
-  .sidebar-container {
+  .sidebar {
     max-height: var(--sidebar-height);
     overflow: hidden;
   }
@@ -56,12 +56,12 @@
     justify-content: center;
   }
 
-  .sidebar_burger {
+  .sidebar_navigation_burger {
     position: absolute;
     left: 0;
   }
 
-  .sidebar_logo {
+  .sidebar_navigation_logo {
     height: var(--sidebar-height);
   }
   .open {
@@ -72,17 +72,14 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .sidebar-container {
+  .sidebar {
     padding: 20px;
   }
-  .sidebar_burger {
+  .sidebar_navigation_burger {
     display: none;
   }
-  .sidebar_logo {
+  .sidebar_navigation_logo {
     padding: 20px 0 60px;
     width: 100%;
-  }
-  .sidebar-title {
-    padding: 2rem;
   }
 }

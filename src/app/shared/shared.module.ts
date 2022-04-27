@@ -7,11 +7,8 @@ import { SubscriptionFeedComponent } from './subscription-feed/subscription-feed
 import { NavButtonComponent } from './nav-button/nav-button.component';
 
 @NgModule({
-  declarations: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent],
+  declarations: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent, NavButtonComponent],
   imports: [CommonModule],
-  exports: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent],
-	declarations: [CardComponent, ArticleComponent, FeedComponent, NavButtonComponent],
-	imports: [CommonModule],
-	exports: [CardComponent, ArticleComponent, FeedComponent, NavButtonComponent],
+  exports: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent, NavButtonComponent],
 })
 export class SharedModule {}

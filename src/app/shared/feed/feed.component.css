@@ -19,21 +19,3 @@
     padding: 20px 0;
     margin: 0;
 }
-
-.color-a {
-    background-color: var(--pastel-a-color);
-}
-  
-.color-b {
-    background-color: var(--pastel-b-color);
-}
-  
-.color-c {
-    background-color: var(--pastel-c-color);
-}
-  
-.color-d {
-    background-color: var(--pastel-d-color);
-}
-  
-

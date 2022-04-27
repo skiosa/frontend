@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
 	navigationIsOpen = false
 
+	/**
+	 * @author Simon Morgenstern
+	 * @summary function opens/closes navigation in mobile view
+	 */
 	toggleNavigation() {
 		this.navigationIsOpen = !this.navigationIsOpen;
 	}
