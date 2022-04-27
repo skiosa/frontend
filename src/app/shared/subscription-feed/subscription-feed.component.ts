@@ -19,8 +19,8 @@ export class SubscriptionFeedComponent implements OnInit {
     description: '',
   };
   @Input() colorSeed = 0;
-  @Input() openAction: Function = () => {};
-  @Input() closeAction: Function = () => {};
+  @Input() openAction: Function = () => { };
+  @Input() closeAction: Function = () => { };
 
   isOpen = false;
 

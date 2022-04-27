@@ -1,11 +1,10 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Article, Category, Feed } from 'skiosa-orm';
 import { GENERAL_FEED_QUERY, GENERAL_FEED_QUERY_RESPONCE } from '../../../core/queries/feeds';
-import { PartialExcept } from 'src/app/util/types';
-import { min } from 'rxjs';
 import { GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY } from 'src/app/core/queries/subscriotionsFromUser';
 import { GENERAL_FEED_SUB_MUTATION } from 'src/app/core/mutations/subsscription';
+import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/core/utils/randomColor';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -14,104 +13,71 @@ import { GENERAL_FEED_SUB_MUTATION } from 'src/app/core/mutations/subsscription'
 	styleUrls: ['./feed-overview-page.component.css']
 })
 export class FeedOverviewPageComponent implements OnInit {
-	constructor(private apollo: Apollo) { }
+	constructor(private apollo: Apollo, private route: ActivatedRoute) { }
 
-  public feed: Feed = {
-	id: 0,
-	link: '',
-	ttl: 0,
-	description: '',
-	name: ''
-  };
-
-  public feedIDsOfSubscribedFeed: number[] = [];
-  public newestArticles: Article[] = [];
-  private feedID = 1;
-  private isSubscribed : boolean = false;
+	public feed: GENERAL_FEED_QUERY_RESPONCE["feed"] = {
+		id: 0,
+		link: '',
+		name: '',
+		description: '',
+		articles: []
+	};
+	private feedID = 1;
+	private isSubscribed: boolean = false;
+	public color: string = DEFAULT_PASTEL_COLOR;
 
 
 
-  ngOnInit(): void {
-  	this.apollo
-  		.watchQuery({
-  			query: GENERAL_FEED_QUERY, variables: {
-  				feedId: this.feedID
-  			}
-  		}).valueChanges.subscribe((data: {data: any}) => {
-				const {feed}: {feed: Feed} = data.data;
-				if (feed.articles)
-
-			  this.feed = {
-				  ...feed,
-				  articles: feed.articles.map(article => {
-					  return {
-						  ...article,
-						  publishedAt: new Date(article.publishedAt), 
-					  	}	
-				})
-			  };
-			  this.sortArticlesOfFeed();
-		  	});
-
-	this.apollo.watchQuery({
-		query: GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY , variables: {
-			userId: 1,
-			name: '',
+	ngOnInit(): void {
+		const idString = this.route.snapshot.paramMap.get('feedId')
+		if (!idString || isNaN(+idString)) {
+			window.location.href = '/404';
+			return
 		}
-	}).valueChanges.subscribe((data: {data: any}) => {
-		const {subscriptions}: {subscriptions: number[]} = data.data;
-		 if (subscriptions && subscriptions.length > 0) {
-			 this.feedIDsOfSubscribedFeed = {
-				 ...subscriptions
-			 }
-		 }
-	});
+		this.feedID = +idString
+		this.color = generateRandomColor(this.feedID);
+		this.apollo
+			.watchQuery({
+				query: GENERAL_FEED_QUERY, variables: {
+					feedId: this.feedID
+				}
+			}).valueChanges.subscribe((data) => {
+				this.feed = JSON.parse(JSON.stringify(data.data.feed));
+				console.log(this.feed)
+				this.sortArticlesOfFeed();
+			});
 
-	if(this.feedIDsOfSubscribedFeed.includes(this.feedID)){
-		this.isSubscribed = true;
-	}
+		this.apollo.watchQuery({
+			query: GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY
+		}).valueChanges.subscribe(({ data }) => {
+			const feedIDsOfSubscribedFeed = data.subscriptions.map(s => s.id);
+			this.isSubscribed = feedIDsOfSubscribedFeed.includes(this.feedID)
+		});
 
-  }	
-
-   
-  public changeSubscription(): void {
-	this.apollo.mutate({
-		mutation: GENERAL_FEED_SUB_MUTATION,
-		variables: {
-			feedId: this.feedID,
-			isSubscribed: !this.isSubscribed
-		}
-	}).subscribe(({data})=>{
-		console.log(data);
-	});
-}
-
-  sortArticlesOfFeed(): void {
-	let latesArticles = this.feed.articles;
-	console.log(latesArticles);
-	console.log({date: new Date()});
-
-	if(this.feed.articles && this.feed.articles.length > 0 &&  latesArticles && latesArticles.length > 0) {
-	latesArticles = latesArticles.sort((a, b) => {
-		return b.publishedAt.getTime() - a.publishedAt.getTime();
-});
-	
-
-
-
-}
-
-	if (latesArticles && latesArticles.length > 0) 	{
-		this.newestArticles = latesArticles;
 	}
 
 
+	public changeSubscription(): void {
+		this.apollo.mutate({
+			mutation: GENERAL_FEED_SUB_MUTATION,
+			variables: {
+				feedId: this.feedID,
+				isSubscribed: !this.isSubscribed
+			}
+		}).subscribe(({ data }) => {
+			this.isSubscribed = data?.isSubscribed ?? this.isSubscribed
+		});
+	}
 
-  }
+	sortArticlesOfFeed(): void {
+		this.feed.articles = this.feed.articles.sort((a, b) => {
+			return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+		})
+	}
 
-  minNumber(a:number,b: number):number{
-	return a>b? b:a;
-  }
+	minNumber(a: number, b: number): number {
+		return a > b ? b : a;
+	}
 
 
 

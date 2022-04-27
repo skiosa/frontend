@@ -1,0 +1,21 @@
+.feed-overview-title-container {
+    background-color: var(--secondary-background);
+    padding: 0.8rem;
+    padding-top: 2rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    color: var(--primary-text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.feed-overview-title {
+    margin: 0;
+    padding: 0;
+}
+
+.feed-article {
+    margin: 0.5rem;
+}

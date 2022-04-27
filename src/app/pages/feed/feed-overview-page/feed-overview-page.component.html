@@ -1,49 +1,26 @@
-<div class = "feed-overview-container">
-
-
-<app-card [cardTitle]="feed.name">
-   <button (click)="changeSubscription" >
-       
-   </button> 
-
-</app-card>
-
-<app-card>
-<app-card  cardTitle="Neue Beiträge">
-    <div
-        class="newfeeds"
-    >
-        <div>
-
-        
-        <app-article *ngFor="let article of newestArticles | slice:0:minNumber(newestArticles.length , 2)"
-
-            [articleTitle]="article.title"
-            [articleDescription]="article.description"
-            [colorSeed]="article.categories && article.categories.length !== 0 ? article.categories[0].id : 0"
-          
-        >
-        </app-article> 
-        </div>
+<div class="feed-overview-container">
+    <div class="feed-overview-title-container" [ngStyle]="{ 'background-color': color }">
+        <h2 class="feed-overview-title">{{feed.name}}</h2>
+        <img src="assets/icons/plus.svg">
     </div>
-</app-card>
-<app-card cardTitle="Artikel">
-    <div
-        class="newfeeds"
-    >
-    
-    <app-article  *ngFor="let article of feed.articles | slice:2:newestArticles.length"
-
-    [articleTitle]="article.title"
-    [articleDescription]="article.description"
-    [colorSeed]="article.categories && article.categories.length !== 0 ? article.categories[0].id : 0"
-   
-  
-    >
-    
-    </app-article>
-    </div>
-</app-card>
-</app-card>     
- 
+    <app-card>
+        <app-card cardTitle="Neue Beiträge">
+            <div class="newfeeds">
+                <app-article *ngFor="let article of feed.articles | slice:0:minNumber(feed.articles.length , 2)"
+                    [articleTitle]="article.title" [articleDescription]="article.description"
+                    [colorSeed]="article.categories && article.categories.length !== 0 ? article.categories[0].id : 0"
+                    class="feed-article" [routerLink]="'/article/' + article.id">
+                </app-article>
+            </div>
+        </app-card>
+        <app-card cardTitle="Artikel">
+            <div class="newfeeds">
+                <app-article *ngFor="let article of feed.articles | slice:2:feed.articles.length"
+                    [articleTitle]="article.title" [articleDescription]="article.description"
+                    [colorSeed]="article.categories && article.categories.length !== 0 ? article.categories[0].id : 0"
+                    class="feed-article" [routerLink]="'/article/' + article.id">
+                </app-article>
+            </div>
+        </app-card>
+    </app-card>
 </div>
