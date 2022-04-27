@@ -1,3 +1,28 @@
-<div class="sidebar-container">
-  <h1 class="sidebar-title">Skiosa</h1>
+<div class="sidebar" [ngClass]="{'open' : navigationIsOpen}">
+  <div class="sidebar_navigation">
+    <img class="sidebar_navigation_burger" src="assets/icons/burger.svg" alt="menu icon" (click)="toggleNavigation()">
+    <a [routerLink]="['/']">
+      <img class="sidebar_navigation_logo" src="assets/icons/logo_font_dark.svg" alt="Skiosa logo"/>
+    </a>
+  </div>
+  <a class="sidebar_nav-button" [routerLink]="['/recommendations']">
+    <app-nav-button text="Recommendations" routerLink="/recommendations"></app-nav-button>
+  </a>
+  <a class="sidebar_nav-button" [routerLink]="['/bookmarks']">
+    <app-nav-button text="Bookmarks"></app-nav-button>
+  </a>
+  <a class="sidebar_nav-button" [routerLink]="['/subscriptions']">
+    <app-nav-button text="Subscriptions"></app-nav-button>
+  </a>
+  <a class="sidebar_nav-button" [routerLink]="['/explore']">
+    <app-nav-button text="Explore" routerLink="/explore"></app-nav-button>
+  </a>
+  <a class="sidebar_button first" [routerLink]="['/add-feed']">
+    <img class="sidebar_button_icon" src="assets/icons/plus.svg" alt="add feed button" />
+    <h2 class="sidebar_button_text">Add new feed</h2>
+  </a>
+  <a class="sidebar_button" [routerLink]="['/settings']">
+    <img class="sidebar_button_icon" src="assets/icons/settings.svg" alt="settings button" />
+    <h2 class="sidebar_button_text">Settings</h2>
+  </a>
 </div>
