@@ -1,7 +1,8 @@
 <div class="feed-overview-container">
     <div class="feed-overview-title-container" [ngStyle]="{ 'background-color': color }">
         <h2 class="feed-overview-title">{{feed.name}}</h2>
-        <img src="assets/icons/plus.svg">
+        <img [src]="isSubscribed ? 'assets/icons/checkmark-circle' : 'assets/icons/plus.svg'"
+            (click)="changeSubscription()" [alt]="isSubscribed ? 'Unsubscribe' : 'Subscribe'">
     </div>
     <app-card>
         <app-card cardTitle="Neue Beiträge">

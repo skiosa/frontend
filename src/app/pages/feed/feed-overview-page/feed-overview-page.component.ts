@@ -5,6 +5,7 @@ import { GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY } from 'src/app/core/queries/subs
 import { GENERAL_FEED_SUB_MUTATION } from 'src/app/core/mutations/subsscription';
 import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/core/utils/randomColor';
 import { ActivatedRoute } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
 
 
 @Component({
@@ -13,17 +14,17 @@ import { ActivatedRoute } from '@angular/router';
 	styleUrls: ['./feed-overview-page.component.css']
 })
 export class FeedOverviewPageComponent implements OnInit {
-	constructor(private apollo: Apollo, private route: ActivatedRoute) { }
+	constructor(private apollo: Apollo, private route: ActivatedRoute, private readonly keycloak: KeycloakService) { }
 
 	public feed: GENERAL_FEED_QUERY_RESPONCE["feed"] = {
-		id: 0,
+		id: -1,
 		link: '',
-		name: '',
+		name: 'Loading...',
 		description: '',
 		articles: []
 	};
-	private feedID = 1;
-	private isSubscribed: boolean = false;
+	private feedID = -1;
+	public isSubscribed: boolean = false;
 	public color: string = DEFAULT_PASTEL_COLOR;
 
 
@@ -47,26 +48,35 @@ export class FeedOverviewPageComponent implements OnInit {
 				this.sortArticlesOfFeed();
 			});
 
-		this.apollo.watchQuery({
-			query: GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY
-		}).valueChanges.subscribe(({ data }) => {
-			const feedIDsOfSubscribedFeed = data.subscriptions.map(s => s.id);
-			this.isSubscribed = feedIDsOfSubscribedFeed.includes(this.feedID)
-		});
+		this.keycloak.isLoggedIn().then(isLoggedIn => {
+			if (isLoggedIn) {
+				this.apollo.watchQuery({
+					query: GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY
+				}).valueChanges.subscribe(({ data }) => {
+					const feedIDsOfSubscribedFeed = data.subscriptions.map(s => s.id);
+					this.isSubscribed = feedIDsOfSubscribedFeed.includes(this.feedID)
+				});
+			}
+		})
 
 	}
 
 
 	public changeSubscription(): void {
-		this.apollo.mutate({
-			mutation: GENERAL_FEED_SUB_MUTATION,
-			variables: {
-				feedId: this.feedID,
-				isSubscribed: !this.isSubscribed
+		this.keycloak.isLoggedIn().then(isLoggedIn => {
+			if (!isLoggedIn) {
+				this.keycloak.login();
 			}
-		}).subscribe(({ data }) => {
-			this.isSubscribed = data?.isSubscribed ?? this.isSubscribed
-		});
+			this.apollo.mutate({
+				mutation: GENERAL_FEED_SUB_MUTATION,
+				variables: {
+					feedId: this.feedID,
+					isSubscribed: !this.isSubscribed
+				}
+			}).subscribe((data) => {
+				this.isSubscribed = data.data?.isSubscribed ?? this.isSubscribed
+			});
+		})
 	}
 
 	sortArticlesOfFeed(): void {
@@ -78,8 +88,4 @@ export class FeedOverviewPageComponent implements OnInit {
 	minNumber(a: number, b: number): number {
 		return a > b ? b : a;
 	}
-
-
-
-
 }
