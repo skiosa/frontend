@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './core/guards/logged-in-guard.guard';
+import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
@@ -18,9 +19,8 @@ const routes: Routes = [
     component: SubscriptionComponent
   },
   {
-	path: 'feed',
-	loadChildren: () =>
-		import('./pages/feed/feed.module').then((m) => m.FeedModule),
+	path: 'feed/:feedId',
+	component: FeedOverviewPageComponent,
 },
 
   {

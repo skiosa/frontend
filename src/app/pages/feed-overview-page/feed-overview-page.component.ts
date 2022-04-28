@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { GENERAL_FEED_QUERY, GENERAL_FEED_QUERY_RESPONCE } from '../../../core/queries/feeds';
+import { GENERAL_FEED_QUERY, GENERAL_FEED_QUERY_RESPONCE } from '../../core/queries/feeds';
 import { GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY } from 'src/app/core/queries/subscriotionsFromUser';
 import { GENERAL_FEED_SUB_MUTATION } from 'src/app/core/mutations/subsscription';
 import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/util/randomColor';
