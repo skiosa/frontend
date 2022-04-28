@@ -5,6 +5,14 @@
     margin: 0.5rem;
     border-radius: 1rem;
     color: var(--primary-text-color);
+}
+
+.feed-overview-description {
+    margin-top: 0.5rem;
+    color: var(--seconday-text-color);
+}
+
+.feed-overview-title-flex {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
