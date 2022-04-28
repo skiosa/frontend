@@ -1,3 +1,7 @@
+.feed-overview_content {
+    padding-top: 0.2rem;
+}
+
 .feed-overview_header {
     background-color: var(--secondary-background);
     padding: 0.8rem;
@@ -18,7 +22,17 @@
     margin: 0;
     padding: 0;
 }
-
 .feed-article {
     margin: 0.5rem;
+}
+
+.feed-overview_subscription-status {
+    width: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .feed-overview_new-articles {
+        display: flex;
+        align-items: stretch;
+    }
 }

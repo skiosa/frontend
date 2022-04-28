@@ -82,7 +82,8 @@ export class FeedOverviewPageComponent implements OnInit {
 					isSubscribed: !this.isSubscribed
 				}
 			}).subscribe((data) => {
-				this.isSubscribed = data.data?.isSubscribed ?? this.isSubscribed
+				console.log(data.data?.changeSubscription)
+				this.isSubscribed = data.data?.changeSubscription ?? this.isSubscribed
 			});
 		})
 	}

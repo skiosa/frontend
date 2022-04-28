@@ -1,8 +1,7 @@
 import { gql } from 'apollo-angular';
 
 export type GENERAL_FEED_SUB_MUTATION_RESPONCE = {
-    isSubscribed: boolean;
-    feedId: number;
+  changeSubscription: boolean
 }
 
 
