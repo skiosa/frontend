@@ -3,7 +3,7 @@ import { Feed } from 'skiosa-orm';
 import {
   DEFAULT_PASTEL_COLOR,
   generateRandomColor
-} from 'src/app/core/utils/randomColor';
+} from 'src/app/util/randomColor';
 
 @Component({
   selector: 'app-subscription-feed',

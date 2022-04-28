@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {
   DEFAULT_PASTEL_COLOR,
   generateRandomColor,
-} from 'src/app/core/utils/randomColor';
+} from 'src/app/util/randomColor';
 
 @Component({
   selector: 'app-article',
