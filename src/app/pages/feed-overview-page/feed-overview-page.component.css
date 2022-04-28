@@ -4,8 +4,8 @@
 
 .feed-overview_header {
     background-color: var(--secondary-background);
-    padding: 0.8rem;
-    padding-top: 2rem;
+    padding: 1rem;
+    padding-top: 3rem;
     margin: 0.5rem;
     border-radius: 1rem;
     color: var(--inverted-text-color);
@@ -28,7 +28,14 @@
 
 .feed-overview_subscription-status {
     width: 2rem;
+    filter: invert(100%) brightness(100%) saturate(100%);
 }
+
+@media (prefers-color-scheme: dark) {
+    .feed-overview_subscription-status {
+      filter: brightness(100%) saturate(100%);
+    }
+  }
 
 @media only screen and (min-width: 768px) {
     .feed-overview_new-articles {
