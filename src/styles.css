@@ -75,3 +75,9 @@ body {
   src: url("assets/fonts/UbuntuMono-B.ttf");
   font-weight: bold;
 }
+
+@font-face {
+  font-family: "OfWildflowersAndWings";
+  src: url("assets/fonts/OfWildflowersandWings.ttf");
+  font-weight: bold;
+}

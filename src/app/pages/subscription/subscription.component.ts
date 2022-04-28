@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Feed } from '../../models/feed.model';
+import { Feed } from 'skiosa-orm';
 import { SUBSCRIPTION_QUERY } from 'src/app/core/queries/subscription';
 
 @Component({
