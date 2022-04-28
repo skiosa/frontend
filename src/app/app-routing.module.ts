@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './core/guards/logged-in-guard.guard';
+import { ArticleViewComponent } from './pages/article/article-view.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'article',
-    loadChildren: () => import('./pages/article/article.module').then(m => m.ArticleModule)
+    component: ArticleViewComponent
   },
   {
     path: '404',

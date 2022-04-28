@@ -17,6 +17,7 @@ export class SubscriptionFeedComponent implements OnInit {
     ttl: 0,
     name: '',
     description: '',
+    lastPolledAt: new Date(),
   };
   @Input() colorSeed = 0;
   @Input() openAction: Function = () => { };

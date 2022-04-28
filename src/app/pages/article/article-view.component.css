@@ -1,4 +1,4 @@
-.article__details__title {
+.article_details_title {
     margin-top: 1rem;
     margin-bottom: 0;
     font-size: 40px;
@@ -6,28 +6,28 @@
     color: var(--primary-text-color);
 }
 
-.article__details__description {
+.article_details_description {
     margin: 10px 0;
     font-size: 24px;
     color: var(--seconday-text-color);
 }
 
-.recommended-articles {
+.article_recommended-articles {
     margin: 1rem auto;
 }
 
 @media screen and (min-width: 768px) {
-    .article__details__title {
+    .article_details_title {
         margin-top: 2rem;
         font-size: 48px;
     }
 
-    .article__details__description {
+    .article_details_description {
         font-size: 32px;
     }
 }
 
-.article-action-icon-buttons {
+.article_action-icon {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

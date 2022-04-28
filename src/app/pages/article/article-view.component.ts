@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import {
     SINGLE_ARTICLE_QUERY,
@@ -11,10 +11,10 @@ import { Feed, Article } from 'skiosa-orm';
 
 @Component({
     selector: 'app-article-view',
-    templateUrl: './article.component.html',
-    styleUrls: ['./article.component.css'],
+    templateUrl: './article-view.component.html',
+    styleUrls: ['./article-view.component.css'],
 })
-export class ArticleComponent implements OnInit {
+export class ArticleViewComponent implements OnInit {
     public article: PartialExcept<Article, 'title' | 'content' | 'url'> & { feed: PartialExcept<Feed, 'id'> } = {
         title: 'Loading...',
         content: 'Loading...',
@@ -25,7 +25,7 @@ export class ArticleComponent implements OnInit {
     };
     public recommendedArticles: (PartialExcept<Article, 'title' | 'description' | 'id'> & { categories: { id: number, name?: string }[] })[] = [];
 
-    constructor(private route: ActivatedRoute, private apollo: Apollo) { }
+    constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
 
     ngOnInit() {
         const articleId = this.route.snapshot.paramMap.get('articleId');
@@ -44,21 +44,28 @@ export class ArticleComponent implements OnInit {
                 this.recommendedArticles = data.similarArticles;
             });
     }
-    getColorSeed(article: PartialExcept<Article, 'title' | 'description' | 'id'> & { categories: { id: number, name?: string }[] }): number {
+    /**
+     * @author Jonas Eppard
+     * @summary Get Color Seed for Article
+     * @description Get Color Seed for Article default id of first category if no categories present id of article
+     * @param {PartialExcept<Article, 'id'> & {categories: {id: number, name?:string}}} article - article to get seed from. Needs id an categories (can be empty list)
+     * @returns {number} - Seed for color
+     */
+    getColorSeed(article: PartialExcept<Article, 'id'> & { categories?: { id: number, name?: string }[] }): number {
         if (article.categories) {
             return article.categories[0].id;
         }
-        return 0;
+        return article.id;
     }
 
     redirectToArticleId(id: number) {
-        window.location.href = `/article/${id}`;
+        this.router.navigate(['/article', 'id'])
     }
     redirectToFeedId(id: number) {
-        window.location.href = `/feed/${id}`;
+        this.router.navigate(['/feed', 'id'])
     }
     redirectToUrl(url: string) {
-        window.location.href = url;
+        this.router.navigate([url])
     }
 }
 

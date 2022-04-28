@@ -14,6 +14,7 @@ import { GraphQLModule } from './graphql.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
+import { ArticleViewComponent } from './pages/article/article-view.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -39,7 +40,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
 		FooterComponent,
 		NotFoundComponent,
 		SubscriptionComponent,
-		WelcomePageComponent
+		WelcomePageComponent,
+		ArticleViewComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -1,14 +1,14 @@
-<app-card class="article__details" cardTitle="Article Details">
-    <h1 class="article__details__title">
+<app-card class="article_details" cardTitle="Article Details">
+    <h1 class="article_details_title">
         {{article.title}}
     </h1>
-    <p class="article__details__description">
+    <p class="article_details_description">
         {{article.content}}
     </p>
 </app-card>
 
 <app-card cardTitle="Actions">
-    <div class="article-action-icon-buttons">
+    <div class="article_action-icon">
         <app-icon-button title="Visit" icon="assets/icons/external-link.svg" (click)="redirectToUrl(article.url)"></app-icon-button>
         <app-icon-button title="Like" icon="assets/icons/heart.svg"></app-icon-button>
         <app-icon-button title="Bookmark" icon="assets/icons/bookmark.svg"></app-icon-button>
@@ -16,8 +16,8 @@
         <app-icon-button title="Feed" icon="assets/icons/external-link.svg" (click)="redirectToFeedId(article.feed.id)"></app-icon-button>
     </div>
 </app-card>
-<app-card cardTitle="Simmilar Articles" class="article__details">
-    <div *ngFor="let a of recommendedArticles" class="recommended-articles">
+<app-card cardTitle="Simmilar Articles">
+    <div *ngFor="let a of recommendedArticles" class="article_recommended-articles">
         <app-article [articleTitle]="a.title" [articleDescription]="a.description" [colorSeed]="getColorSeed(a)" (click)="redirectToArticleId(a.id)"> 
         </app-article>
     </div>
