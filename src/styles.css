@@ -34,6 +34,7 @@ body {
 
     --primary-text-color: #000000;
     --secondary-text-color: #909090;
+    --inverted-text-color: #ffffff;
 
     --article-card-color: #ececec;
 
@@ -49,6 +50,7 @@ body {
 
     --primary-text-color: #eceff4;
     --seconday-text-color: #cbcbcb;
+    --inverted-text-color: #000000;
 
     --article-card-color: #131c18;
 

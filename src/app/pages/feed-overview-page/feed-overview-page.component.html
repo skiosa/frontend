@@ -1,12 +1,9 @@
 <div class="feed-overview-container">
-    <div class="feed-overview-title-container" [ngStyle]="{ 'background-color': color }">
-        <div class="feed-overview-title-flex">
-            <h2 class="feed-overview-title">{{feed.name}}</h2>
+    <div class="feed-overview_header" [ngStyle]="{ 'background-color': color }">
+        <div class="feed-overview_header_title">
+            <h2 class="feed-overview_title">{{feed.name}}</h2>
             <img [src]="isSubscribed ? 'assets/icons/checkmark-circle' : 'assets/icons/plus.svg'"
                 (click)="changeSubscription()" [alt]="isSubscribed ? 'Unsubscribe' : 'Subscribe'">
-        </div>
-        <div class="feed-overview-description">
-            {{feed.description}}
         </div>
     </div>
     <app-card>

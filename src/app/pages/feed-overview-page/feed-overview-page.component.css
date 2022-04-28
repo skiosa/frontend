@@ -1,25 +1,20 @@
-.feed-overview-title-container {
+.feed-overview_header {
     background-color: var(--secondary-background);
     padding: 0.8rem;
     padding-top: 2rem;
     margin: 0.5rem;
     border-radius: 1rem;
-    color: var(--primary-text-color);
+    color: var(--inverted-text-color);
 }
 
-.feed-overview-description {
-    margin-top: 0.5rem;
-    color: var(--seconday-text-color);
-}
-
-.feed-overview-title-flex {
+.feed-overview_header_title {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.feed-overview-title {
+.feed-overview_title {
     margin: 0;
     padding: 0;
 }
