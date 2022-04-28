@@ -6,8 +6,6 @@ import {
     SINGLE_ARTICLE_QUERY_RESPONSE,
 } from 'src/app/core/queries/singleArticle';
 
-import { PartialExcept } from 'src/app/util/types';
-import { Feed, Article } from 'skiosa-orm';
 
 @Component({
     selector: 'app-article-view',
@@ -15,15 +13,15 @@ import { Feed, Article } from 'skiosa-orm';
     styleUrls: ['./article-view.component.css'],
 })
 export class ArticleViewComponent implements OnInit {
-    public article: PartialExcept<Article, 'title' | 'content' | 'url'> & { feed: PartialExcept<Feed, 'id'> } = {
+    public article: SINGLE_ARTICLE_QUERY_RESPONSE["article"] = {
         title: 'Loading...',
         content: 'Loading...',
         url: '',
         feed: {
-            id: -1,
+            id: -1
         }
-    };
-    public recommendedArticles: (PartialExcept<Article, 'title' | 'description' | 'id'> & { categories: { id: number, name?: string }[] })[] = [];
+    }
+    public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"] = [];
 
     constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
 
@@ -48,10 +46,10 @@ export class ArticleViewComponent implements OnInit {
      * @author Jonas Eppard
      * @summary Get Color Seed for Article
      * @description Get Color Seed for Article default id of first category if no categories present id of article
-     * @param {PartialExcept<Article, 'id'> & {categories: {id: number, name?:string}}} article - article to get seed from. Needs id an categories (can be empty list)
+     * @param {SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"]} article - article to get seed from. Needs id an categories (can be empty list)
      * @returns {number} - Seed for color
      */
-    getColorSeed(article: PartialExcept<Article, 'id'> & { categories?: { id: number, name?: string }[] }): number {
+    getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"][0]): number {
         if (article.categories) {
             return article.categories[0].id;
         }

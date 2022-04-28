@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Feed } from 'skiosa-orm';
 import {
   DEFAULT_PASTEL_COLOR,
   generateRandomColor
@@ -11,14 +10,7 @@ import {
   styleUrls: ['./subscription-feed.component.css'],
 })
 export class SubscriptionFeedComponent implements OnInit {
-  @Input() feed: Feed = {
-    id: 0,
-    link: '',
-    ttl: 0,
-    name: '',
-    description: '',
-    lastPolledAt: new Date(),
-  };
+  @Input() feed = { name: '', description: '' };
   @Input() colorSeed = 0;
   @Input() openAction: Function = () => { };
   @Input() closeAction: Function = () => { };

@@ -14,7 +14,7 @@ import { GraphQLModule } from './graphql.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
-import { ArticleViewComponent } from './pages/article/article-view.component';
+import { ArticleViewComponent } from './pages/article-view/article-view.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>

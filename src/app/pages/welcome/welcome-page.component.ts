@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Article } from 'skiosa-orm';
-import { GENERAL_RECOMMENDATION_QUERY } from 'src/app/core/queries/recommendation';
+import { GENERAL_RECOMMENDATION_QUERY, GENERAL_RECOMMENDATION_QUERY_RESULT } from 'src/app/core/queries/recommendation';
 
 @Component({
 	selector: 'app-welcome-page',
@@ -11,14 +10,14 @@ import { GENERAL_RECOMMENDATION_QUERY } from 'src/app/core/queries/recommendatio
 export class WelcomePageComponent implements OnInit {
 	constructor(private apollo: Apollo) { }
 
-	public recommendedArticles: Article[] = [];
+	public recommendedArticles: GENERAL_RECOMMENDATION_QUERY_RESULT["recommendedArticles"] = [];
 	private seed: number = Math.random();
 	private skip = 0;
 	private take = 10;
 
 	ngOnInit(): void {
 		this.apollo
-			.watchQuery({
+			.watchQuery<GENERAL_RECOMMENDATION_QUERY_RESULT>({
 				query: GENERAL_RECOMMENDATION_QUERY,
 				variables: {
 					seed: this.seed,
@@ -28,8 +27,7 @@ export class WelcomePageComponent implements OnInit {
 					},
 				},
 			})
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			.valueChanges.subscribe(({ data }: any) => {
+			.valueChanges.subscribe(({ data }) => {
 				this.recommendedArticles = data.recommendedArticles;
 			});
 	}
