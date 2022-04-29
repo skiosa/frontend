@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import { GENERAL_FEED_QUERY, GENERAL_FEED_QUERY_RESPONCE } from '../../core/queries/feeds';
-import { GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY } from 'src/app/core/queries/subscriotionsFromUser';
-import { GENERAL_FEED_SUB_MUTATION } from 'src/app/core/mutations/subscription';
-import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/util/randomColor';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
+import { GENERAL_FEED_SUB_MUTATION } from 'src/app/core/mutations/subscription';
+import { GENERAL_SUBSCRIPTIONS_FROM_USER_QUERY } from 'src/app/core/queries/subscriotionsFromUser';
+import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/util/randomColor';
+import { GENERAL_FEED_QUERY, GENERAL_FEED_QUERY_RESPONCE } from '../../core/queries/feeds';
 
 
 @Component({
