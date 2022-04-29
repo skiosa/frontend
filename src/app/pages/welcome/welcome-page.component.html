@@ -8,6 +8,7 @@
         [articleTitle]="shortenedText(recommendedArticle.title)"
         [articleDescription]="shortenedText(recommendedArticle.description)"
         [colorSeed]="recommendedArticle.id"
+        [routerLink]="'/article/' + recommendedArticle.id"
       >
       </app-article>
     </div>

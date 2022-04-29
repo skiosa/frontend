@@ -30,11 +30,22 @@ export class ArticleViewComponent implements OnInit {
         if (!articleId || isNaN(+articleId)) {
             throw new Error('Invalid article id');
         }
+        const id = parseInt(articleId, 10);
+        this.loadArticle(id);
+    }
+
+    /**
+     * @author Jonas Eppard
+     * @summary Loads Article
+     * @description Gets ID and try to load article from api
+     * @param {number} id - id of article to load
+     */
+    loadArticle(id: number) {
         this.apollo
             .watchQuery<SINGLE_ARTICLE_QUERY_RESPONSE>({
                 query: SINGLE_ARTICLE_QUERY,
                 variables: {
-                    articleId: parseInt(articleId, 10),
+                    articleId: id,
                 },
             })
             .valueChanges.subscribe(({ data }) => {
@@ -42,6 +53,7 @@ export class ArticleViewComponent implements OnInit {
                 this.recommendedArticles = data.similarArticles;
             });
     }
+
     /**
      * @author Jonas Eppard
      * @summary Get Color Seed for Article
@@ -57,13 +69,14 @@ export class ArticleViewComponent implements OnInit {
     }
 
     redirectToArticleId(id: number) {
-        this.router.navigate(['/article', 'id'])
+        this.router.navigate(['/article', id]);
+        this.loadArticle(id);
     }
     redirectToFeedId(id: number) {
-        this.router.navigate(['/feed', 'id'])
+        this.router.navigate(['/feed', id]);
     }
     redirectToUrl(url: string) {
-        this.router.navigate([url])
+        window.open(url, "_blank");
     }
 }
 

@@ -18,7 +18,7 @@ const routes: Routes = [
     component: SubscriptionComponent
   },
   {
-    path: 'article',
+    path: 'article/:articleId',
     component: ArticleViewComponent
   },
   {
