@@ -1,14 +1,14 @@
 .article_details_title {
     margin-top: 1rem;
     margin-bottom: 0;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: normal;
     color: var(--primary-text-color);
 }
 
 .article_details_description {
     margin: 10px 0;
-    font-size: 24px;
+    font-size: 20px;
     color: var(--seconday-text-color);
 }
 
@@ -19,11 +19,11 @@
 @media screen and (min-width: 768px) {
     .article_details_title {
         margin-top: 2rem;
-        font-size: 48px;
+        font-size: 40px;
     }
 
     .article_details_description {
-        font-size: 32px;
+        font-size: 30px;
     }
 }
 

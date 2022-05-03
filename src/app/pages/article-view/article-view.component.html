@@ -16,7 +16,7 @@
         <app-icon-button title="Feed" icon="assets/icons/external-link.svg" (click)="redirectToFeedId(article.feed.id)"></app-icon-button>
     </div>
 </app-card>
-<app-card cardTitle="Simmilar Articles">
+<app-card cardTitle="Similar Articles">
     <div *ngFor="let a of recommendedArticles" class="article_recommended-articles">
         <app-article [articleTitle]="a.title" [articleDescription]="a.description" [colorSeed]="getColorSeed(a)" (click)="redirectToArticleId(a.id)"> 
         </app-article>
