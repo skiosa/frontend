@@ -3,7 +3,7 @@ import { Feed } from 'skiosa-orm';
 import {
   DEFAULT_PASTEL_COLOR,
   generateRandomColor
-} from 'src/app/core/utils/randomColor';
+} from 'src/app/util/randomColor';
 
 @Component({
   selector: 'app-subscription-feed',
@@ -19,8 +19,8 @@ export class SubscriptionFeedComponent implements OnInit {
     description: '',
   };
   @Input() colorSeed = 0;
-  @Input() openAction: Function = () => {};
-  @Input() closeAction: Function = () => {};
+  @Input() openAction: Function = () => { };
+  @Input() closeAction: Function = () => { };
 
   isOpen = false;
 
