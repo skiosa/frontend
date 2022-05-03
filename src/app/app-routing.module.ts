@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './core/guards/logged-in-guard.guard';
 import { ArticleViewComponent } from './pages/article-view/article-view.component';
+import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 
 
 const routes: Routes = [
+
   {
     path: '',
     component: WelcomePageComponent,
@@ -20,6 +22,10 @@ const routes: Routes = [
   {
     path: 'article/:articleId',
     component: ArticleViewComponent
+  },
+  {
+    path: 'feed/:feedId',
+    component: FeedOverviewPageComponent,
   },
   {
     path: '404',
