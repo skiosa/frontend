@@ -33,7 +33,7 @@
 }
 
 .sidebar_button_icon {
-  width: 30px; 
+  width: 30px;
   height: 30px;
   margin: 10px;
 }
@@ -43,7 +43,39 @@
   text-align: center;
   font-size: 24px;
   margin: 0;
+  text-decoration: underline;
 }
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--primary-background);
+  opacity: 0.3;
+  z-index: 11;
+}
+
+.add-feed {
+  position: absolute;
+  top: 10vw;
+  left: 10vh;
+  z-index: 12;
+}
+
+
+.add-feed_input_button {
+  border-left: 1px solid var(--primary-text-color);
+  background-color: var(--button-color);
+  border-radius: 0 1rem 1rem 0;
+  padding-right: 0.8rem;
+  padding-left: 0.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 
 /* media query for navigation bar on mobile devices */
 @media only screen and (max-width: 768px) {
@@ -70,10 +102,16 @@
   .sidebar_navigation_logo {
     height: var(--sidebar-height);
   }
+
   .open {
     overflow: visible;
     min-height: 100vh;
     background-color: var(--primary-color);
+  }
+
+  .add-feed {
+    left: 0;
+    width: 100vw;
   }
 }
 
@@ -81,9 +119,11 @@
   .sidebar {
     padding: 20px;
   }
+
   .sidebar_navigation_burger {
     display: none;
   }
+
   .sidebar_navigation_logo {
     padding: 20px 0 60px;
     width: 100%;

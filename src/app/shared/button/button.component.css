@@ -2,7 +2,8 @@
     font-size: 20px;
     text-align: center;
     text-transform: uppercase;
-    background-color: var(--secondary-background);
-    width: 300px;
+    background-color: var(--button-color);
     padding: 16px 0;
+    border-radius: 1rem;
+    width: 100%;
 }

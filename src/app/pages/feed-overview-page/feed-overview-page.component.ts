@@ -48,7 +48,6 @@ export class FeedOverviewPageComponent implements OnInit {
 				}
 			}).valueChanges.subscribe((data) => {
 				this.feed = JSON.parse(JSON.stringify(data.data.feed));
-				console.log(this.feed)
 				this.sortArticlesOfFeed();
 			});
 
@@ -82,7 +81,6 @@ export class FeedOverviewPageComponent implements OnInit {
 					isSubscribed: !this.isSubscribed
 				}
 			}).subscribe((data) => {
-				console.log(data.data?.changeSubscription)
 				this.isSubscribed = data.data?.changeSubscription ?? this.isSubscribed
 			});
 		})

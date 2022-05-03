@@ -15,22 +15,23 @@ import { SubscriptionComponent } from './pages/subscription/subscription.compone
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 import { ArticleViewComponent } from './pages/article-view/article-view.component';
 import { SharedModule } from './shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 function initializeKeycloak(keycloak: KeycloakService) {
-	return () =>
-		keycloak.init({
-			config: {
-				url: environment.keycloakUrl,
-				realm: environment.keycloakRealm,
-				clientId: environment.keycloakClientId,
-			},
-			initOptions: {
-				onLoad: 'check-sso',
-				silentCheckSsoRedirectUri:
-					window.location.origin + '/assets/silent-check-sso.html',
-			},
-		});
+  return () =>
+    keycloak.init({
+      config: {
+        url: environment.keycloakUrl,
+        realm: environment.keycloakRealm,
+        clientId: environment.keycloakClientId,
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html',
+      },
+    });
 }
 
 @NgModule({
@@ -43,7 +44,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     SubscriptionComponent,
     WelcomePageComponent,
     FeedOverviewPageComponent,
-	ArticleViewComponent
+    ArticleViewComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +53,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     SharedModule,
     KeycloakAngularModule,
     GraphQLModule,
+    FormsModule
   ],
   providers: [
     {

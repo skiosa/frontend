@@ -1,0 +1,13 @@
+<div class="input">
+    {{label}}
+    <div [ngClass]="disabled? 'input_field disabled' : 'input_field'">
+        <input type="text" [ngModel]="value" (ngModelChange)="change($event)" [disabled]="disabled"
+            [ngClass]="hasContent ? 'input_field_text border-left' : 'input_field_text border-complete'">
+        <div class="input_field_end" (click)="clickedEnd($event)" #ref>
+            <ng-content></ng-content>
+        </div>
+    </div>
+    <hr *ngIf="valid !== undefined" [style.borderColor]="valid ? 'var(--pastel-b-color)' : 'var(--pastel-d-color)'"
+        class="input_status">
+    <p *ngIf="valid === false" class="input_error">{{errorMessage}}</p>
+</div>

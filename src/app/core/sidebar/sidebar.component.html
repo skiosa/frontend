@@ -2,22 +2,16 @@
   <div class="sidebar_navigation">
     <img class="sidebar_navigation_burger" src="assets/icons/burger.svg" alt="menu icon" (click)="toggleNavigation()">
     <a [routerLink]="['/']">
-      <img class="sidebar_navigation_logo" src="assets/icons/logo_font_dark.svg" alt="Skiosa logo"/>
+      <img class="sidebar_navigation_logo" src="assets/icons/logo_font_dark.svg" alt="Skiosa logo" />
     </a>
   </div>
-  <a class="sidebar_nav-button" [routerLink]="['/recommendations']">
-    <app-nav-button text="Recommendations" routerLink="/recommendations"></app-nav-button>
-  </a>
-  <a class="sidebar_nav-button" [routerLink]="['/bookmarks']">
-    <app-nav-button text="Bookmarks"></app-nav-button>
-  </a>
-  <a class="sidebar_nav-button" [routerLink]="['/subscriptions']">
-    <app-nav-button text="Subscriptions"></app-nav-button>
-  </a>
-  <a class="sidebar_nav-button" [routerLink]="['/explore']">
-    <app-nav-button text="Explore" routerLink="/explore"></app-nav-button>
-  </a>
-  <a class="sidebar_button first" [routerLink]="['/add-feed']">
+  <app-nav-button text="Recommendations" routerLink="/recommendations" class="sidebar_nav-button"
+    [routerLink]="['/recommendations']"></app-nav-button>
+  <app-nav-button text="Bookmarks" class="sidebar_nav-button" [routerLink]="['/bookmarks']"></app-nav-button>
+  <app-nav-button text="Subscriptions" class="sidebar_nav-button" [routerLink]="['/subscriptions']"></app-nav-button>
+  <app-nav-button text="Explore" routerLink="/explore" class="sidebar_nav-button" [routerLink]="['/explore']">
+  </app-nav-button>
+  <a class="sidebar_button first" (click)="togglePopover()">
     <img class="sidebar_button_icon" src="assets/icons/plus.svg" alt="add feed button" />
     <h2 class="sidebar_button_text">Add new feed</h2>
   </a>
@@ -26,3 +20,24 @@
     <h2 class="sidebar_button_text">Settings</h2>
   </a>
 </div>
+
+<div class="popover" *ngIf="popoverActive" (click)="togglePopover()">
+</div>
+<app-card cardTitle="Add Feed" class="add-feed" *ngIf="popoverActive">
+  <app-input label="Url" [(value)]="addFeed.url" class="add-feed_input" [hasContent]="true" [valid]="addFeed.validURL"
+    errorMessage="RSS Feed not found or wrong format" (ngModelChange)="change($event)">
+    <div class="add-feed_input_button" (click)="loadRssFeed()">
+      Load
+    </div>
+  </app-input>
+  <hr>
+  <app-input label="Name" [(value)]="addFeed.name" [disabled]="!addFeed.loadedURL" class="add-feed_input">
+  </app-input>
+  <app-input label="TTL (optional)" [(value)]="addFeed.ttl" [disabled]="!addFeed.loadedURL" class="add-feed_input"
+    [valid]="isInt(addFeed?.ttl)" errorMessage="TTL must be a number">
+  </app-input>
+  <app-input label="Description" [(value)]="addFeed.description" [disabled]="!addFeed.loadedURL" class="add-feed_input">
+  </app-input>
+  <app-button text="Add Feed"></app-button>
+
+</app-card>
