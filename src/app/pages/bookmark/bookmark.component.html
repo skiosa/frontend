@@ -1,1 +1,9 @@
-<p>bookmark works!</p>
+<div class="bookmark-container">
+    <app-card cardTitle="Bookmarks">
+        <div class="bookmark-article" *ngFor="let article of bookmarks">
+            <app-article [articleTitle]="article.title" [articleDescription]="article.description"
+                [colorSeed]="article.id" [routerLink]="'/article/' + article.id">
+            </app-article>
+        </div>
+    </app-card>
+</div>
