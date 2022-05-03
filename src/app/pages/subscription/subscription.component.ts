@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { Feed } from 'skiosa-orm';
-import { SUBSCRIPTION_QUERY } from 'src/app/core/queries/subscription';
+import { SUBSCRIPTION_QUERY, SUBSCRIPTION_QUERY_RESPONSE } from 'src/app/core/queries/subscription';
 
 @Component({
   selector: 'app-subscription',
@@ -9,17 +8,16 @@ import { SUBSCRIPTION_QUERY } from 'src/app/core/queries/subscription';
   styleUrls: ['./subscription.component.css'],
 })
 export class SubscriptionComponent implements OnInit {
-  subscriptions: Feed[] = [];
+  subscriptions: SUBSCRIPTION_QUERY_RESPONSE["subscriptions"] = [];
   visibleSubscriptions: Set<number> = new Set();
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
-    this.apollo
-      .watchQuery({
-        query: SUBSCRIPTION_QUERY,
-      })
-      .valueChanges.subscribe(({ data }: any) => {
+    this.apollo.watchQuery<SUBSCRIPTION_QUERY_RESPONSE>({
+      query: SUBSCRIPTION_QUERY,
+    })
+      .valueChanges.subscribe(({ data }) => {
         this.subscriptions = data.subscriptions;
       });
   }
