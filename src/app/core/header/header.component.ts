@@ -8,13 +8,14 @@ import { KeycloakService } from 'keycloak-angular';
 })
 export class HeaderComponent implements OnInit {
 	test = 'header';
-	
-	constructor(private readonly keycloak: KeycloakService) {}
-	
+
+	constructor(private readonly keycloak: KeycloakService) { }
+
 	public isLoggedIn = false;
-	
+
 	async ngOnInit() {
-		this.test = 'special-header';this.isLoggedIn = await this.keycloak.isLoggedIn();
+		this.test = 'special-header';
+		this.isLoggedIn = await this.keycloak.isLoggedIn();
 	}
 
 	login() {

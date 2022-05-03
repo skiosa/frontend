@@ -13,23 +13,24 @@ import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overv
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
+import { ArticleViewComponent } from './pages/article-view/article-view.component';
 import { SharedModule } from './shared/shared.module';
 
 
 function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: environment.keycloakUrl,
-        realm: environment.keycloakRealm,
-        clientId: environment.keycloakClientId,
-      },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html',
-      },
-    });
+	return () =>
+		keycloak.init({
+			config: {
+				url: environment.keycloakUrl,
+				realm: environment.keycloakRealm,
+				clientId: environment.keycloakClientId,
+			},
+			initOptions: {
+				onLoad: 'check-sso',
+				silentCheckSsoRedirectUri:
+					window.location.origin + '/assets/silent-check-sso.html',
+			},
+		});
 }
 
 @NgModule({
@@ -41,7 +42,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     NotFoundComponent,
     SubscriptionComponent,
     WelcomePageComponent,
-    FeedOverviewPageComponent
+    FeedOverviewPageComponent,
+	ArticleViewComponent
   ],
   imports: [
     BrowserModule,

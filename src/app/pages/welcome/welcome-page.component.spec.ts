@@ -5,15 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule } from 'apollo-angular';
 
 describe('WelcomePageComponent', () => {
-  let comp: WelcomePageComponent;
-  beforeEach(async () => {
-    TestBed.configureTestingModule({
-      declarations: [WelcomePageComponent],
-      providers: [WelcomePageComponent],
-      imports: [KeycloakAngularModule, HttpClientModule, ApolloModule],
-    }).compileComponents();
-    comp = TestBed.inject(WelcomePageComponent);
-  });
+	let comp: WelcomePageComponent;
+	beforeEach(async () => {
+		TestBed.configureTestingModule({
+			declarations: [WelcomePageComponent],
+			providers: [WelcomePageComponent],
+			imports: [KeycloakAngularModule, HttpClientModule, ApolloModule],
+		}).compileComponents();
+		comp = TestBed.inject(WelcomePageComponent);
+	});
 
 	it('should create the app', async () => {
 		const fixture = TestBed.createComponent(WelcomePageComponent);
@@ -29,9 +29,9 @@ describe('WelcomePageComponent', () => {
 
 	it('should trim long strings', () => {
 		const text =
-      'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde abcdeabcde';
+			'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde abcdeabcde';
 		const expected =
-      'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde...';
+			'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde...';
 		const res = comp.shortenedText(text);
 		expect(res).toEqual(expected);
 	});

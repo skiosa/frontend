@@ -7,10 +7,10 @@ import { FaviconService } from './core/services/favicon.service';
 	styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-	constructor(private faviconService: FaviconService) {  }
+	constructor(private faviconService: FaviconService) { }
 
 	ngOnInit(): void {
 		this.faviconService.changeFavicon();
 	}
-  title = 'skiosa-frontend';
+	title = 'skiosa-frontend';
 }
