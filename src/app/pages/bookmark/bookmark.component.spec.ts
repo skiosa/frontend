@@ -1,25 +1,25 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ApolloModule } from 'apollo-angular';
+import { KeycloakAngularModule } from 'keycloak-angular';
 
 import { BookmarkComponent } from './bookmark.component';
 
 describe('BookmarkComponent', () => {
   let component: BookmarkComponent;
-  let fixture: ComponentFixture<BookmarkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BookmarkComponent ]
+      declarations: [BookmarkComponent],
+      providers: [BookmarkComponent],
+      imports: [KeycloakAngularModule, HttpClientModule, ApolloModule],
     })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BookmarkComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = TestBed.inject(BookmarkComponent);
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(BookmarkComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
   });
 });
