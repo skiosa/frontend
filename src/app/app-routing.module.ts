@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoggedInGuard } from './core/guards/logged-in-guard.guard';
 import { ArticleViewComponent } from './pages/article-view/article-view.component';
+import { BookmarkComponent } from './pages/bookmark/bookmark.component';
 import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
@@ -18,6 +19,11 @@ const routes: Routes = [
     path: 'subscriptions',
     canActivate: [LoggedInGuard],
     component: SubscriptionComponent
+  },
+  {
+    path: 'bookmarks',
+    canActivate: [LoggedInGuard],
+    component: BookmarkComponent
   },
   {
     path: 'article/:articleId',
