@@ -5,6 +5,7 @@ import {
     SINGLE_ARTICLE_QUERY,
     SINGLE_ARTICLE_QUERY_RESPONSE,
 } from 'src/app/core/queries/singleArticle';
+import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
 
 @Component({
@@ -54,18 +55,8 @@ export class ArticleViewComponent implements OnInit {
             });
     }
 
-    /**
-     * @author Jonas Eppard
-     * @summary Get Color Seed for Article
-     * @description Get Color Seed for Article default id of first category if no categories present id of article
-     * @param {SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"]} article - article to get seed from. Needs id an categories (can be empty list)
-     * @returns {number} - Seed for color
-     */
     getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"][0]): number {
-        if (article.categories) {
-            return article.categories[0].id;
-        }
-        return article.id;
+        return getColorSeedFromArticle(article);
     }
 
     redirectToArticleId(id: number) {

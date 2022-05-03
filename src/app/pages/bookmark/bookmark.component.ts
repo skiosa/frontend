@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { BOOKMARKS_QUERY, BOOKMARKS_QUERY_RESPONSE } from 'src/app/core/queries/bookmarks';
+import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
 @Component({
   selector: 'app-bookmark',
@@ -29,6 +30,10 @@ export class BookmarkComponent implements OnInit {
         this.bookmarks = data.bookmarks;
         console.log(this.bookmarks);
       });
+  }
+
+  getColorSeed(article: BOOKMARKS_QUERY_RESPONSE["bookmarks"][0]): number {
+    return getColorSeedFromArticle(article);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GENERAL_RECOMMENDATION_QUERY, GENERAL_RECOMMENDATION_QUERY_RESULT } from 'src/app/core/queries/recommendation';
+import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
 @Component({
 	selector: 'app-welcome-page',
@@ -31,4 +32,8 @@ export class WelcomePageComponent implements OnInit {
 				this.recommendedArticles = data.recommendedArticles;
 			});
 	}
+
+	getColorSeed(article: GENERAL_RECOMMENDATION_QUERY_RESULT["recommendedArticles"][0]): number {
+		return getColorSeedFromArticle(article);
+	  }
 }

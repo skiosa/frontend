@@ -12,7 +12,7 @@
         <div class="feed-overview_new-articles">
             <app-article *ngFor="let article of feed.articles | slice:0:minNumber(feed.articles.length , 2)"
                 [articleTitle]="article.title" [articleDescription]="article.description"
-                [colorSeed]="article.id"
+                [colorSeed]="getColorSeed(article)"
                 class="feed-article" [routerLink]="'/article/' + article.id">
             </app-article>
         </div>
@@ -21,7 +21,7 @@
         <div class="newfeeds">
             <app-article *ngFor="let article of feed.articles | slice:2:feed.articles.length"
                 [articleTitle]="article.title" [articleDescription]="article.description"
-                [colorSeed]="article.categories && article.categories.length !== 0 ? article.categories[0].id : 0"
+                [colorSeed]="getColorSeed(article)"
                 class="feed-article" [routerLink]="'/article/' + article.id">
             </app-article>
         </div>

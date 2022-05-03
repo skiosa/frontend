@@ -15,6 +15,7 @@ export type SUBSCRIPTION_QUERY_RESPONSE = {
       url: string,
       content: string,
       publishedAt: string,
+      categories: { id: number }[],
     }[]
   }[]
 }
@@ -35,6 +36,9 @@ export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, {}>`
         content
         url
         publishedAt
+        categories {
+          id  
+        }
       }
     }
   }

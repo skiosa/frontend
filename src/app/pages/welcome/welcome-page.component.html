@@ -7,7 +7,7 @@
       <app-article
         [articleTitle]="recommendedArticle.title"
         [articleDescription]="recommendedArticle.description"
-        [colorSeed]="recommendedArticle.id"
+        [colorSeed]="getColorSeed(recommendedArticle)"
         [routerLink]="'/article/' + recommendedArticle.id"
       >
       </app-article>
