@@ -1,28 +1,30 @@
 <div class="main-subscription-container">
-  <app-card cardTitle="Subscriptions">
-    <p *ngIf="subscriptions.length === 0">No subscribed feeds could be found :(</p>
-    <div class="subscription-container" *ngFor="let feed of subscriptions">
-      <div class="subscription-feed">
-        <app-subscription-feed
-          [feed]="feed"
-          [openAction]="generateOnOpen(feed.id)"
-          [closeAction]="generateOnClose(feed.id)"
-          [colorSeed]="feed.id"
-        ></app-subscription-feed>
-      </div>
-      <div
-        class="subscription-articles"
-        *ngIf="visibleSubscriptions.has(feed.id)"
-      >
-        <div class="article" *ngFor="let article of feed.articles">
-          <app-article
-            [articleTitle]="article.title"
-            [articleDescription]="article.description"
-            [colorSeed]="article.id"
-          >
-          </app-article>
-        </div>
-      </div>
-    </div>
-  </app-card>
+	<app-card cardTitle="Subscriptions">
+		<p *ngIf="subscriptions.length === 0">
+			No subscribed feeds could be found :(
+		</p>
+		<div class="subscription-container" *ngFor="let feed of subscriptions">
+			<div class="subscription-feed">
+				<app-subscription-feed
+					[feed]="feed"
+					[openAction]="generateOnOpen(feed.id)"
+					[closeAction]="generateOnClose(feed.id)"
+					[colorSeed]="feed.id"
+				></app-subscription-feed>
+			</div>
+			<div
+				class="subscription-articles"
+				*ngIf="visibleSubscriptions.has(feed.id)"
+			>
+				<div class="article" *ngFor="let article of feed.articles">
+					<app-article
+						[articleTitle]="article.title"
+						[articleDescription]="article.description"
+						[colorSeed]="article.id"
+					>
+					</app-article>
+				</div>
+			</div>
+		</div>
+	</app-card>
 </div>

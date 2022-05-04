@@ -8,21 +8,28 @@ import { ADD_FEED_MUTATION } from '../../core/queries/addFeed';
 	styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-	navigationIsOpen = false
-	popoverActive = false
-	msg = "";
+	navigationIsOpen = false;
+	popoverActive = false;
+	msg = '';
 	success: boolean | undefined = undefined;
 	newFeedID: number | undefined = undefined;
-	public feed: { url: string, name: string, description: string, ttl?: string, loadedURL: boolean, validURL?: boolean } = {
+	public feed: {
+		url: string;
+		name: string;
+		description: string;
+		ttl?: string;
+		loadedURL: boolean;
+		validURL?: boolean;
+	} = {
 		url: '',
 		name: '',
 		description: '',
 		ttl: undefined,
 		loadedURL: false,
-		validURL: undefined
-	}
+		validURL: undefined,
+	};
 
-	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) { }
+	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) {}
 
 	/**
 	 * @author Simon Morgenstern
@@ -38,7 +45,7 @@ export class SidebarComponent {
 	 * @description This function toggles the popover for adding Feeds
 	 */
 	togglePopover() {
-		this.keycloak.isLoggedIn().then(loggedIn => {
+		this.keycloak.isLoggedIn().then((loggedIn) => {
 			if (loggedIn) {
 				this.feed = {
 					url: '',
@@ -46,16 +53,16 @@ export class SidebarComponent {
 					description: '',
 					ttl: undefined,
 					loadedURL: false,
-					validURL: undefined
-				}
-				this.msg = ""
-				this.success = undefined
-				this.newFeedID = undefined
+					validURL: undefined,
+				};
+				this.msg = '';
+				this.success = undefined;
+				this.newFeedID = undefined;
 				this.popoverActive = !this.popoverActive;
 			} else {
 				this.keycloak.login();
 			}
-		})
+		});
 	}
 
 	/**
@@ -82,8 +89,8 @@ export class SidebarComponent {
 			description: '',
 			ttl: undefined,
 			loadedURL: false,
-			validURL: undefined
-		}
+			validURL: undefined,
+		};
 	}
 
 	/**
@@ -93,40 +100,46 @@ export class SidebarComponent {
 	 */
 	loadRssFeed() {
 		this.feed.validURL = undefined;
-		fetch(this.feed.url).then(e => e.text()).then(str => new window.DOMParser().parseFromString(str, "text/xml")).then(data => {
-			const channel = data.querySelector("channel");
-			const items = data.querySelectorAll("item");
-			if (this.isValidRSSFeed(channel, items)) {
-				this.feed.name = channel!.querySelector("title")!.textContent!;
-				this.feed.description = channel!.querySelector("description")!.textContent!;
-				this.feed.ttl = channel!.querySelector("ttl")?.textContent ?? undefined;
-				this.feed.loadedURL = true;
-				this.feed.validURL = true;
-			}
-			else {
-				this.feed.validURL = false;
-			}
-		})
+		fetch(this.feed.url)
+			.then((e) => e.text())
+			.then((str) => new window.DOMParser().parseFromString(str, 'text/xml'))
+			.then((data) => {
+				const channel = data.querySelector('channel');
+				const items = data.querySelectorAll('item');
+				if (this.isValidRSSFeed(channel, items)) {
+					this.feed.name = channel!.querySelector('title')!.textContent!;
+					this.feed.description = channel!.querySelector('description')!.textContent!;
+					this.feed.ttl = channel!.querySelector('ttl')?.textContent ?? undefined;
+					this.feed.loadedURL = true;
+					this.feed.validURL = true;
+				} else {
+					this.feed.validURL = false;
+				}
+			});
 	}
 	/**
 	 * @author Jonas Eppard
 	 * @summary Check if RSS Feed is valid
 	 * @description This function checks if a RSS Feed is valid while getting the <channel> and <item> tags
 	 * @param {Element | null} channel - channel tag
-	 * @param {NodeListOf<Element> | null} items - item tags 
+	 * @param {NodeListOf<Element> | null} items - item tags
 	 * @returns {boolean} - returns true if RSS Feed is valid
 	 */
 	isValidRSSFeed(channel: Element | null, items: NodeListOf<Element> | null): boolean {
 		if (channel && items && items.length > 0) {
 			console.log(1);
-			console.log()
-			if ((channel.querySelector("title")) && (channel.querySelector("description"))) {
+			console.log();
+			if (channel.querySelector('title') && channel.querySelector('description')) {
 				console.log(2);
 				if (items.length > 0) {
 					console.log(3);
 					let itemsOk = true;
 					for (let i = 0; i < items.length; i++) {
-						if (!items[i].querySelector("title") || !items[i].querySelector("description") || !items[i].querySelector("link")) {
+						if (
+							!items[i].querySelector('title') ||
+							!items[i].querySelector('description') ||
+							!items[i].querySelector('link')
+						) {
 							itemsOk = false;
 							break;
 						}
@@ -134,36 +147,47 @@ export class SidebarComponent {
 					return itemsOk;
 				}
 			}
-		};
+		}
 		return false;
 	}
+
+	/**
+	 * @author Jonas Eppard
+	 * @summary Send request to add Feed
+	 * @description This function sends a request to add a Feed to the server and displays the response
+	 */
 	addFeed() {
 		if (!this.feed.loadedURL || !(this.isInt(this.feed.ttl) ?? true)) {
 			return;
 		}
-		this.msg = "";
+		this.msg = '';
 		this.success = undefined;
-		this.apollo.mutate({
-			mutation: ADD_FEED_MUTATION,
-			variables: {
-				feed: {
-					link: this.feed.url,
-					name: this.feed.name,
-					description: this.feed.description,
-					ttl: +(this.feed.ttl || 30)
+		this.apollo
+			.mutate({
+				mutation: ADD_FEED_MUTATION,
+				variables: {
+					feed: {
+						link: this.feed.url,
+						name: this.feed.name,
+						description: this.feed.description,
+						ttl: +(this.feed.ttl || 30),
+					},
+				},
+			})
+			.subscribe(
+				(data) => {
+					this.msg = 'Feed added';
+					this.success = true;
+					this.newFeedID = data.data!.createFeed.id;
+				},
+				(error) => {
+					if (error.graphQLErrors[0].message.startsWith('duplicate key value violates unique constraint')) {
+						this.msg = 'Feed already exists';
+					} else {
+						this.msg = 'Error adding feed';
+					}
+					this.success = false;
 				}
-			}
-		}).subscribe(data => {
-			this.msg = "Feed added";
-			this.success = true;
-			this.newFeedID = data.data!.createFeed.id;
-		}, error => {
-			if (error.graphQLErrors[0].message.startsWith("duplicate key value violates unique constraint")) {
-				this.msg = "Feed already exists";
-			} else {
-				this.msg = "Error adding feed";
-			}
-			this.success = false;
-		})
+			);
 	}
 }

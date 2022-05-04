@@ -28,10 +28,8 @@ describe('WelcomePageComponent', () => {
 	});
 
 	it('should trim long strings', () => {
-		const text =
-			'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde abcdeabcde';
-		const expected =
-			'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde...';
+		const text = 'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde abcdeabcde';
+		const expected = 'abcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcdeabcde...';
 		const res = comp.shortenedText(text);
 		expect(res).toEqual(expected);
 	});

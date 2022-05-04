@@ -7,38 +7,36 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 
-
 const routes: Routes = [
-
-  {
-    path: '',
-    component: WelcomePageComponent,
-  },
-  {
-    path: 'subscriptions',
-    canActivate: [LoggedInGuard],
-    component: SubscriptionComponent
-  },
-  {
-    path: 'article/:articleId',
-    component: ArticleViewComponent
-  },
-  {
-    path: 'feed/:feedId',
-    component: FeedOverviewPageComponent,
-  },
-  {
-    path: '404',
-    component: NotFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: '404',
-  },
+	{
+		path: '',
+		component: WelcomePageComponent,
+	},
+	{
+		path: 'subscriptions',
+		canActivate: [LoggedInGuard],
+		component: SubscriptionComponent,
+	},
+	{
+		path: 'article/:articleId',
+		component: ArticleViewComponent,
+	},
+	{
+		path: 'feed/:feedId',
+		component: FeedOverviewPageComponent,
+	},
+	{
+		path: '404',
+		component: NotFoundComponent,
+	},
+	{
+		path: '**',
+		redirectTo: '404',
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

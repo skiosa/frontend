@@ -12,8 +12,26 @@ import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 
 @NgModule({
-  declarations: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent, NavButtonComponent, ButtonComponent, InputComponent, IconButtonComponent],
-  imports: [CommonModule, FormsModule],
-  exports: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent, NavButtonComponent, ButtonComponent, InputComponent, IconButtonComponent],
+	declarations: [
+		CardComponent,
+		ArticleComponent,
+		FeedComponent,
+		SubscriptionFeedComponent,
+		NavButtonComponent,
+		ButtonComponent,
+		InputComponent,
+		IconButtonComponent,
+	],
+	imports: [CommonModule, FormsModule],
+	exports: [
+		CardComponent,
+		ArticleComponent,
+		FeedComponent,
+		SubscriptionFeedComponent,
+		NavButtonComponent,
+		ButtonComponent,
+		InputComponent,
+		IconButtonComponent,
+	],
 })
-export class SharedModule { }
+export class SharedModule {}

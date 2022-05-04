@@ -1,5 +1,4 @@
-
 export interface PaginationArg {
-    skip?: number,
-    take: number
+	skip?: number;
+	take: number;
 }

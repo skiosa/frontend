@@ -16,51 +16,42 @@ import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 import { ArticleViewComponent } from './pages/article-view/article-view.component';
 import { SharedModule } from './shared/shared.module';
 
-
 function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: environment.keycloakUrl,
-        realm: environment.keycloakRealm,
-        clientId: environment.keycloakClientId,
-      },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html',
-      },
-    });
+	return () =>
+		keycloak.init({
+			config: {
+				url: environment.keycloakUrl,
+				realm: environment.keycloakRealm,
+				clientId: environment.keycloakClientId,
+			},
+			initOptions: {
+				onLoad: 'check-sso',
+				silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html',
+			},
+		});
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidebarComponent,
-    FooterComponent,
-    NotFoundComponent,
-    SubscriptionComponent,
-    WelcomePageComponent,
-    FeedOverviewPageComponent,
-    ArticleViewComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    SharedModule,
-    KeycloakAngularModule,
-    GraphQLModule,
-  ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService],
-    },
-  ],
-  bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		SidebarComponent,
+		FooterComponent,
+		NotFoundComponent,
+		SubscriptionComponent,
+		WelcomePageComponent,
+		FeedOverviewPageComponent,
+		ArticleViewComponent,
+	],
+	imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule, KeycloakAngularModule, GraphQLModule],
+	providers: [
+		{
+			provide: APP_INITIALIZER,
+			useFactory: initializeKeycloak,
+			multi: true,
+			deps: [KeycloakService],
+		},
+	],
+	bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

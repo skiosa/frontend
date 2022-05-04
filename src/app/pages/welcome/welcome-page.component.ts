@@ -8,9 +8,9 @@ import { GENERAL_RECOMMENDATION_QUERY, GENERAL_RECOMMENDATION_QUERY_RESULT } fro
 	styleUrls: ['./welcome-page.component.css'],
 })
 export class WelcomePageComponent implements OnInit {
-	constructor(private apollo: Apollo) { }
+	constructor(private apollo: Apollo) {}
 
-	public recommendedArticles: GENERAL_RECOMMENDATION_QUERY_RESULT["recommendedArticles"] = [];
+	public recommendedArticles: GENERAL_RECOMMENDATION_QUERY_RESULT['recommendedArticles'] = [];
 	private seed: number = Math.random();
 	private skip = 0;
 	private take = 10;

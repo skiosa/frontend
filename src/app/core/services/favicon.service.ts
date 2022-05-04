@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: 'root',
 })
-
-
 export class FaviconService {
-
-
 	/**
-   * @author Marcel Alex
-   * @summary Changes the favicon based on current settings
-   * @description Changes the favicon based on current settings
-   * @returns {void}
-   */
-	changeFavicon()  { 
+	 * @author Marcel Alex
+	 * @summary Changes the favicon based on current settings
+	 * @description Changes the favicon based on current settings
+	 * @returns {void}
+	 */
+	changeFavicon() {
 		const favIcon = document.getElementById('faviconTag') as HTMLLinkElement;
 		if (favIcon) {
 			const isDark = window.matchMedia('(prefers-color-scheme: dark)');
@@ -25,5 +21,4 @@ export class FaviconService {
 			}
 		}
 	}
-  
 }

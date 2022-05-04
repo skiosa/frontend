@@ -1,24 +1,49 @@
 <app-card class="article_details" cardTitle="Article Details">
-    <h1 class="article_details_title">
-        {{article.title}}
-    </h1>
-    <p class="article_details_description">
-        {{article.content}}
-    </p>
+	<h1 class="article_details_title">
+		{{ article.title }}
+	</h1>
+	<p class="article_details_description">
+		{{ article.content }}
+	</p>
 </app-card>
 
 <app-card cardTitle="Actions">
-    <div class="article_action-icon">
-        <app-icon-button title="Visit" icon="assets/icons/external-link.svg" (click)="redirectToUrl(article.url)"></app-icon-button>
-        <app-icon-button title="Like" icon="assets/icons/heart.svg"></app-icon-button>
-        <app-icon-button title="Bookmark" icon="assets/icons/bookmark.svg"></app-icon-button>
-        <app-icon-button title="Share" icon="assets/icons/share.svg"></app-icon-button>
-        <app-icon-button title="Feed" icon="assets/icons/external-link.svg" (click)="redirectToFeedId(article.feed.id)"></app-icon-button>
-    </div>
+	<div class="article_action-icon">
+		<app-icon-button
+			title="Visit"
+			icon="assets/icons/external-link.svg"
+			(click)="redirectToUrl(article.url)"
+		></app-icon-button>
+		<app-icon-button
+			title="Like"
+			icon="assets/icons/heart.svg"
+		></app-icon-button>
+		<app-icon-button
+			title="Bookmark"
+			icon="assets/icons/bookmark.svg"
+		></app-icon-button>
+		<app-icon-button
+			title="Share"
+			icon="assets/icons/share.svg"
+		></app-icon-button>
+		<app-icon-button
+			title="Feed"
+			icon="assets/icons/external-link.svg"
+			(click)="redirectToFeedId(article.feed.id)"
+		></app-icon-button>
+	</div>
 </app-card>
 <app-card cardTitle="Similar Articles">
-    <div *ngFor="let a of recommendedArticles" class="article_recommended-articles">
-        <app-article [articleTitle]="a.title" [articleDescription]="a.description" [colorSeed]="getColorSeed(a)" (click)="redirectToArticleId(a.id)"> 
-        </app-article>
-    </div>
+	<div
+		*ngFor="let a of recommendedArticles"
+		class="article_recommended-articles"
+	>
+		<app-article
+			[articleTitle]="a.title"
+			[articleDescription]="a.description"
+			[colorSeed]="getColorSeed(a)"
+			(click)="redirectToArticleId(a.id)"
+		>
+		</app-article>
+	</div>
 </app-card>
