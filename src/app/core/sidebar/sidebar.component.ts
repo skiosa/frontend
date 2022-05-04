@@ -21,15 +21,15 @@ export class SidebarComponent {
 		loadedURL: boolean;
 		validURL?: boolean;
 	} = {
-		url: '',
-		name: '',
-		description: '',
-		ttl: undefined,
-		loadedURL: false,
-		validURL: undefined,
-	};
+			url: '',
+			name: '',
+			description: '',
+			ttl: undefined,
+			loadedURL: false,
+			validURL: undefined,
+		};
 
-	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) {}
+	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) { }
 
 	/**
 	 * @author Simon Morgenstern
@@ -40,7 +40,7 @@ export class SidebarComponent {
 	}
 
 	/**
-	 * @author Jonas Eppardolp09
+	 * @author Jonas Eppard
 	 * @summary Toggle popover
 	 * @description This function toggles the popover for adding Feeds
 	 */
