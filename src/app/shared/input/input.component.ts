@@ -13,6 +13,7 @@ export class InputComponent {
   @Input() errorMessage: string = '';
   @Input() hasContent: boolean = false;
   @Output() valueChange = new EventEmitter<string>();
+  @Output() changed = new EventEmitter<never>();
   @Output() clickEnd = new EventEmitter<MouseEvent>();
 
 
@@ -21,6 +22,7 @@ export class InputComponent {
   change(e: any) {
     this.value = e;
     this.valueChange.emit(e);
+    this.changed.emit();
   }
   clickedEnd(event: MouseEvent) {
     this.clickEnd.emit(event);

@@ -27,10 +27,12 @@
 
 .border-left {
     border-radius: 1rem 0 0 1rem;
+    padding-right: 0.5rem;
 }
 
 .border-complete {
     border-radius: 1rem;
+    padding-right: 0.8rem;
 }
 
 .input_field_end {

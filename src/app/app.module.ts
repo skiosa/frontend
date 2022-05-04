@@ -15,7 +15,6 @@ import { SubscriptionComponent } from './pages/subscription/subscription.compone
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 import { ArticleViewComponent } from './pages/article-view/article-view.component';
 import { SharedModule } from './shared/shared.module';
-import { FormsModule } from '@angular/forms';
 
 
 function initializeKeycloak(keycloak: KeycloakService) {
@@ -53,7 +52,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
     SharedModule,
     KeycloakAngularModule,
     GraphQLModule,
-    FormsModule
   ],
   providers: [
     {
