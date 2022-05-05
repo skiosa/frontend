@@ -6,14 +6,14 @@
  * @returns {string} shortened text
  */
 export function shortenedText(text: string): string {
-    if (text.length <= 80) {
-        return text;
-    } else {
-        let trimLen = 77;
-        while (text.charAt(trimLen) !== ' ' || trimLen === 0) {
-            trimLen--;
-        }
+	if (text.length <= 80) {
+		return text;
+	} else {
+		let trimLen = 77;
+		while (text.charAt(trimLen) !== ' ' || trimLen === 0) {
+			trimLen--;
+		}
 
-        return text.substring(0, trimLen) + '...';
-    }
+		return text.substring(0, trimLen) + '...';
+	}
 }

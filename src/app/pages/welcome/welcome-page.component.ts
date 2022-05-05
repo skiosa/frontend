@@ -33,7 +33,7 @@ export class WelcomePageComponent implements OnInit {
 			});
 	}
 
-	getColorSeed(article: GENERAL_RECOMMENDATION_QUERY_RESULT["recommendedArticles"][0]): number {
+	getColorSeed(article: GENERAL_RECOMMENDATION_QUERY_RESULT['recommendedArticles'][0]): number {
 		return getColorSeedFromArticle(article);
-	  }
+	}
 }

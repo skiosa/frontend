@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import {
-	SINGLE_ARTICLE_QUERY,
-	SINGLE_ARTICLE_QUERY_RESPONSE,
-} from 'src/app/core/queries/singleArticle';
+import { SINGLE_ARTICLE_QUERY, SINGLE_ARTICLE_QUERY_RESPONSE } from 'src/app/core/queries/singleArticle';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
-
 
 @Component({
 	selector: 'app-article-view',
@@ -24,7 +20,7 @@ export class ArticleViewComponent implements OnInit {
 	};
 	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
 
-	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
+	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {}
 
 	ngOnInit() {
 		const articleId = this.route.snapshot.paramMap.get('articleId');
@@ -55,7 +51,7 @@ export class ArticleViewComponent implements OnInit {
 			});
 	}
 
-	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"][0]): number {
+	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]): number {
 		return getColorSeedFromArticle(article);
 	}
 

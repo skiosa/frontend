@@ -115,7 +115,7 @@ export class FeedOverviewPageComponent implements OnInit {
 		return a > b ? b : a;
 	}
 
-	getColorSeed(article: GENERAL_FEED_QUERY_RESPONCE["feed"]["articles"][0]): number {
+	getColorSeed(article: GENERAL_FEED_QUERY_RESPONCE['feed']['articles'][0]): number {
 		return getColorSeedFromArticle(article);
-	  }
+	}
 }

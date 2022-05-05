@@ -9,41 +9,40 @@ import { SubscriptionComponent } from './pages/subscription/subscription.compone
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 
 const routes: Routes = [
-
-  {
-    path: '',
-    component: WelcomePageComponent,
-  },
-  {
-    path: 'subscriptions',
-    canActivate: [LoggedInGuard],
-    component: SubscriptionComponent
-  },
-  {
-    path: 'bookmarks',
-    canActivate: [LoggedInGuard],
-    component: BookmarkComponent
-  },
-  {
-    path: 'article/:articleId',
-    component: ArticleViewComponent
-  },
-  {
-    path: 'feed/:feedId',
-    component: FeedOverviewPageComponent,
-  },
-  {
-    path: '404',
-    component: NotFoundComponent
-  },
-  {
-    path: '**',
-    redirectTo: '404',
-  },
+	{
+		path: '',
+		component: WelcomePageComponent,
+	},
+	{
+		path: 'subscriptions',
+		canActivate: [LoggedInGuard],
+		component: SubscriptionComponent,
+	},
+	{
+		path: 'bookmarks',
+		canActivate: [LoggedInGuard],
+		component: BookmarkComponent,
+	},
+	{
+		path: 'article/:articleId',
+		component: ArticleViewComponent,
+	},
+	{
+		path: 'feed/:feedId',
+		component: FeedOverviewPageComponent,
+	},
+	{
+		path: '404',
+		component: NotFoundComponent,
+	},
+	{
+		path: '**',
+		redirectTo: '404',
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

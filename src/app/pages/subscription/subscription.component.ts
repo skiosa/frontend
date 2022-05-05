@@ -12,7 +12,7 @@ export class SubscriptionComponent implements OnInit {
 	subscriptions: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'] = [];
 	visibleSubscriptions: Set<number> = new Set();
 
-	constructor(private apollo: Apollo) { }
+	constructor(private apollo: Apollo) {}
 
 	ngOnInit(): void {
 		this.apollo
@@ -50,8 +50,7 @@ export class SubscriptionComponent implements OnInit {
 		};
 	};
 
-	getColorSeed(article: SUBSCRIPTION_QUERY_RESPONSE["subscriptions"][0]["articles"][0]): number {
+	getColorSeed(article: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'][0]['articles'][0]): number {
 		return getColorSeedFromArticle(article);
 	}
-
 }
