@@ -69,5 +69,8 @@ export class ArticleViewComponent implements OnInit {
     redirectToUrl(url: string) {
         window.open(url, "_blank");
     }
+    copyLinkToClipboard() {
+        navigator.clipboard.writeText(this.router.url);
+    }
 }
 

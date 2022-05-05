@@ -12,7 +12,7 @@
         <app-icon-button title="Visit" icon="assets/icons/external-link.svg" (click)="redirectToUrl(article.url)"></app-icon-button>
         <app-icon-button title="Like" icon="assets/icons/heart.svg"></app-icon-button>
         <app-icon-button title="Bookmark" icon="assets/icons/bookmark.svg"></app-icon-button>
-        <app-icon-button title="Share" icon="assets/icons/share.svg"></app-icon-button>
+        <app-icon-button title="Share" icon="assets/icons/share.svg" (click)="copyLinkToClipboard()"></app-icon-button>
         <app-icon-button title="Feed" icon="assets/icons/external-link.svg" (click)="redirectToFeedId(article.feed.id)"></app-icon-button>
     </div>
 </app-card>
