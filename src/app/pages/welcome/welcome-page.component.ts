@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { GENERAL_RECOMMENDATION_QUERY, GENERAL_RECOMMENDATION_QUERY_RESULT } from 'src/app/core/queries/recommendation';
+import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
 @Component({
 	selector: 'app-welcome-page',
@@ -32,23 +33,7 @@ export class WelcomePageComponent implements OnInit {
 			});
 	}
 
-	/**
-	 * @author Amos Gross
-	 * @summary shortens text to 80 chars
-	 * @description shortens a given string down and adds '...' if needed
-	 * @param {string} text - string to shorten
-	 * @returns {string} shortened text
-	 */
-	public shortenedText(text: string): string {
-		if (text.length <= 80) {
-			return text;
-		} else {
-			let trimLen = 77;
-			while (text.charAt(trimLen) !== ' ' || trimLen === 0) {
-				trimLen--;
-			}
-
-			return text.substring(0, trimLen) + '...';
-		}
-	}
+	getColorSeed(article: GENERAL_RECOMMENDATION_QUERY_RESULT["recommendedArticles"][0]): number {
+		return getColorSeedFromArticle(article);
+	  }
 }

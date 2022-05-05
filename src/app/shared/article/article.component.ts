@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/util/randomColor';
+import {
+	DEFAULT_PASTEL_COLOR,
+	generateRandomColor,
+} from 'src/app/util/randomColor';
+import { shortenedText } from 'src/app/util/textShorter';
 
 @Component({
 	selector: 'app-article',
@@ -14,5 +18,7 @@ export class ArticleComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.color = generateRandomColor(this.colorSeed);
+		this.articleTitle = shortenedText(this.articleTitle);
+		this.articleDescription = shortenedText(this.articleDescription);
 	}
 }

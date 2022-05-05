@@ -1,3 +1,9 @@
+import { BOOKMARKS_QUERY_RESPONSE } from "../core/queries/bookmarks";
+import { GENERAL_FEED_QUERY_RESPONCE } from "../core/queries/feeds";
+import { GENERAL_RECOMMENDATION_QUERY_RESULT } from "../core/queries/recommendation";
+import { SINGLE_ARTICLE_QUERY_RESPONSE } from "../core/queries/singleArticle";
+import { SUBSCRIPTION_QUERY_RESPONSE } from "../core/queries/subscription";
+
 export const DEFAULT_PASTEL_COLOR = 'var(--pastel-a-color)';
 /**
  * @author Amos Gross
@@ -18,4 +24,23 @@ export function generateRandomColor(colorSeed: number): string {
 		default:
 			return DEFAULT_PASTEL_COLOR;
 	}
+}
+
+/**
+ * @author Jonas Eppard
+ * @summary Get Color Seed for Article
+ * @description Get Color Seed for Article default id of first category if no categories present id of article
+ * @param {SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"]} article - article to get seed from. Needs id an categories (can be empty list)
+ * @returns {number} - Seed for color
+ */
+export function getColorSeedFromArticle(
+  article: BOOKMARKS_QUERY_RESPONSE["bookmarks"][0]
+    | SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"][0]
+    | GENERAL_FEED_QUERY_RESPONCE["feed"]["articles"][0]
+    | SUBSCRIPTION_QUERY_RESPONSE["subscriptions"][0]["articles"][0]
+    | GENERAL_RECOMMENDATION_QUERY_RESULT["recommendedArticles"][0]): number {
+  if (article.categories) {
+    return article.categories[0].id;
+  }
+  return article.id;
 }

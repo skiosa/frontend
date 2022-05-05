@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { SUBSCRIPTION_QUERY, SUBSCRIPTION_QUERY_RESPONSE } from 'src/app/core/queries/subscription';
+import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
 @Component({
 	selector: 'app-subscription',
@@ -11,7 +12,7 @@ export class SubscriptionComponent implements OnInit {
 	subscriptions: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'] = [];
 	visibleSubscriptions: Set<number> = new Set();
 
-	constructor(private apollo: Apollo) {}
+	constructor(private apollo: Apollo) { }
 
 	ngOnInit(): void {
 		this.apollo
@@ -48,4 +49,9 @@ export class SubscriptionComponent implements OnInit {
 			this.visibleSubscriptions.delete(feedId);
 		};
 	};
+
+	getColorSeed(article: SUBSCRIPTION_QUERY_RESPONSE["subscriptions"][0]["articles"][0]): number {
+		return getColorSeedFromArticle(article);
+	}
+
 }
