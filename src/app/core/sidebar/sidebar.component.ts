@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observer } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
 import { ADD_FEED_MUTATION } from '../../core/queries/addFeed';
