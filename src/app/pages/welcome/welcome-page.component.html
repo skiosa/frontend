@@ -5,9 +5,9 @@
       *ngFor="let recommendedArticle of recommendedArticles"
     >
       <app-article
-        [articleTitle]="shortenedText(recommendedArticle.title)"
-        [articleDescription]="shortenedText(recommendedArticle.description)"
-        [colorSeed]="recommendedArticle.id"
+        [articleTitle]="recommendedArticle.title"
+        [articleDescription]="recommendedArticle.description"
+        [colorSeed]="getColorSeed(recommendedArticle)"
         [routerLink]="'/article/' + recommendedArticle.id"
       >
       </app-article>

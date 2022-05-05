@@ -6,7 +6,8 @@ export type GENERAL_RECOMMENDATION_QUERY_RESULT = {
     id: number,
     title: string,
     description: string,
-    url: string
+    url: string,
+    categories: { id: number }[],
   }[]
 }
 
@@ -17,6 +18,9 @@ export const GENERAL_RECOMMENDATION_QUERY = gql<GENERAL_RECOMMENDATION_QUERY_RES
       title
       description
       url
+      categories {
+        id  
+      }
     }
   }
 `;
