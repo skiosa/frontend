@@ -59,20 +59,33 @@
 
 .add-feed {
 	position: absolute;
-	top: 10vw;
-	left: 10vh;
+	top: 20vh;
+	left: 20vw;
+	width: 60vw;
 	z-index: 12;
 }
 
 .add-feed_input_button {
-	border-left: 1px solid var(--primary-text-color);
+	border-left: 2px solid var(--primary-text-color);
 	background-color: var(--button-color);
-	border-radius: 0 1rem 1rem 0;
+	color: var(--button-text-color);
+	border-radius: 0 2rem 2rem 0;
 	padding-right: 0.8rem;
 	padding-left: 0.5rem;
 	height: 100%;
 	display: flex;
 	align-items: center;
+}
+
+.add-feed_button {
+	margin: auto;
+	margin-top: 1rem;
+	display: block;
+	max-width: 20rem;
+}
+
+hr {
+	margin: 1rem 0;
 }
 
 /* media query for navigation bar on mobile devices */

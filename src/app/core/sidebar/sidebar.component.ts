@@ -45,6 +45,7 @@ export class SidebarComponent {
 	 * @description This function toggles the popover for adding Feeds
 	 */
 	togglePopover() {
+		this.navigationIsOpen = false;
 		this.keycloak.isLoggedIn().then((loggedIn) => {
 			if (loggedIn) {
 				this.feed = {

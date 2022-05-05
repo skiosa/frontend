@@ -57,47 +57,55 @@
 
 <div class="popover" *ngIf="popoverActive" (click)="togglePopover()"></div>
 <app-card cardTitle="Add Feed" class="add-feed" *ngIf="popoverActive">
-	<app-input
-		label="Url"
-		[(value)]="feed.url"
-		class="add-feed_input"
-		[hasContent]="true"
-		[valid]="feed.validURL"
-		errorMessage="RSS Feed not found or wrong format"
-		(changed)="urlChanged()"
-	>
-		<div class="add-feed_input_button" (click)="loadRssFeed()">Load</div>
-	</app-input>
-	<hr />
-	<app-input
-		label="Name"
-		[(value)]="feed.name"
-		[disabled]="!feed.loadedURL"
-		class="add-feed_input"
-	>
-	</app-input>
-	<app-input
-		label="TTL (optional)"
-		[(value)]="feed.ttl"
-		[disabled]="!feed.loadedURL"
-		class="add-feed_input"
-		[valid]="isInt(feed?.ttl)"
-		errorMessage="TTL must be a number"
-	>
-	</app-input>
-	<app-input
-		label="Description"
-		[(value)]="feed.description"
-		[disabled]="!feed.loadedURL"
-		class="add-feed_input"
-	>
-	</app-input>
-	<app-button text="Add Feed" (click)="addFeed()"></app-button>
-	<h2
-		*ngIf="success !== undefined"
-		[style.color]="success ? 'var(--pastel-b-color)' : 'var(--pastel-d-color)'"
-	>
-		{{ msg }}
-		<a [routerLink]="['/feed', newFeedID]" *ngIf="success">Click Here</a>
-	</h2>
+	<div class="add-feed_form">
+		<app-input
+			label="Url"
+			[(value)]="feed.url"
+			class="add-feed_input"
+			[hasContent]="true"
+			[valid]="feed.validURL"
+			errorMessage="RSS Feed not found or wrong format"
+			(changed)="urlChanged()"
+		>
+			<div class="add-feed_input_button" (click)="loadRssFeed()">Load</div>
+		</app-input>
+		<hr />
+		<app-input
+			label="Name"
+			[(value)]="feed.name"
+			[disabled]="!feed.loadedURL"
+			class="add-feed_input"
+		>
+		</app-input>
+		<app-input
+			label="TTL (optional)"
+			[(value)]="feed.ttl"
+			[disabled]="!feed.loadedURL"
+			class="add-feed_input"
+			[valid]="isInt(feed?.ttl)"
+			errorMessage="TTL must be a number"
+		>
+		</app-input>
+		<app-input
+			label="Description"
+			[(value)]="feed.description"
+			[disabled]="!feed.loadedURL"
+			class="add-feed_input"
+		>
+		</app-input>
+		<app-button
+			text="Add Feed"
+			(click)="addFeed()"
+			class="add-feed_button"
+		></app-button>
+		<h2
+			*ngIf="success !== undefined"
+			[style.color]="
+				success ? 'var(--pastel-b-color)' : 'var(--pastel-d-color)'
+			"
+		>
+			{{ msg }}
+			<a [routerLink]="['/feed', newFeedID]" *ngIf="success">Click Here</a>
+		</h2>
+	</div>
 </app-card>

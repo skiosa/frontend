@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
-
 import { SidebarComponent } from './sidebar.component';
 
 describe('SidebarComponent', () => {

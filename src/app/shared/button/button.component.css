@@ -1,9 +1,10 @@
 .button {
-	font-size: 20px;
+	font-size: 1rem;
 	text-align: center;
-	text-transform: uppercase;
 	background-color: var(--button-color);
-	padding: 16px 0;
-	border-radius: 1rem;
+	color: var(--button-text-color);
+	padding: 1rem 0;
+	border-radius: 2rem;
+	border-style: none;
 	width: 100%;
 }

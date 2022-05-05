@@ -1,7 +1,8 @@
 <div class="input">
-	{{ label }}
+	<label [for]="'input_for_' + label"></label> {{ label }}
 	<div [ngClass]="disabled ? 'input_field disabled' : 'input_field'">
 		<input
+			[id]="'input_for_' + label"
 			type="text"
 			[ngModel]="value"
 			(ngModelChange)="change($event)"
