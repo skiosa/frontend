@@ -16,7 +16,7 @@ import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 export class ArticleViewComponent implements OnInit {
     public article: SINGLE_ARTICLE_QUERY_RESPONSE["article"] = {
         title: 'Loading...',
-        content: 'Loading...',
+        description: 'Loading...',
         url: '',
         feed: {
             id: -1
