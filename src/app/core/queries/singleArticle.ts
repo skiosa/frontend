@@ -3,7 +3,7 @@ import { gql } from 'apollo-angular';
 export type SINGLE_ARTICLE_QUERY_RESPONSE = {
   article: {
     title: string,
-    content: string,
+    description: string,
     url: string,
     feed: { id: number }
   },
@@ -19,7 +19,7 @@ export const SINGLE_ARTICLE_QUERY = gql<SINGLE_ARTICLE_QUERY_RESPONSE, { article
 query ExampleQuery($articleId: Float!) {
     article(id: $articleId) {
       title
-      content
+      description
       url
       feed {
         id
