@@ -1,12 +1,10 @@
-<div class="feed-overview_content">
+<div class="feed-overview">
     <div class="feed-overview_header" [ngStyle]="{ 'background-color': color }">
-        <div class="feed-overview_header_title">
-            <h2 class="feed-overview_title">{{feed.name}}</h2>
+            <h2 class="feed-overview_header_title">{{feed.name}}</h2>
             <img [src]="isSubscribed ? 'assets/icons/checkmark-circle.svg' : 'assets/icons/circle-plus.svg'"
                 (click)="changeSubscription()" [alt]="isSubscribed ? 'Unsubscribe' : 'Subscribe'"
-                class="feed-overview_subscription-status"
+                class="feed-overview_header_subscription-status"
                 >
-        </div>
     </div>
     <app-card cardTitle="Newest Articles">
         <div class="feed-overview_new-articles">
@@ -18,7 +16,7 @@
         </div>
     </app-card>
     <app-card cardTitle="Articles">
-        <div class="newfeeds">
+        <div class="feed-overview_new-feeds">
             <app-article *ngFor="let article of feed.articles | slice:2:feed.articles.length"
                 [articleTitle]="article.title" [articleDescription]="article.description"
                 [colorSeed]="getColorSeed(article)"
