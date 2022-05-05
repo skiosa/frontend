@@ -1,8 +1,3 @@
-import { BOOKMARKS_QUERY_RESPONSE } from '../core/queries/bookmarks';
-import { GENERAL_FEED_QUERY_RESPONCE } from '../core/queries/feeds';
-import { GENERAL_RECOMMENDATION_QUERY_RESULT } from '../core/queries/recommendation';
-import { SINGLE_ARTICLE_QUERY_RESPONSE } from '../core/queries/singleArticle';
-import { SUBSCRIPTION_QUERY_RESPONSE } from '../core/queries/subscription';
 
 export const DEFAULT_PASTEL_COLOR = 'var(--pastel-a-color)';
 /**

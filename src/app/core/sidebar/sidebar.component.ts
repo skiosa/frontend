@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Observer } from '@apollo/client';
 import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
 import { ADD_FEED_MUTATION } from '../../core/queries/addFeed';
@@ -21,15 +22,15 @@ export class SidebarComponent {
 		loadedURL: boolean;
 		validURL?: boolean;
 	} = {
-		url: '',
-		name: '',
-		description: '',
-		ttl: undefined,
-		loadedURL: false,
-		validURL: undefined,
-	};
+			url: '',
+			name: '',
+			description: '',
+			ttl: undefined,
+			loadedURL: false,
+			validURL: undefined,
+		};
 
-	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) {}
+	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) { }
 
 	/**
 	 * @author Simon Morgenstern
@@ -128,23 +129,15 @@ export class SidebarComponent {
 	 */
 	isValidRSSFeed(channel: Element | null, items: NodeListOf<Element> | null): boolean {
 		if (channel && items && items.length > 0) {
-			console.log(1);
-			console.log();
 			if (channel.querySelector('title') && channel.querySelector('description')) {
-				console.log(2);
 				if (items.length > 0) {
 					console.log(3);
 					let itemsOk = true;
-					for (let i = 0; i < items.length; i++) {
-						if (
-							!items[i].querySelector('title') ||
-							!items[i].querySelector('description') ||
-							!items[i].querySelector('link')
-						) {
+					items.forEach(item => {
+						if (!item.querySelector('title') || !item.querySelector('description')) {
 							itemsOk = false;
-							break;
 						}
-					}
+					})
 					return itemsOk;
 				}
 			}
@@ -175,13 +168,13 @@ export class SidebarComponent {
 					},
 				},
 			})
-			.subscribe(
-				(data) => {
+			.subscribe({
+				next: data => {
 					this.msg = 'Feed added';
 					this.success = true;
 					this.newFeedID = data.data!.createFeed.id;
 				},
-				(error) => {
+				error: error => {
 					if (error.graphQLErrors[0].message.startsWith('duplicate key value violates unique constraint')) {
 						this.msg = 'Feed already exists';
 					} else {
@@ -189,6 +182,6 @@ export class SidebarComponent {
 					}
 					this.success = false;
 				}
-			);
+			});
 	}
 }

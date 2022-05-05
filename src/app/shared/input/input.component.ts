@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-input',
@@ -15,8 +15,6 @@ export class InputComponent {
 	@Output() valueChange = new EventEmitter<string>();
 	@Output() changed = new EventEmitter<never>();
 	@Output() clickEnd = new EventEmitter<MouseEvent>();
-
-	constructor() {}
 
 	change(e: any) {
 		this.value = e;

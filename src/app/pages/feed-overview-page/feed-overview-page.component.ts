@@ -18,7 +18,7 @@ export class FeedOverviewPageComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private readonly keycloak: KeycloakService
-	) {}
+	) { }
 
 	public feed: GENERAL_FEED_QUERY_RESPONCE['feed'] = {
 		id: -1,
@@ -100,7 +100,7 @@ export class FeedOverviewPageComponent implements OnInit {
 	 * @description sorts articles of feed (from component)
 	 */
 	sortArticlesOfFeed(): void {
-		this.feed.articles = this.feed.articles.sort((a, b) => {
+		this.feed.articles.sort((a, b) => {
 			return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
 		});
 	}
