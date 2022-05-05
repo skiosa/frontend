@@ -10,17 +10,17 @@ import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 	styleUrls: ['./article-view.component.css'],
 })
 export class ArticleViewComponent implements OnInit {
-	public article: SINGLE_ARTICLE_QUERY_RESPONSE["article"] = {
+	public article: SINGLE_ARTICLE_QUERY_RESPONSE['article'] = {
 		title: 'Loading...',
 		description: 'Loading...',
 		url: '',
 		feed: {
-			id: -1
-		}
-	}
-	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"] = [];
+			id: -1,
+		},
+	};
+	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
 
-	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
+	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {}
 
 	ngOnInit() {
 		const articleId = this.route.snapshot.paramMap.get('articleId');

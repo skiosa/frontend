@@ -1,4 +1,3 @@
-
 export const DEFAULT_PASTEL_COLOR = 'var(--pastel-a-color)';
 /**
  * @author Amos Gross

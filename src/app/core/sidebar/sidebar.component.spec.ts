@@ -3,16 +3,27 @@ import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
 import { SidebarComponent } from './sidebar.component';
 
+class KeycloakServiceMock {
+	loggedIn = false;
+	isLoggedIn() {
+		return Promise.resolve(this.loggedIn);
+	}
+	login() {
+		this.loggedIn = true;
+	}
+}
+
 describe('SidebarComponent', () => {
 	let component: SidebarComponent;
 	let fixture: ComponentFixture<SidebarComponent>;
+	const keycloakMock = new KeycloakServiceMock();
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [SidebarComponent],
 			providers: [
 				{ provide: Apollo, useValue: {} },
-				{ provide: KeycloakService, useValue: {} },
+				{ provide: KeycloakService, useValue: keycloakMock },
 			],
 		}).compileComponents();
 	});
@@ -58,5 +69,15 @@ describe('SidebarComponent', () => {
 		const invalidChannel = invalidXMLDoc.querySelector('channel');
 		const invalidItem = invalidXMLDoc.querySelectorAll('item');
 		expect(component.isValidRSSFeed(invalidChannel, invalidItem)).toBe(false);
+	});
+	it('#togglePopover() should toggle popover', async () => {
+		expect(component.popoverActive).toBe(false);
+		await component.togglePopover();
+		expect(component.popoverActive).toBe(false);
+		expect(keycloakMock.loggedIn).toBe(true);
+		await component.togglePopover();
+		expect(component.popoverActive).toBe(true);
+		await component.togglePopover();
+		expect(component.popoverActive).toBe(false);
 	});
 });

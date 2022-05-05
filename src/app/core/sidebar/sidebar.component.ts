@@ -21,15 +21,15 @@ export class SidebarComponent {
 		loadedURL: boolean;
 		validURL?: boolean;
 	} = {
-			url: '',
-			name: '',
-			description: '',
-			ttl: undefined,
-			loadedURL: false,
-			validURL: undefined,
-		};
+		url: '',
+		name: '',
+		description: '',
+		ttl: undefined,
+		loadedURL: false,
+		validURL: undefined,
+	};
 
-	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) { }
+	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) {}
 
 	/**
 	 * @author Simon Morgenstern
@@ -132,11 +132,11 @@ export class SidebarComponent {
 				if (items.length > 0) {
 					console.log(3);
 					let itemsOk = true;
-					items.forEach(item => {
+					items.forEach((item) => {
 						if (!item.querySelector('title') || !item.querySelector('description')) {
 							itemsOk = false;
 						}
-					})
+					});
 					return itemsOk;
 				}
 			}
@@ -168,19 +168,19 @@ export class SidebarComponent {
 				},
 			})
 			.subscribe({
-				next: data => {
+				next: (data) => {
 					this.msg = 'Feed added';
 					this.success = true;
 					this.newFeedID = data.data!.createFeed.id;
 				},
-				error: error => {
+				error: (error) => {
 					if (error.graphQLErrors[0].message.startsWith('duplicate key value violates unique constraint')) {
 						this.msg = 'Feed already exists';
 					} else {
 						this.msg = 'Error adding feed';
 					}
 					this.success = false;
-				}
+				},
 			});
 	}
 }

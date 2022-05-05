@@ -18,7 +18,7 @@ export class FeedOverviewPageComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private readonly keycloak: KeycloakService
-	) { }
+	) {}
 
 	public feed: GENERAL_FEED_QUERY_RESPONCE['feed'] = {
 		id: -1,

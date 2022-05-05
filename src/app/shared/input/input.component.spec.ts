@@ -21,4 +21,17 @@ describe('InputComponent', () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
+
+	it('should emit valueChange', () => {
+		const value = 'test';
+		component.valueChange.subscribe((val) => {
+			expect(val).toBe(value);
+		});
+		component.change(value);
+	});
+	it('should change value', () => {
+		const value = 'test';
+		component.change(value);
+		expect(component.value).toBe(value);
+	});
 });
