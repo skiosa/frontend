@@ -3,6 +3,11 @@
 	margin-bottom: 0.25rem;
 }
 
+.input_label {
+	margin: 0.25rem 0;
+	display: inline-block;
+}
+
 .input_field {
 	background-color: var(--secondary-background);
 	border: 2px solid var(--primary-text-color);

@@ -1,28 +1,18 @@
 <div class="input">
-	<label [for]="'input_for_' + label"></label> {{ label }}
+	<label [for]="'input_for_' + label" class="input_label"> {{ label }} </label>
 	<div [ngClass]="disabled ? 'input_field disabled' : 'input_field'">
-		<input
-			[id]="'input_for_' + label"
-			type="text"
-			[ngModel]="value"
-			(ngModelChange)="change($event)"
-			[disabled]="disabled"
-			[ngClass]="
+		<input [id]="'input_for_' + label" type="text" [ngModel]="value" (ngModelChange)="change($event)"
+			[disabled]="disabled" [ngClass]="
 				hasContent
 					? 'input_field_text border-left'
 					: 'input_field_text border-complete'
-			"
-		/>
+			" />
 		<div class="input_field_end" (click)="clickedEnd($event)" #ref>
 			<ng-content></ng-content>
 		</div>
 	</div>
-	<hr
-		*ngIf="valid !== undefined"
-		[style.borderColor]="
+	<hr *ngIf="valid !== undefined" [style.borderColor]="
 			valid ? 'var(--pastel-b-color)' : 'var(--pastel-d-color)'
-		"
-		class="input_status"
-	/>
+		" class="input_status" />
 	<p *ngIf="valid === false" class="input_error">{{ errorMessage }}</p>
 </div>
