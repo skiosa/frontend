@@ -9,7 +9,7 @@ import { KeycloakService } from 'keycloak-angular';
 export class HeaderComponent implements OnInit {
 	test = 'header';
 
-	constructor(private readonly keycloak: KeycloakService) { }
+	constructor(private readonly keycloak: KeycloakService) {}
 
 	public isLoggedIn = false;
 

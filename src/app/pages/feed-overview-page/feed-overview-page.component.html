@@ -1,27 +1,44 @@
 <div class="feed-overview">
-    <div class="feed-overview_header" [ngStyle]="{ 'background-color': color }">
-            <h2 class="feed-overview_header_title">{{feed.name}}</h2>
-            <img [src]="isSubscribed ? 'assets/icons/checkmark-circle.svg' : 'assets/icons/circle-plus.svg'"
-                (click)="changeSubscription()" [alt]="isSubscribed ? 'Unsubscribe' : 'Subscribe'"
-                class="feed-overview_header_subscription-status"
-                >
-    </div>
-    <app-card cardTitle="Newest Articles">
-        <div class="feed-overview_new-articles">
-            <app-article *ngFor="let article of feed.articles | slice:0:minNumber(feed.articles.length , 2)"
-                [articleTitle]="article.title" [articleDescription]="article.description"
-                [colorSeed]="getColorSeed(article)"
-                class="feed-article" [routerLink]="'/article/' + article.id">
-            </app-article>
-        </div>
-    </app-card>
-    <app-card cardTitle="Articles">
-        <div class="feed-overview_new-feeds">
-            <app-article *ngFor="let article of feed.articles | slice:2:feed.articles.length"
-                [articleTitle]="article.title" [articleDescription]="article.description"
-                [colorSeed]="getColorSeed(article)"
-                class="feed-article" [routerLink]="'/article/' + article.id">
-            </app-article>
-        </div>
-    </app-card>
+	<div class="feed-overview_header" [ngStyle]="{ 'background-color': color }">
+		<h2 class="feed-overview_header_title">{{ feed.name }}</h2>
+		<img
+			[src]="
+				isSubscribed
+					? 'assets/icons/checkmark-circle.svg'
+					: 'assets/icons/circle-plus.svg'
+			"
+			(click)="changeSubscription()"
+			[alt]="isSubscribed ? 'Unsubscribe' : 'Subscribe'"
+			class="feed-overview_header_subscription-status"
+		/>
+	</div>
+	<app-card cardTitle="Newest Articles">
+		<div class="feed-overview_new-articles">
+			<app-article
+				*ngFor="
+					let article of feed.articles
+						| slice: 0:minNumber(feed.articles.length, 2)
+				"
+				[articleTitle]="article.title"
+				[articleDescription]="article.description"
+				[colorSeed]="getColorSeed(article)"
+				class="feed-article"
+				[routerLink]="'/article/' + article.id"
+			>
+			</app-article>
+		</div>
+	</app-card>
+	<app-card cardTitle="Articles">
+		<div class="feed-overview_new-feeds">
+			<app-article
+				*ngFor="let article of feed.articles | slice: 2:feed.articles.length"
+				[articleTitle]="article.title"
+				[articleDescription]="article.description"
+				[colorSeed]="getColorSeed(article)"
+				class="feed-article"
+				[routerLink]="'/article/' + article.id"
+			>
+			</app-article>
+		</div>
+	</app-card>
 </div>

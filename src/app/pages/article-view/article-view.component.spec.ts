@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ApolloModule } from 'apollo-angular';
 import { KeycloakAngularModule } from 'keycloak-angular';
-import { RouterTestingModule } from "@angular/router/testing";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ArticleViewComponent } from './article-view.component';
 
 describe('ArticleComponent', () => {
