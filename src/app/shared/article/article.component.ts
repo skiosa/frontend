@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
 	@Output() bookmarkedChange = new EventEmitter<boolean>();
 	color: string = DEFAULT_PASTEL_COLOR;
 
-	constructor(private readonly apollo: Apollo, private readonly keycloak: KeycloakService) {}
+	constructor(private readonly apollo: Apollo, private readonly keycloak: KeycloakService) { }
 
 	ngOnInit(): void {
 		this.color = generateRandomColor(this.colorSeed);
@@ -27,6 +27,12 @@ export class ArticleComponent implements OnInit {
 		this.articleDescription = shortenedText(this.articleDescription);
 	}
 
+	/**
+	 * @author Jonas Eppard
+	 * @summary Changes the bookmarked status of the article
+	 * @description Checks if user is logged in and if so, changes the bookmarked status of the article
+	 * @param {MouseEvent} event - The mouse event to stop propagation 
+	 */
 	toggleBookmark(event: MouseEvent): void {
 		event.stopPropagation();
 		this.keycloak.isLoggedIn().then((loggedIn) => {
