@@ -1,8 +1,8 @@
 body {
-  padding: 0;
-  margin: 0;
-  font-family: Ubuntu Mono, sans-serif;
-  background-color: var(--primary-background);
+	padding: 0;
+	margin: 0;
+	font-family: Ubuntu Mono, sans-serif;
+	background-color: var(--primary-background);
 }
 
 /*************************************/
@@ -10,56 +10,59 @@ body {
 /*************************************/
 
 :root {
-  /* Sizes */
-  --sidebar-width: 18rem;
-  --sidebar-height: 5rem;
+	/* Sizes */
+	--sidebar-width: 18rem;
+	--sidebar-height: 5rem;
 
-  /* Common Colors */
-  --primary-color: #22322a;
+	/* Common Colors */
+	--primary-color: #22322a;
 
-  --pastel-a-color: #5e81ac;
-  --pastel-b-color: #a3be8c;
-  --pastel-c-color: #b48ead;
-  --pastel-d-color: #d08770;
+	--secondary-font-color-40: #d4b3a7;
 
-  --sidebar-button-color: #000000;
-  --sidebar-settings-color: #d4b3a7;
+	--pastel-a-color: #5e81ac;
+	--pastel-b-color: #a3be8c;
+	--pastel-c-color: #b48ead;
+	--pastel-d-color: #d08770;
+
+	--sidebar-button-color: #000000;
+	--sidebar-settings-color: #d4b3a7;
 }
 
 /* Light Mode */
 @media (prefers-color-scheme: light) {
-  :root {
-    --primary-background: #ececec;
-    --secondary-background: #ffffff;
+	:root {
+		--primary-background: #ececec;
+		--secondary-background: #ffffff;
 
-    --primary-text-color: #000000;
-    --secondary-text-color: #909090;
-    --inverted-text-color: #ffffff;
+		--primary-text-color: #000000;
+		--secondary-text-color: #909090;
+		--inverted-text-color: #ffffff;
 
-    --article-card-color: #ececec;
+		--article-card-color: #ececec;
 
-    --secondary-subscription-background: #f6f6f6;
-  }
+		--secondary-subscription-background: #f6f6f6;
+	}
 }
 
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --primary-background: #131c18;
-    --secondary-background: #1f2b25;
+	:root {
+		--primary-background: #131c18;
+		--secondary-background: #1f2b25;
 
-    --primary-text-color: #eceff4;
-    --seconday-text-color: #cbcbcb;
-    --inverted-text-color: #000000;
+		--primary-text-color: #eceff4;
+		--seconday-text-color: #cbcbcb;
+		--inverted-text-color: #000000;
 
-    --article-card-color: #131c18;
+		--article-card-color: #131c18;
 
-    --secondary-subscription-background: #000000;
-  }
+		--secondary-subscription-background: #000000;
+	}
 
-  .reverseColor {
-    filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg) brightness(101%) contrast(91%);
-  }
+	.reverseColor {
+		filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg)
+			brightness(101%) contrast(91%);
+	}
 }
 
 /*************************************/
@@ -67,19 +70,19 @@ body {
 /*************************************/
 
 @font-face {
-  font-family: "Ubuntu Mono";
-  src: url("assets/fonts/UbuntuMono-R.ttf");
-  font-weight: normal;
+	font-family: "Ubuntu Mono";
+	src: url("assets/fonts/UbuntuMono-R.ttf");
+	font-weight: normal;
 }
 
 @font-face {
-  font-family: "Ubuntu Mono";
-  src: url("assets/fonts/UbuntuMono-B.ttf");
-  font-weight: bold;
+	font-family: "Ubuntu Mono";
+	src: url("assets/fonts/UbuntuMono-B.ttf");
+	font-weight: bold;
 }
 
 @font-face {
-  font-family: "OfWildflowersAndWings";
-  src: url("assets/fonts/OfWildflowersandWings.ttf");
-  font-weight: bold;
+	font-family: "OfWildflowersAndWings";
+	src: url("assets/fonts/OfWildflowersandWings.ttf");
+	font-weight: bold;
 }

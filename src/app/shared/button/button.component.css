@@ -1,8 +1,8 @@
 .button {
-    font-size: 20px;
-    text-align: center;
-    text-transform: uppercase;
-    background-color: var(--secondary-background);
-    width: 300px;
-    padding: 16px 0;
+	font-size: 20px;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: var(--secondary-background);
+	width: 300px;
+	padding: 16px 0;
 }

@@ -1,8 +1,8 @@
-import { BOOKMARKS_QUERY_RESPONSE } from "../core/queries/bookmarks";
-import { GENERAL_FEED_QUERY_RESPONCE } from "../core/queries/feeds";
-import { GENERAL_RECOMMENDATION_QUERY_RESULT } from "../core/queries/recommendation";
-import { SINGLE_ARTICLE_QUERY_RESPONSE } from "../core/queries/singleArticle";
-import { SUBSCRIPTION_QUERY_RESPONSE } from "../core/queries/subscription";
+import { BOOKMARKS_QUERY_RESPONSE } from '../core/queries/bookmarks';
+import { GENERAL_FEED_QUERY_RESPONCE } from '../core/queries/feeds';
+import { GENERAL_RECOMMENDATION_QUERY_RESULT } from '../core/queries/recommendation';
+import { SINGLE_ARTICLE_QUERY_RESPONSE } from '../core/queries/singleArticle';
+import { SUBSCRIPTION_QUERY_RESPONSE } from '../core/queries/subscription';
 
 export const DEFAULT_PASTEL_COLOR = 'var(--pastel-a-color)';
 /**
@@ -12,18 +12,18 @@ export const DEFAULT_PASTEL_COLOR = 'var(--pastel-a-color)';
  * @returns {string} css color
  */
 export function generateRandomColor(colorSeed: number): string {
-  switch (colorSeed % 4) {
-    case 0:
-      return 'var(--pastel-a-color)';
-    case 1:
-      return 'var(--pastel-b-color)';
-    case 2:
-      return 'var(--pastel-c-color)';
-    case 3:
-      return 'var(--pastel-d-color)';
-    default:
-      return DEFAULT_PASTEL_COLOR;
-  }
+	switch (colorSeed % 4) {
+		case 0:
+			return 'var(--pastel-a-color)';
+		case 1:
+			return 'var(--pastel-b-color)';
+		case 2:
+			return 'var(--pastel-c-color)';
+		case 3:
+			return 'var(--pastel-d-color)';
+		default:
+			return DEFAULT_PASTEL_COLOR;
+	}
 }
 
 /**
@@ -34,13 +34,15 @@ export function generateRandomColor(colorSeed: number): string {
  * @returns {number} - Seed for color
  */
 export function getColorSeedFromArticle(
-  article: BOOKMARKS_QUERY_RESPONSE["bookmarks"][0]
-    | SINGLE_ARTICLE_QUERY_RESPONSE["similarArticles"][0]
-    | GENERAL_FEED_QUERY_RESPONCE["feed"]["articles"][0]
-    | SUBSCRIPTION_QUERY_RESPONSE["subscriptions"][0]["articles"][0]
-    | GENERAL_RECOMMENDATION_QUERY_RESULT["recommendedArticles"][0]): number {
-  if (article.categories) {
-    return article.categories[0].id;
-  }
-  return article.id;
+	article:
+		| BOOKMARKS_QUERY_RESPONSE['bookmarks'][0]
+		| SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]
+		| GENERAL_FEED_QUERY_RESPONCE['feed']['articles'][0]
+		| SUBSCRIPTION_QUERY_RESPONSE['subscriptions'][0]['articles'][0]
+		| GENERAL_RECOMMENDATION_QUERY_RESULT['recommendedArticles'][0]
+): number {
+	if (article.categories) {
+		return article.categories[0].id;
+	}
+	return article.id;
 }

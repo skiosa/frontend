@@ -1,26 +1,25 @@
 .card-container {
-    background-color: var(--secondary-background);
-    padding: 0.8rem;
-    margin: 0.5rem;
-    border-radius: 1rem;
-    color: var(--primary-text-color);
+	background-color: var(--secondary-background);
+	padding: 0.8rem;
+	margin: 0.5rem;
+	border-radius: 1rem;
+	color: var(--primary-text-color);
 }
 
 .card-title {
-    margin: 0;
-    padding: 0;
-    font-size: 24px;
+	margin: 0;
+	padding: 0;
+	font-size: 24px;
 }
 
 @media screen and (min-width: 768px) {
-    .card-container {
-        padding: 1rem;
-        margin: 1rem 3rem;
-        border-radius: 1rem;
-    }
+	.card-container {
+		padding: 1rem;
+		margin: 1rem 3rem;
+		border-radius: 1rem;
+	}
 
-    .card-title {
-        font-size: 36px;
-    }
-
+	.card-title {
+		font-size: 36px;
+	}
 }

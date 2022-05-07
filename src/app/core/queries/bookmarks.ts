@@ -2,25 +2,33 @@ import { gql } from 'apollo-angular';
 import { PaginationArg } from 'src/app/models/paginationArg.model';
 
 export type BOOKMARKS_QUERY_RESPONSE = {
-  bookmarks: {
-    id: number,
-    title: string,
-    description: string,
-    url: string,
-    categories: { id: number }[],
-  }[]
-}
+	bookmarks: {
+		id: number;
+		title: string;
+		description: string;
+		url: string;
+		categories: { id: number }[];
+		bookmarkStatus: boolean;
+	}[];
+};
 
 export const BOOKMARKS_QUERY = gql<BOOKMARKS_QUERY_RESPONSE, { PaginationArg: PaginationArg }>`
-  query bookmarks($PaginationArg: PaginationArg!) {
-    bookmarks(PaginationArg: $PaginationArg) {
-        id
-        title
-        description
-        url
-        categories {
-          id
-        }
-    }
-  }
+	query bookmarks($PaginationArg: PaginationArg!) {
+		bookmarks(PaginationArg: $PaginationArg) {
+			id
+			title
+			description
+			url
+			categories {
+				id
+			}
+			bookmarkStatus
+		}
+	}
+`;
+
+export const CHANGE_BOOKMARK_MUTATION = gql<{ changeBookmark: boolean }, { isBookmarked: boolean; articleId: number }>`
+	mutation ChangeBookmark($isBookmarked: Boolean!, $articleId: Float!) {
+		changeBookmark(isBookmarked: $isBookmarked, articleId: $articleId)
+	}
 `;

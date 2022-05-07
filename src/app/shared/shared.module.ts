@@ -9,8 +9,24 @@ import { NavButtonComponent } from './nav-button/nav-button.component';
 import { ButtonComponent } from './button/button.component';
 
 @NgModule({
-  declarations: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent, NavButtonComponent, ButtonComponent, IconButtonComponent],
-  imports: [CommonModule],
-  exports: [CardComponent, ArticleComponent, FeedComponent, SubscriptionFeedComponent, NavButtonComponent, ButtonComponent, IconButtonComponent],
+	declarations: [
+		CardComponent,
+		ArticleComponent,
+		FeedComponent,
+		SubscriptionFeedComponent,
+		NavButtonComponent,
+		ButtonComponent,
+		IconButtonComponent,
+	],
+	imports: [CommonModule],
+	exports: [
+		CardComponent,
+		ArticleComponent,
+		FeedComponent,
+		SubscriptionFeedComponent,
+		NavButtonComponent,
+		ButtonComponent,
+		IconButtonComponent,
+	],
 })
-export class SharedModule { }
+export class SharedModule {}

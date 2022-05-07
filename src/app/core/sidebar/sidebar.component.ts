@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-	navigationIsOpen = false
+	navigationIsOpen = false;
 
 	/**
 	 * @author Simon Morgenstern
@@ -15,5 +15,4 @@ export class SidebarComponent {
 	toggleNavigation() {
 		this.navigationIsOpen = !this.navigationIsOpen;
 	}
-
 }
