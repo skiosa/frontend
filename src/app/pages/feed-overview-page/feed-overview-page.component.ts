@@ -53,7 +53,6 @@ export class FeedOverviewPageComponent implements OnInit {
 			})
 			.valueChanges.subscribe((data) => {
 				this.feed = JSON.parse(JSON.stringify(data.data.feed));
-				console.log(this.feed);
 				this.sortArticlesOfFeed();
 			});
 
@@ -90,7 +89,6 @@ export class FeedOverviewPageComponent implements OnInit {
 					},
 				})
 				.subscribe((data) => {
-					console.log(data.data?.changeSubscription);
 					this.isSubscribed = data.data?.changeSubscription ?? this.isSubscribed;
 				});
 		});
@@ -102,7 +100,7 @@ export class FeedOverviewPageComponent implements OnInit {
 	 * @description sorts articles of feed (from component)
 	 */
 	sortArticlesOfFeed(): void {
-		this.feed.articles = this.feed.articles.sort((a, b) => {
+		this.feed.articles.sort((a, b) => {
 			return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
 		});
 	}

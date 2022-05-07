@@ -32,17 +32,18 @@
 }
 
 .article_icon {
-	margin-left: 0.5rem;
+	margin-left: auto;
+	padding-left: 0.5rem;
 	margin-right: 0.5rem;
 	width: 1.5rem;
 	flex-shrink: 0;
 	padding-top: 1.5rem;
+	justify-self: flex-end;
 }
 
 .article_icon_bookmark {
 	width: 100%;
-	filter: invert(74%) sepia(9%) saturate(659%) hue-rotate(330deg)
-		brightness(99%) contrast(91%);
+	filter: invert(74%) sepia(9%) saturate(659%) hue-rotate(330deg) brightness(99%) contrast(91%);
 }
 
 .article_description {

@@ -17,12 +17,12 @@ body {
 	/* Common Colors */
 	--primary-color: #22322a;
 
-	--secondary-font-color-40: #d4b3a7;
-
 	--pastel-a-color: #5e81ac;
 	--pastel-b-color: #a3be8c;
 	--pastel-c-color: #b48ead;
 	--pastel-d-color: #d08770;
+
+	--button-text-color: #000000;
 
 	--sidebar-button-color: #000000;
 	--sidebar-settings-color: #d4b3a7;
@@ -37,6 +37,8 @@ body {
 		--primary-text-color: #000000;
 		--secondary-text-color: #909090;
 		--inverted-text-color: #ffffff;
+
+		--button-color: #ececec;
 
 		--article-card-color: #ececec;
 
@@ -53,6 +55,8 @@ body {
 		--primary-text-color: #eceff4;
 		--seconday-text-color: #cbcbcb;
 		--inverted-text-color: #000000;
+
+		--button-color: #cccccc;
 
 		--article-card-color: #131c18;
 

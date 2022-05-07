@@ -14,7 +14,7 @@ describe('ArticleComponent', () => {
 			providers: [
 				{ provide: Apollo, useValue: {} },
 				{ provide: KeycloakService, useValue: {} },
-			]
+			],
 		}).compileComponents();
 	});
 

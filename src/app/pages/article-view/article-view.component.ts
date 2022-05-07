@@ -29,7 +29,7 @@ export class ArticleViewComponent implements OnInit {
 		private apollo: Apollo,
 		private router: Router,
 		private readonly keycloak: KeycloakService
-	) { }
+	) {}
 
 	ngOnInit() {
 		const articleId = this.route.snapshot.paramMap.get('articleId');
@@ -78,7 +78,7 @@ export class ArticleViewComponent implements OnInit {
 	 * @author Jonas Eppard
 	 * @summary Changes the bookmarked status of the article
 	 * @description Checks if user is logged in and if so, changes the bookmarked status of the article
-	 * @param {MouseEvent} event - The mouse event to stop propagation 
+	 * @param {MouseEvent} event - The mouse event to stop propagation
 	 */
 	toggleBookmark(event: MouseEvent): void {
 		event.stopPropagation();
