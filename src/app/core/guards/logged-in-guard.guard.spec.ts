@@ -5,16 +5,16 @@ import { KeycloakAngularModule } from 'keycloak-angular';
 import { LoggedInGuard } from './logged-in-guard.guard';
 
 describe('LoggedInGuardGuard', () => {
-  let guard: LoggedInGuard;
+	let guard: LoggedInGuard;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [KeycloakAngularModule, HttpClientModule]
-    });
-    guard = TestBed.inject(LoggedInGuard);
-  });
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			imports: [KeycloakAngularModule, HttpClientModule],
+		});
+		guard = TestBed.inject(LoggedInGuard);
+	});
 
-  it('should be created', () => {
-    expect(guard).toBeTruthy();
-  });
+	it('should be created', () => {
+		expect(guard).toBeTruthy();
+	});
 });
