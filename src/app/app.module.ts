@@ -11,7 +11,7 @@ import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { GraphQLModule } from './graphql.module';
 import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { SubscriptionComponent } from './pages/subscription/subscription.component';
+import { SubscriptionComponent } from './pages/subscription-page/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 import { ArticleViewComponent } from './pages/article-view/article-view.component';
 import { SharedModule } from './shared/shared.module';
@@ -39,7 +39,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
 		SidebarComponent,
 		FooterComponent,
 		NotFoundComponent,
-		SubscriptionComponent,
 		WelcomePageComponent,
 		FeedOverviewPageComponent,
 		ArticleViewComponent,

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
+import { filter } from 'rxjs';
 import { SUBSCRIPTION_QUERY, SUBSCRIPTION_QUERY_RESPONSE } from 'src/app/core/queries/subscription';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
@@ -12,16 +14,10 @@ export class SubscriptionComponent implements OnInit {
 	subscriptions: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'] = [];
 	visibleSubscriptions: Set<number> = new Set();
 
-	constructor(private apollo: Apollo) {}
+	constructor(private apollo: Apollo, private router: Router) {}
 
 	ngOnInit(): void {
-		this.apollo
-			.watchQuery<SUBSCRIPTION_QUERY_RESPONSE>({
-				query: SUBSCRIPTION_QUERY,
-			})
-			.valueChanges.subscribe(({ data }) => {
-				this.subscriptions = data.subscriptions;
-			});
+		this.fetchSubscriptions()
 	}
 
 	/**
@@ -49,6 +45,20 @@ export class SubscriptionComponent implements OnInit {
 			this.visibleSubscriptions.delete(feedId);
 		};
 	};
+
+	/**
+	 * @author Amos Gross
+	 * @summary fetches subscriptions
+	 * @description loads subscription data from graphql
+	 */
+	fetchSubscriptions = () => {
+		this.apollo.watchQuery<SUBSCRIPTION_QUERY_RESPONSE>({
+			query: SUBSCRIPTION_QUERY,
+			fetchPolicy: 'network-only'
+		}).valueChanges.subscribe(({ data }) => {
+			this.subscriptions = data.subscriptions;
+		});
+	}
 
 	getColorSeed(article: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'][0]['articles'][0]): number {
 		return getColorSeedFromArticle(article);
