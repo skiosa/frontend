@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { BOOKMARKS_QUERY, BOOKMARKS_QUERY_RESPONSE } from 'src/app/core/queries/bookmarks';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
