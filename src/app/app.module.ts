@@ -9,13 +9,12 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { GraphQLModule } from './graphql.module';
+import { ArticleViewComponent } from './pages/article-view/article-view.component';
+import { BookmarkComponent } from './pages/bookmark/bookmark.component';
 import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { SubscriptionComponent } from './pages/subscription-page/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
-import { ArticleViewComponent } from './pages/article-view/article-view.component';
 import { SharedModule } from './shared/shared.module';
-import { BookmarkComponent } from './pages/bookmark/bookmark.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
