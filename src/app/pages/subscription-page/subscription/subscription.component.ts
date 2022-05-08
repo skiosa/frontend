@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { filter } from 'rxjs';
 import { SUBSCRIPTION_QUERY, SUBSCRIPTION_QUERY_RESPONSE } from 'src/app/core/queries/subscription';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
@@ -14,10 +12,10 @@ export class SubscriptionComponent implements OnInit {
 	subscriptions: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'] = [];
 	visibleSubscriptions: Set<number> = new Set();
 
-	constructor(private apollo: Apollo, private router: Router) {}
+	constructor(private apollo: Apollo) { }
 
 	ngOnInit(): void {
-		this.fetchSubscriptions()
+		this.fetchSubscriptions();
 	}
 
 	/**
