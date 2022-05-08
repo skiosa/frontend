@@ -16,7 +16,10 @@ export type SINGLE_ARTICLE_QUERY_RESPONSE = {
 	}[];
 };
 
-export const SINGLE_ARTICLE_QUERY = gql<SINGLE_ARTICLE_QUERY_RESPONSE, { articleId: number, PaginationArg: PaginationArg }>`
+export const SINGLE_ARTICLE_QUERY = gql<
+	SINGLE_ARTICLE_QUERY_RESPONSE,
+	{ articleId: number; PaginationArg: PaginationArg }
+>`
 	query ExampleQuery($articleId: Float!, $PaginationArg: PaginationArg!) {
 		article(id: $articleId) {
 			title

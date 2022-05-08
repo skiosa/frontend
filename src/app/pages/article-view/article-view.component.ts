@@ -22,7 +22,7 @@ export class ArticleViewComponent implements OnInit {
 	private skip = 0;
 	private take = 10;
 
-	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
+	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {}
 
 	ngOnInit() {
 		this.route.params.subscribe((params) => {

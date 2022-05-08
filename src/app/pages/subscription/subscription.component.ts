@@ -14,7 +14,7 @@ export class SubscriptionComponent implements OnInit {
 	private skip = 0;
 	private take = 10;
 
-	constructor(private apollo: Apollo) { }
+	constructor(private apollo: Apollo) {}
 
 	ngOnInit(): void {
 		this.apollo
