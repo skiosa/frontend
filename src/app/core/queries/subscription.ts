@@ -21,8 +21,8 @@ export type SUBSCRIPTION_QUERY_RESPONSE = {
 	}[];
 };
 
-export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationArg: PaginationArg }>`
-	query subscriptions($PaginationArg: PaginationArg!) {
+export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationArg: PaginationArg, DESC: Boolean}>`
+	query subscriptions($PaginationArg: PaginationArg!, $DESC: Boolean) {
 		subscriptions {
 			id
 			name
@@ -30,7 +30,7 @@ export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationA
 			ttl
 			description
 			lastPolledAt
-			articles(PaginationArg: $PaginationArg) {
+			articles(PaginationArg: $PaginationArg, DESC: $DESC) {
 				id
 				title
 				description
