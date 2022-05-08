@@ -17,7 +17,7 @@ export type GENERAL_FEED_QUERY_RESPONCE = {
 		}[];
 	};
 };
-export const GENERAL_FEED_QUERY = gql<GENERAL_FEED_QUERY_RESPONCE, { feedId: number, Desc: Boolean }>`
+export const GENERAL_FEED_QUERY = gql<GENERAL_FEED_QUERY_RESPONCE, { feedId: number, Desc: boolean }>`
 	query GENERAL_FEED_QUERY($feedId: Float!, $Desc: Boolean) {
 		feed(id: $feedId) {
 			id
