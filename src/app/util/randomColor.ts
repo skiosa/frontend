@@ -28,9 +28,8 @@ export function generateRandomColor(colorSeed: number): string {
  * @returns {number} - Seed for color
  */
 export function getColorSeedFromArticle(article: { categories?: { id: number }[]; id: number }): number {
-	// Can be Reenabled as soon as we poll categories
-	// if (article.categories && article.categories.length > 0) {
-	// 	return article.categories[0].id;
-	// }
+	if (article.categories && article.categories.length > 0) {
+		return article.categories[0].id;
+	}
 	return article.id;
 }
