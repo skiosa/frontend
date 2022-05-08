@@ -25,7 +25,7 @@ export class SubscriptionComponent implements OnInit {
 						skip: this.skip,
 						take: this.take,
 					},
-					DESC: true,
+					Desc: true,
 				},
 			})
 			.valueChanges.subscribe(({ data }) => {
