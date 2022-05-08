@@ -1,4 +1,5 @@
 import { gql } from 'apollo-angular';
+import { PaginationArg } from 'src/app/models/paginationArg.model';
 
 export type SINGLE_ARTICLE_QUERY_RESPONSE = {
 	article: {
@@ -15,8 +16,8 @@ export type SINGLE_ARTICLE_QUERY_RESPONSE = {
 	}[];
 };
 
-export const SINGLE_ARTICLE_QUERY = gql<SINGLE_ARTICLE_QUERY_RESPONSE, { articleId: number }>`
-	query ExampleQuery($articleId: Float!) {
+export const SINGLE_ARTICLE_QUERY = gql<SINGLE_ARTICLE_QUERY_RESPONSE, { articleId: number, PaginationArg: PaginationArg }>`
+	query ExampleQuery($articleId: Float!, $PaginationArg: PaginationArg!) {
 		article(id: $articleId) {
 			title
 			description
@@ -25,7 +26,7 @@ export const SINGLE_ARTICLE_QUERY = gql<SINGLE_ARTICLE_QUERY_RESPONSE, { article
 				id
 			}
 		}
-		similarArticles(articleId: $articleId) {
+		similarArticles(articleId: $articleId, PaginationArg: $PaginationArg) {
 			id
 			title
 			categories {

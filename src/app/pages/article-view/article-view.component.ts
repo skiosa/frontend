@@ -19,8 +19,10 @@ export class ArticleViewComponent implements OnInit {
 		},
 	};
 	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
+	private skip = 0;
+	private take = 10;
 
-	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {}
+	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
 
 	ngOnInit() {
 		this.route.params.subscribe((params) => {
@@ -47,6 +49,10 @@ export class ArticleViewComponent implements OnInit {
 				query: SINGLE_ARTICLE_QUERY,
 				variables: {
 					articleId: id,
+					PaginationArg: {
+						skip: this.skip,
+						take: this.take,
+					},
 				},
 			})
 			.valueChanges.subscribe(({ data }) => {
