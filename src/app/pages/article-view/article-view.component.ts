@@ -20,10 +20,10 @@ export class ArticleViewComponent implements OnInit {
 	};
 	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
 
-	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
+	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {}
 
 	ngOnInit() {
-		this.route.params.subscribe(params => {
+		this.route.params.subscribe((params) => {
 			const articleId: string = params['articleId'];
 
 			if (!articleId || isNaN(+articleId)) {

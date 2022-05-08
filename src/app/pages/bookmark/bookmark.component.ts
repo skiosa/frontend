@@ -10,7 +10,7 @@ import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 	styleUrls: ['./bookmark.component.css'],
 })
 export class BookmarkComponent implements OnInit {
-	constructor(private apollo: Apollo) { }
+	constructor(private apollo: Apollo) {}
 
 	public bookmarks: BOOKMARKS_QUERY_RESPONSE['bookmarks'] = [];
 	private skip = 0;

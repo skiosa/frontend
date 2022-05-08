@@ -9,7 +9,7 @@ import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 	styleUrls: ['./welcome-page.component.css'],
 })
 export class WelcomePageComponent implements OnInit {
-	constructor(private apollo: Apollo) { }
+	constructor(private apollo: Apollo) {}
 
 	public recommendedArticles: GENERAL_RECOMMENDATION_QUERY_RESULT['recommendedArticles'] = [];
 	private seed: number = Math.random();
