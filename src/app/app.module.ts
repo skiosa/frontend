@@ -5,8 +5,6 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './core/footer/footer.component';
-import { HeaderComponent } from './core/header/header.component';
 import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { GraphQLModule } from './graphql.module';
 import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
@@ -35,9 +33,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 @NgModule({
 	declarations: [
 		AppComponent,
-		HeaderComponent,
 		SidebarComponent,
-		FooterComponent,
 		NotFoundComponent,
 		SubscriptionComponent,
 		WelcomePageComponent,
