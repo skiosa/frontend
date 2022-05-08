@@ -1,4 +1,5 @@
 import { gql } from 'apollo-angular';
+import { PaginationArg } from 'src/app/models/paginationArg.model';
 
 export type SUBSCRIPTION_QUERY_RESPONSE = {
 	subscriptions: {
@@ -20,8 +21,8 @@ export type SUBSCRIPTION_QUERY_RESPONSE = {
 	}[];
 };
 
-export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, {}>`
-	query subscriptions {
+export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationArg: PaginationArg }>`
+	query subscriptions($PaginationArg: PaginationArg!) {
 		subscriptions {
 			id
 			name
@@ -29,7 +30,7 @@ export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, {}>`
 			ttl
 			description
 			lastPolledAt
-			articles {
+			articles(PaginationArg: $PaginationArg) {
 				id
 				title
 				description
