@@ -24,7 +24,7 @@ export class ArticleViewComponent implements OnInit {
 
 	ngOnInit() {
 		this.route.params.subscribe(params => {
-			const articleId = params['articleId'];
+			const articleId: string = params['articleId'];
 
 			if (!articleId || isNaN(+articleId)) {
 				throw new Error('Invalid article id');

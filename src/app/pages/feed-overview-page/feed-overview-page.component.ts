@@ -18,7 +18,7 @@ export class FeedOverviewPageComponent implements OnInit {
 		private route: ActivatedRoute,
 		private router: Router,
 		private readonly keycloak: KeycloakService
-	) {}
+	) { }
 
 	public feed: GENERAL_FEED_QUERY_RESPONCE['feed'] = {
 		id: -1,
@@ -37,13 +37,21 @@ export class FeedOverviewPageComponent implements OnInit {
 	 * @description initializes newest articles, subscription status and all other articles of feed from graphql
 	 */
 	ngOnInit(): void {
-		const idString = this.route.snapshot.paramMap.get('feedId');
-		if (!idString || isNaN(+idString)) {
-			this.router.navigate(['/404'], { skipLocationChange: true });
-			return;
-		}
-		this.feedID = +idString;
-		this.color = generateRandomColor(this.feedID);
+		this.route.params.subscribe((params) => {
+			const idString = params['feedId'];
+
+			if (!idString || isNaN(+idString)) {
+				this.router.navigate(['/404'], { skipLocationChange: true });
+				return;
+			}
+
+			this.feedID = +idString;
+			this.color = generateRandomColor(this.feedID);
+			this.loadFeed();
+		});
+	}
+
+	loadFeed() {
 		this.apollo
 			.watchQuery({
 				query: GENERAL_FEED_QUERY,
