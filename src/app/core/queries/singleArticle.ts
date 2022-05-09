@@ -21,6 +21,7 @@ export type SINGLE_ARTICLE_QUERY_RESPONSE = {
  * @summary query for a single article
  * @description query to fetch an article
  * @param {PaginationArg} paginationArg -  Pagination to limit/paginate the similarArticles of an article
+ * @param {number} articleId -  articleId of the article to fetch
  * @returns {SINGLE_ARTICLE_QUERY_RESPONSE} - Single Article with similar Articles
  */
 export const SINGLE_ARTICLE_QUERY = gql<
