@@ -17,6 +17,15 @@ export type GENERAL_FEED_QUERY_RESPONCE = {
 		}[];
 	};
 };
+
+/**
+ * @author Marcel Alex, Lukas Huida
+ * @summary query for feeds
+ * @description query to a feed and its articles
+ * @param {PaginationArg} paginationArg -  Pagination to limit/paginate the articles of an feed
+ * @param {boolean} desc - Descending order of articles by the publishedAt Date 
+ * @returns {GENERAL_FEED_QUERY_RESPONCE} - Feed which contains the articles of the feed and the feed itself
+ */
 export const GENERAL_FEED_QUERY = gql<GENERAL_FEED_QUERY_RESPONCE, { feedId: number; desc: boolean }>`
 	query GENERAL_FEED_QUERY($feedId: Float!, $desc: Boolean) {
 		feed(id: $feedId) {
