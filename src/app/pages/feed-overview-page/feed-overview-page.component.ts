@@ -57,11 +57,11 @@ export class FeedOverviewPageComponent implements OnInit {
 				query: GENERAL_FEED_QUERY,
 				variables: {
 					feedId: this.feedID,
+					desc: true,
 				},
 			})
 			.valueChanges.subscribe((data) => {
 				this.feed = JSON.parse(JSON.stringify(data.data.feed));
-				this.sortArticlesOfFeed();
 			});
 
 		this.keycloak.isLoggedIn().then((isLoggedIn) => {
@@ -101,18 +101,6 @@ export class FeedOverviewPageComponent implements OnInit {
 				});
 		});
 	}
-
-	/**
-	 * @author Marcel Alex, Jonas Eppard, Lukas Huida, Tim Horlacher, Amos Gross
-	 * @summary sorts articles
-	 * @description sorts articles of feed (from component)
-	 */
-	sortArticlesOfFeed(): void {
-		this.feed.articles.sort((a, b) => {
-			return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-		});
-	}
-
 	/**
 	 * @author Marcel Alex, Jonas Eppard, Lukas Huida, Tim Horlacher, Amos Gross
 	 * @summary returns smaller number
