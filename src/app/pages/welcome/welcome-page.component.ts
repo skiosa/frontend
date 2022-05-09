@@ -20,6 +20,7 @@ export class WelcomePageComponent implements OnInit {
 		this.apollo
 			.watchQuery<GENERAL_RECOMMENDATION_QUERY_RESULT>({
 				query: GENERAL_RECOMMENDATION_QUERY,
+				nextFetchPolicy: 'network-only',
 				variables: {
 					seed: this.seed,
 					PaginationArg: {

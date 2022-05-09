@@ -16,9 +16,14 @@ export class BookmarkComponent implements OnInit {
 	private take = 10;
 
 	ngOnInit(): void {
+		this.loadBookmarks();
+	}
+
+	loadBookmarks() {
 		this.apollo
 			.watchQuery<BOOKMARKS_QUERY_RESPONSE>({
 				query: BOOKMARKS_QUERY,
+				fetchPolicy: 'network-only',
 				variables: {
 					PaginationArg: {
 						skip: this.skip,

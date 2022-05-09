@@ -37,23 +37,31 @@ export class FeedOverviewPageComponent implements OnInit {
 	 * @description initializes newest articles, subscription status and all other articles of feed from graphql
 	 */
 	ngOnInit(): void {
-		const idString = this.route.snapshot.paramMap.get('feedId');
-		if (!idString || isNaN(+idString)) {
-			this.router.navigate(['/404'], { skipLocationChange: true });
-			return;
-		}
-		this.feedID = +idString;
-		this.color = generateRandomColor(this.feedID);
+		this.route.params.subscribe((params) => {
+			const idString = params['feedId'];
+
+			if (!idString || isNaN(+idString)) {
+				this.router.navigate(['/404'], { skipLocationChange: true });
+				return;
+			}
+
+			this.feedID = +idString;
+			this.color = generateRandomColor(this.feedID);
+			this.loadFeed();
+		});
+	}
+
+	loadFeed() {
 		this.apollo
 			.watchQuery({
 				query: GENERAL_FEED_QUERY,
 				variables: {
 					feedId: this.feedID,
+					desc: true,
 				},
 			})
 			.valueChanges.subscribe((data) => {
 				this.feed = JSON.parse(JSON.stringify(data.data.feed));
-				this.sortArticlesOfFeed();
 			});
 
 		this.keycloak.isLoggedIn().then((isLoggedIn) => {
@@ -93,18 +101,6 @@ export class FeedOverviewPageComponent implements OnInit {
 				});
 		});
 	}
-
-	/**
-	 * @author Marcel Alex, Jonas Eppard, Lukas Huida, Tim Horlacher, Amos Gross
-	 * @summary sorts articles
-	 * @description sorts articles of feed (from component)
-	 */
-	sortArticlesOfFeed(): void {
-		this.feed.articles.sort((a, b) => {
-			return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
-		});
-	}
-
 	/**
 	 * @author Marcel Alex, Jonas Eppard, Lukas Huida, Tim Horlacher, Amos Gross
 	 * @summary returns smaller number

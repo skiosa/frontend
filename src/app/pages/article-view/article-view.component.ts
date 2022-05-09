@@ -23,21 +23,27 @@ export class ArticleViewComponent implements OnInit {
 		bookmarkStatus: false,
 	};
 	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
+	private skip = 0;
+	private take = 10;
 
 	constructor(
 		private route: ActivatedRoute,
 		private apollo: Apollo,
 		private router: Router,
 		private readonly keycloak: KeycloakService
-	) {}
+	) { }
 
 	ngOnInit() {
-		const articleId = this.route.snapshot.paramMap.get('articleId');
-		if (!articleId || isNaN(+articleId)) {
-			throw new Error('Invalid article id');
-		}
-		const id = parseInt(articleId, 10);
-		this.loadArticle(id);
+		this.route.params.subscribe((params) => {
+			const articleId: string = params['articleId'];
+
+			if (!articleId || isNaN(+articleId)) {
+				throw new Error('Invalid article id');
+			}
+
+			const id = parseInt(articleId, 10);
+			this.loadArticle(id);
+		});
 	}
 
 	/**
@@ -52,6 +58,10 @@ export class ArticleViewComponent implements OnInit {
 				query: SINGLE_ARTICLE_QUERY,
 				variables: {
 					articleId: id,
+					PaginationArg: {
+						skip: this.skip,
+						take: this.take,
+					},
 				},
 			})
 			.valueChanges.subscribe(({ data }) => {
@@ -98,6 +108,11 @@ export class ArticleViewComponent implements OnInit {
 			}
 		});
 	}
+
+	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]): number {
+		return getColorSeedFromArticle(article);
+	}
+
 	/**
 	 * @author Amos Gross
 	 * @summary Copy current link to clipboard
