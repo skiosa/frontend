@@ -11,6 +11,8 @@ import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 export class SubscriptionComponent implements OnInit {
 	subscriptions: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'] = [];
 	visibleSubscriptions: Set<number> = new Set();
+	private skip = 0;
+	private take = 10;
 
 	constructor(private apollo: Apollo) { }
 
@@ -52,7 +54,14 @@ export class SubscriptionComponent implements OnInit {
 	fetchSubscriptions = () => {
 		this.apollo.watchQuery<SUBSCRIPTION_QUERY_RESPONSE>({
 			query: SUBSCRIPTION_QUERY,
-			fetchPolicy: 'network-only'
+			fetchPolicy: 'network-only',
+			variables: {
+				PaginationArg: {
+					skip: this.skip,
+					take: this.take,
+				},
+				desc: true,
+			},
 		}).valueChanges.subscribe(({ data }) => {
 			this.subscriptions = data.subscriptions;
 		});
