@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
+import { KeycloakService } from 'keycloak-angular';
+import { GENERAL_ARTIKLE_LIKE_MUTATION } from 'src/app/core/mutations/likes';
 import { SINGLE_ARTICLE_QUERY, SINGLE_ARTICLE_QUERY_RESPONSE } from 'src/app/core/queries/singleArticle';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
@@ -11,16 +13,26 @@ import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 })
 export class ArticleViewComponent implements OnInit {
 	public article: SINGLE_ARTICLE_QUERY_RESPONSE['article'] = {
+		id: 0,
 		title: 'Loading...',
 		description: 'Loading...',
 		url: '',
 		feed: {
 			id: -1,
 		},
+		likeStatus: false,
 	};
+
+	public likeStatus: boolean = false;
+
 	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
 
-	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {}
+	constructor(
+		private route: ActivatedRoute,
+		private apollo: Apollo,
+		private router: Router,
+		private readonly keycloak: KeycloakService
+	) {}
 
 	ngOnInit() {
 		const articleId = this.route.snapshot.paramMap.get('articleId');
@@ -48,6 +60,7 @@ export class ArticleViewComponent implements OnInit {
 			.valueChanges.subscribe(({ data }) => {
 				this.article = data.article;
 				this.recommendedArticles = data.similarArticles;
+				this.likeStatus = data.article.likeStatus;
 			});
 	}
 
@@ -63,11 +76,41 @@ export class ArticleViewComponent implements OnInit {
 	}
 
 	/**
+	 * @author Marcel Alex
+	 * @summary Changes the Like status of the article
+	 * @description Checks if user is logged in and if so, changes the Like status of the article
+	 * @param {MouseEvent} event - The mouse event to stop propagation
+	 */
+
+	public changeLikeStatus(event: MouseEvent): void {
+		event.stopPropagation();
+		this.keycloak.isLoggedIn().then((isLoggedIn) => {
+			if (!isLoggedIn) {
+				this.keycloak.login();
+			}
+			this.apollo
+				.mutate({
+					mutation: GENERAL_ARTIKLE_LIKE_MUTATION,
+					variables: {
+						articleId: this.article.id,
+						isLiked: !this.likeStatus,
+					},
+				})
+				.subscribe((data) => {
+					this.likeStatus = data.data?.changeLike ?? this.likeStatus;
+				});
+		});
+	}
+
+	/**
 	 * @author Amos Gross
 	 * @summary Copy current link to clipboard
 	 * @description Copies article link to clipboard
 	 */
 	copyLinkToClipboard() {
 		navigator.clipboard.writeText(this.router.url);
+	}
+	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]): number {
+		return getColorSeedFromArticle(article);
 	}
 }

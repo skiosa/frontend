@@ -4,4 +4,12 @@
 		<p class="article-text article-title">{{ articleTitle }}</p>
 		<p class="article-text article-description">{{ articleDescription }}</p>
 	</div>
+	<div class="article_icon">
+		<img
+			[src]="'assets/icons/heart' + (likeStatus ? 'red' : '') + '.svg'"
+			class="article-icon-like"
+			alt="Like"
+			(click)="changeLikeStatus($event)"
+		/>
+	</div>
 </div>
