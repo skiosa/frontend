@@ -60,10 +60,6 @@ export class ArticleViewComponent implements OnInit {
 			});
 	}
 
-	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]): number {
-		return getColorSeedFromArticle(article);
-	}
-
 	redirectToArticleId(id: number) {
 		this.router.navigate(['/article', id]);
 		this.loadArticle(id);
@@ -101,5 +97,13 @@ export class ArticleViewComponent implements OnInit {
 					});
 			}
 		});
+	}
+	/**
+	 * @author Amos Gross
+	 * @summary Copy current link to clipboard
+	 * @description Copies article link to clipboard
+	 */
+	copyLinkToClipboard() {
+		navigator.clipboard.writeText(this.router.url);
 	}
 }

@@ -43,7 +43,8 @@
 
 .article_icon_bookmark {
 	width: 100%;
-	filter: invert(74%) sepia(9%) saturate(659%) hue-rotate(330deg) brightness(99%) contrast(91%);
+	filter: invert(74%) sepia(9%) saturate(659%) hue-rotate(330deg)
+		brightness(99%) contrast(91%);
 }
 
 .article_description {
