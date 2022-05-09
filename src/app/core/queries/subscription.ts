@@ -1,4 +1,5 @@
 import { gql } from 'apollo-angular';
+import { PaginationArg } from 'src/app/models/paginationArg.model';
 
 export type SUBSCRIPTION_QUERY_RESPONSE = {
 	subscriptions: {
@@ -21,8 +22,16 @@ export type SUBSCRIPTION_QUERY_RESPONSE = {
 	}[];
 };
 
-export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, {}>`
-	query subscriptions {
+/**
+ * @author Amos Gross, Lukas Huida
+ * @summary query for user subscriptions
+ * @description query to fetch all subscriptions of a user
+ * @param {PaginationArg} paginationArg -  Pagination to limit/paginate the articles of an feed-subscription
+ * @param {boolean} desc - Descending order of articles by the publishedAt Date 
+ * @returns {SUBSCRIPTION_QUERY_RESPONSE} - Subscriptions of the user which contains the subscribed feeds and their articles
+ */
+export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationArg: PaginationArg; desc: boolean }>`
+	query subscriptions($PaginationArg: PaginationArg!, $desc: Boolean) {
 		subscriptions {
 			id
 			name
@@ -30,7 +39,7 @@ export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, {}>`
 			ttl
 			description
 			lastPolledAt
-			articles {
+			articles(PaginationArg: $PaginationArg, Desc: $desc) {
 				id
 				title
 				description
