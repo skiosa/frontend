@@ -24,6 +24,8 @@
 				[colorSeed]="getColorSeed(article)"
 				class="feed-article"
 				[routerLink]="'/article/' + article.id"
+				[id]="article.id"
+				[likeStatus]="article.likeStatus"
 			>
 			</app-article>
 		</div>
@@ -37,6 +39,8 @@
 				[colorSeed]="getColorSeed(article)"
 				class="feed-article"
 				[routerLink]="'/article/' + article.id"
+				[id]="article.id"
+				[likeStatus]="article.likeStatus"
 			>
 			</app-article>
 		</div>

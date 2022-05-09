@@ -10,15 +10,19 @@
 <app-card cardTitle="Actions">
 	<div class="article_action-icon">
 		<app-icon-button
-			title="Visit"
+			title="Visit" 
 			icon="assets/icons/external-link.svg"
 			(click)="redirectToUrl(article.url)"
 		>
 		</app-icon-button>
 		<app-icon-button
 			title="Like"
-			[icon]="'assets/icons/heart' + (likeStatus ? 'red' : '') + '.svg'"
-			(click)="changeLikeStatus($event)"
+			[icon]="
+			'assets/icons/heart' +
+			(likeStatus ? 'red' : '') +
+			'.svg'
+		"
+		(click)="changeLikeStatus($event)"
 		></app-icon-button>
 		<app-icon-button
 			title="Bookmark"
@@ -43,7 +47,7 @@
 		class="article_recommended-articles"
 	>
 		<app-article
-			[id]="a.id"
+			[id] = "a.id"
 			[articleTitle]="a.title"
 			[articleDescription]="a.description"
 			[colorSeed]="getColorSeed(a)"
