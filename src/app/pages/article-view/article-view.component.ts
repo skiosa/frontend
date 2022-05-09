@@ -31,7 +31,7 @@ export class ArticleViewComponent implements OnInit {
 		private apollo: Apollo,
 		private router: Router,
 		private readonly keycloak: KeycloakService
-	) { }
+	) {}
 
 	ngOnInit() {
 		this.route.params.subscribe((params) => {
@@ -80,6 +80,7 @@ export class ArticleViewComponent implements OnInit {
 	redirectToUrl(url: string) {
 		window.open(url, '_blank');
 	}
+
 	/**
 	 * @author Jonas Eppard
 	 * @summary Changes the bookmarked status of the article
