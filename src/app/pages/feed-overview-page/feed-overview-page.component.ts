@@ -57,7 +57,7 @@ export class FeedOverviewPageComponent implements OnInit {
 				query: GENERAL_FEED_QUERY,
 				variables: {
 					feedId: this.feedID,
-					Desc: true,
+					desc: true,
 				},
 			})
 			.valueChanges.subscribe((data) => {

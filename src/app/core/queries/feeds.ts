@@ -17,14 +17,14 @@ export type GENERAL_FEED_QUERY_RESPONCE = {
 		}[];
 	};
 };
-export const GENERAL_FEED_QUERY = gql<GENERAL_FEED_QUERY_RESPONCE, { feedId: number; Desc: boolean }>`
-	query GENERAL_FEED_QUERY($feedId: Float!, $Desc: Boolean) {
+export const GENERAL_FEED_QUERY = gql<GENERAL_FEED_QUERY_RESPONCE, { feedId: number; desc: boolean }>`
+	query GENERAL_FEED_QUERY($feedId: Float!, $desc: Boolean) {
 		feed(id: $feedId) {
 			id
 			link
 			name
 			description
-			articles(Desc: $Desc) {
+			articles(Desc: $desc) {
 				id
 				title
 				description
