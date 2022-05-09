@@ -124,7 +124,4 @@ export class ArticleViewComponent implements OnInit {
 	copyLinkToClipboard() {
 		navigator.clipboard.writeText(this.router.url);
 	}
-	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]): number {
-		return getColorSeedFromArticle(article);
-	}
 }
