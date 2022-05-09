@@ -33,7 +33,6 @@ export class BookmarkComponent implements OnInit {
 			})
 			.valueChanges.subscribe(({ data }) => {
 				this.bookmarks = data.bookmarks;
-				console.log(this.bookmarks);
 			});
 	}
 
