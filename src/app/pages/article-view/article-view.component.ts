@@ -82,6 +82,6 @@ export class ArticleViewComponent implements OnInit {
 	 * @description Copies article link to clipboard
 	 */
 	copyLinkToClipboard() {
-		navigator.clipboard.writeText(this.router.url);
+		navigator.clipboard.writeText(window.location.href);
 	}
 }
