@@ -8,6 +8,7 @@ export type BOOKMARKS_QUERY_RESPONSE = {
 		description: string;
 		url: string;
 		categories: { id: number }[];
+		likeStatus: boolean;
 		bookmarkStatus: boolean;
 	}[];
 };
@@ -22,6 +23,7 @@ export const BOOKMARKS_QUERY = gql<BOOKMARKS_QUERY_RESPONSE, { PaginationArg: Pa
 			categories {
 				id
 			}
+			likeStatus
 			bookmarkStatus
 		}
 	}

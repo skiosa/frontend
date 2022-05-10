@@ -8,6 +8,7 @@ export type GENERAL_RECOMMENDATION_QUERY_RESULT = {
 		description: string;
 		url: string;
 		categories: { id: number }[];
+		likeStatus: boolean;
 		bookmarkStatus: boolean;
 	}[];
 };
@@ -25,6 +26,7 @@ export const GENERAL_RECOMMENDATION_QUERY = gql<
 			categories {
 				id
 			}
+			likeStatus
 			bookmarkStatus
 		}
 	}
