@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
+import { GENERAL_ARTIKLE_LIKE_MUTATION } from 'src/app/core/mutations/likes';
 import { CHANGE_BOOKMARK_MUTATION } from '../../core/mutations/bookmark';
 import { SINGLE_ARTICLE_QUERY, SINGLE_ARTICLE_QUERY_RESPONSE } from 'src/app/core/queries/singleArticle';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
@@ -13,15 +14,19 @@ import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 })
 export class ArticleViewComponent implements OnInit {
 	public article: SINGLE_ARTICLE_QUERY_RESPONSE['article'] = {
+		id: 0,
 		title: 'Loading...',
 		description: 'Loading...',
 		url: '',
 		feed: {
 			id: -1,
 		},
-		id: 0,
+		likeStatus: false,
 		bookmarkStatus: false,
 	};
+
+	public likeStatus: boolean = false;
+
 	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
 	private skip = 0;
 	private take = 10;
@@ -67,6 +72,7 @@ export class ArticleViewComponent implements OnInit {
 			.valueChanges.subscribe(({ data }) => {
 				this.article = JSON.parse(JSON.stringify(data.article));
 				this.recommendedArticles = data.similarArticles;
+				this.likeStatus = data.article.likeStatus;
 			});
 	}
 	redirectToUrl(url: string) {
@@ -104,6 +110,33 @@ export class ArticleViewComponent implements OnInit {
 
 	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]): number {
 		return getColorSeedFromArticle(article);
+	}
+
+	/**
+	 * @author Marcel Alex
+	 * @summary Changes the Like status of the article
+	 * @description Checks if user is logged in and if so, changes the Like status of the article
+	 * @param {MouseEvent} event - The mouse event to stop propagation
+	 */
+
+	public changeLikeStatus(event: MouseEvent): void {
+		event.stopPropagation();
+		this.keycloak.isLoggedIn().then((isLoggedIn) => {
+			if (!isLoggedIn) {
+				this.keycloak.login();
+			}
+			this.apollo
+				.mutate({
+					mutation: GENERAL_ARTIKLE_LIKE_MUTATION,
+					variables: {
+						articleId: this.article.id,
+						isLiked: !this.likeStatus,
+					},
+				})
+				.subscribe((data) => {
+					this.likeStatus = data.data?.changeLike ?? this.likeStatus;
+				});
+		});
 	}
 
 	/**

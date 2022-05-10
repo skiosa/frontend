@@ -3,18 +3,20 @@ import { PaginationArg } from 'src/app/models/paginationArg.model';
 
 export type SINGLE_ARTICLE_QUERY_RESPONSE = {
 	article: {
+		id: number;
 		title: string;
 		description: string;
 		url: string;
 		feed: { id: number };
+		likeStatus: boolean;
 		bookmarkStatus: boolean;
-		id: number;
 	};
 	similarArticles: {
 		id: number;
 		title: string;
 		categories: { id: number }[];
 		description: string;
+		likeStatus: boolean;
 		bookmarkStatus: boolean;
 	}[];
 };
@@ -40,6 +42,7 @@ export const SINGLE_ARTICLE_QUERY = gql<
 			feed {
 				id
 			}
+			likeStatus
 			bookmarkStatus
 		}
 		similarArticles(articleId: $articleId, PaginationArg: $PaginationArg) {
@@ -49,6 +52,7 @@ export const SINGLE_ARTICLE_QUERY = gql<
 				id
 			}
 			description
+			likeStatus
 			bookmarkStatus
 		}
 	}
