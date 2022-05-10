@@ -20,9 +20,11 @@
 					<app-article
 						[articleTitle]="article.title"
 						[articleDescription]="article.description"
+						[bookmarked]="article.bookmarkStatus"
 						[colorSeed]="getColorSeed(article)"
 						[id]="article.id"
 						[likeStatus]="article.likeStatus"
+						[routerLink]="'/article/' + article.id"
 					>
 					</app-article>
 				</div>

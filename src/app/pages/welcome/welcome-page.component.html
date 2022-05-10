@@ -9,8 +9,9 @@
 				[articleDescription]="recommendedArticle.description"
 				[colorSeed]="getColorSeed(recommendedArticle)"
 				[routerLink]="'/article/' + recommendedArticle.id"
-				[id]="recommendedArticle.id"
 				[likeStatus]="recommendedArticle.likeStatus"
+				[bookmarked]="recommendedArticle.bookmarkStatus"
+				[id]="recommendedArticle.id"
 			>
 			</app-article>
 		</div>

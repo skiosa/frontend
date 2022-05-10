@@ -9,6 +9,7 @@ export type SINGLE_ARTICLE_QUERY_RESPONSE = {
 		url: string;
 		feed: { id: number };
 		likeStatus: boolean;
+		bookmarkStatus: boolean;
 	};
 	similarArticles: {
 		id: number;
@@ -16,6 +17,7 @@ export type SINGLE_ARTICLE_QUERY_RESPONSE = {
 		categories: { id: number }[];
 		description: string;
 		likeStatus: boolean;
+		bookmarkStatus: boolean;
 	}[];
 };
 
@@ -41,6 +43,7 @@ export const SINGLE_ARTICLE_QUERY = gql<
 				id
 			}
 			likeStatus
+			bookmarkStatus
 		}
 		similarArticles(articleId: $articleId, PaginationArg: $PaginationArg) {
 			id
@@ -50,6 +53,7 @@ export const SINGLE_ARTICLE_QUERY = gql<
 			}
 			description
 			likeStatus
+			bookmarkStatus
 		}
 	}
 `;
