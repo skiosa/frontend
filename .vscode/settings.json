@@ -10,5 +10,6 @@
         "dockerconfig",
         "kubernetes",
         "skiosa"
-    ]
+    ],
+    "svg.preview.background": "dark-transparent"
 }

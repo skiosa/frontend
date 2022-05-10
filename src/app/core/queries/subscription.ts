@@ -17,6 +17,7 @@ export type SUBSCRIPTION_QUERY_RESPONSE = {
 			content: string;
 			publishedAt: string;
 			categories: { id: number }[];
+			bookmarkStatus: boolean;
 		}[];
 	}[];
 };
@@ -48,6 +49,7 @@ export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationA
 				categories {
 					id
 				}
+				bookmarkStatus
 			}
 		}
 	}

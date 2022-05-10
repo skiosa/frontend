@@ -14,6 +14,7 @@ export type GENERAL_FEED_QUERY_RESPONCE = {
 			categories: {
 				id: number;
 			}[];
+			bookmarkStatus: boolean;
 		}[];
 	};
 };
@@ -42,6 +43,7 @@ export const GENERAL_FEED_QUERY = gql<GENERAL_FEED_QUERY_RESPONCE, { feedId: num
 				categories {
 					id
 				}
+				bookmarkStatus
 			}
 		}
 	}

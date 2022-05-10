@@ -1,7 +1,15 @@
-<div class="article-container">
-	<div class="article-color" [ngStyle]="{ 'background-color': color }"></div>
-	<div class="article-content">
-		<p class="article-text article-title">{{ articleTitle }}</p>
-		<p class="article-text article-description">{{ articleDescription }}</p>
+<div class="article">
+	<div class="article_color" [ngStyle]="{ 'background-color': color }"></div>
+	<div class="article_content">
+		<p class="article-text article_title">{{ articleTitle }}</p>
+		<p class="article-text article_description">{{ articleDescription }}</p>
+	</div>
+	<div class="article_icon">
+		<img
+			[src]="'assets/icons/bookmark' + (bookmarked ? '-fill' : '') + '.svg'"
+			class="article_icon_bookmark"
+			alt="Bookmark"
+			(click)="toggleBookmark($event)"
+		/>
 	</div>
 </div>
