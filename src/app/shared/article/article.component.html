@@ -1,23 +1,25 @@
 <div class="article">
 	<div class="article_color" [ngStyle]="{ 'background-color': color }"></div>
 	<div class="article_content">
-		<p class="article-text article_title">{{ articleTitle }}</p>
-		<p class="article-text article_description">{{ articleDescription }}</p>
+		<p class="article_content_text article_title">{{ articleTitle }}</p>
+		<p class="article_content_text article_description">{{ articleDescription }}</p>
 	</div>
-	<div class="article_icon">
-		<img
-			[src]="'assets/icons/bookmark' + (bookmarked ? '-fill' : '') + '.svg'"
-			class="article_icon_bookmark"
-			alt="Bookmark"
-			(click)="toggleBookmark($event)"
-		/>
-	</div>
-	<div class="article_icon">
-		<img
-			[src]="'assets/icons/heart' + (likeStatus ? 'red' : '') + '.svg'"
-			class="article-icon-like"
-			alt="Like"
-			(click)="changeLikeStatus($event)"
-		/>
+	<div class="article_action-icons">
+		<div class="article_action-icons_icon">
+			<img
+				[src]="'assets/icons/bookmark' + (bookmarked ? '-fill' : '') + '.svg'"
+				class="article_action-icons_icon_bookmark"
+				alt="Bookmark"
+				(click)="toggleBookmark($event)"
+			/>
+		</div>
+		<div class="article_action-icons_icon">
+			<img
+				[src]="'assets/icons/heart' + (likeStatus ? 'red' : '') + '.svg'"
+				class="article_action-icons_icon_like"
+				alt="Like"
+				(click)="changeLikeStatus($event)"
+			/>
+		</div>
 	</div>
 </div>
