@@ -2,7 +2,7 @@
 	<div
 		class="subscription-feed-icon-background"
 		[ngStyle]="{ 'background-color': color }"
-		[routerLink]="'/feed/' + feed.id"
+		[routerLink]="['/feed/', feed.id]"
 	>
 		<img
 			alt="globe"
@@ -12,7 +12,7 @@
 	</div>
 	<div
 		class="subscription-feed-text-container"
-		[routerLink]="'/feed/' + feed.id"
+		[routerLink]="['/feed/', feed.id]"
 	>
 		<p class="subscription-feed-text subscription-feed-name">{{ feed.name }}</p>
 		<p class="subscription-feed-text subscription-feed-description">
