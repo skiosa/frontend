@@ -5,6 +5,7 @@ import { ArticleViewComponent } from './pages/article-view/article-view.componen
 import { BookmarkComponent } from './pages/bookmark/bookmark.component';
 import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 
@@ -30,6 +31,10 @@ const routes: Routes = [
 	{
 		path: 'feed/:feedId',
 		component: FeedOverviewPageComponent,
+	},
+	{
+		path: 'settings',
+		component: SettingsComponent,
 	},
 	{
 		path: '404',

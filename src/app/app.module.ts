@@ -14,6 +14,8 @@ import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 import { ArticleViewComponent } from './pages/article-view/article-view.component';
 import { SharedModule } from './shared/shared.module';
 import { BookmarkComponent } from './pages/bookmark/bookmark.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -40,6 +42,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 		FeedOverviewPageComponent,
 		ArticleViewComponent,
 		BookmarkComponent,
+		SettingsComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule, KeycloakAngularModule, GraphQLModule],
 	providers: [
