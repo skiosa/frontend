@@ -6,16 +6,12 @@ export type SUBSCRIPTION_QUERY_RESPONSE = {
 		id: number;
 		name: string;
 		link: string;
-		ttl: number;
 		description: string;
-		lastPolledAt: string;
 		articles: {
 			id: number;
 			title: string;
 			description: string;
 			url: string;
-			content: string;
-			publishedAt: string;
 			categories: { id: number }[];
 			likeStatus: boolean;
 			bookmarkStatus: boolean;
@@ -37,16 +33,12 @@ export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationA
 			id
 			name
 			link
-			ttl
 			description
-			lastPolledAt
 			articles(PaginationArg: $PaginationArg, Desc: $desc) {
 				id
 				title
 				description
-				content
 				url
-				publishedAt
 				categories {
 					id
 				}
