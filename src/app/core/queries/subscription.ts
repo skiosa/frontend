@@ -38,7 +38,6 @@ export const SUBSCRIPTION_QUERY = gql<SUBSCRIPTION_QUERY_RESPONSE, { PaginationA
 				title
 				description
 				url
-				publishedAt
 				categories {
 					id
 				}
