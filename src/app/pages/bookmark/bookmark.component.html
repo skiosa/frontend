@@ -7,7 +7,7 @@
 				[colorSeed]="getColorSeed(article)"
 				[id]="article.id"
 				[bookmarked]="article.bookmarkStatus"
-				[routerLink]="'/article/' + article.id"
+				[routerLink]="['/article', article.id]"
 			>
 			</app-article>
 		</div>
