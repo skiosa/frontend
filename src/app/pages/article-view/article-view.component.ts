@@ -69,14 +69,6 @@ export class ArticleViewComponent implements OnInit {
 				this.recommendedArticles = data.similarArticles;
 			});
 	}
-
-	redirectToArticleId(id: number) {
-		this.router.navigate(['/article', id]);
-		this.loadArticle(id);
-	}
-	redirectToFeedId(id: number) {
-		this.router.navigate(['/feed', id]);
-	}
 	redirectToUrl(url: string) {
 		window.open(url, '_blank');
 	}

@@ -37,7 +37,7 @@
 		<app-icon-button
 			title="Feed"
 			icon="assets/icons/external-link.svg"
-			(click)="redirectToFeedId(article.feed.id)"
+			[routerLink]="['/feed', article.feed.id]"
 		>
 		</app-icon-button>
 	</div>
@@ -53,7 +53,7 @@
 			[colorSeed]="getColorSeed(a)"
 			[id]="a.id"
 			[bookmarked]="a.bookmarkStatus"
-			(click)="redirectToArticleId(a.id)"
+			[routerLink]="['/article', a.id]"
 		></app-article>
 	</div>
 </app-card>
