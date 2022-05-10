@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { KeycloakService } from 'keycloak-angular';
+import { CHANGE_BOOKMARK_MUTATION } from '../../core/mutations/bookmark';
 import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/util/randomColor';
 import { shortenedText } from 'src/app/util/textShorter';
 
@@ -11,11 +14,46 @@ export class ArticleComponent implements OnInit {
 	@Input() articleTitle = '';
 	@Input() articleDescription = '';
 	@Input() colorSeed = 0;
+	@Input() bookmarked = false;
+	@Input() id: number = 0;
+	@Output() bookmarkedChange = new EventEmitter<boolean>();
 	color: string = DEFAULT_PASTEL_COLOR;
+
+	constructor(private readonly apollo: Apollo, private readonly keycloak: KeycloakService) {}
 
 	ngOnInit(): void {
 		this.color = generateRandomColor(this.colorSeed);
 		this.articleTitle = shortenedText(this.articleTitle);
 		this.articleDescription = shortenedText(this.articleDescription);
+	}
+
+	/**
+	 * @author Jonas Eppard
+	 * @summary Changes the bookmarked status of the article
+	 * @description Checks if user is logged in and if so, changes the bookmarked status of the article
+	 * @param {MouseEvent} event - The mouse event to stop propagation
+	 */
+	toggleBookmark(event: MouseEvent): void {
+		event.stopPropagation();
+		this.keycloak.isLoggedIn().then((loggedIn) => {
+			if (!loggedIn) {
+				this.keycloak.login();
+			} else {
+				this.apollo
+					.mutate({
+						mutation: CHANGE_BOOKMARK_MUTATION,
+						variables: {
+							isBookmarked: !this.bookmarked,
+							articleId: this.id,
+						},
+					})
+					.subscribe((data) => {
+						if (!data.errors) {
+							this.bookmarked = data.data!.changeBookmark;
+							this.bookmarkedChange.emit(this.bookmarked);
+						}
+					});
+			}
+		});
 	}
 }

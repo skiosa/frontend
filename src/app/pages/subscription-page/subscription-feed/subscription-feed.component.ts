@@ -9,8 +9,8 @@ import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/util/randomCo
 export class SubscriptionFeedComponent implements OnInit {
 	@Input() feed = { name: '', description: '', id: 0 };
 	@Input() colorSeed = 0;
-	@Input() openAction: Function = () => { }; // NOSONAR
-	@Input() closeAction: Function = () => { }; // NOSONAR
+	@Input() openAction: Function = () => {}; // NOSONAR
+	@Input() closeAction: Function = () => {}; // NOSONAR
 
 	isOpen = false;
 

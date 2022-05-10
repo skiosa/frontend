@@ -6,16 +6,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { SubscriptionFeedComponent } from './subscription-feed/subscription-feed.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
 @NgModule({
-  declarations: [
-    SubscriptionComponent,
-    SubscriptionFeedComponent
-  ],
-  imports: [
-    CommonModule,
-    SubscriptionPageRoutingModule,
-    SharedModule
-  ]
+	declarations: [SubscriptionComponent, SubscriptionFeedComponent],
+	imports: [CommonModule, SubscriptionPageRoutingModule, SharedModule],
 })
-export class SubscriptionPageModule { }
+export class SubscriptionPageModule {}

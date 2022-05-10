@@ -10,8 +10,11 @@
 			class="subscription-feed-icon"
 		/>
 	</div>
-	<div class="subscription-feed-text-container" [routerLink]="'/feed/' + feed.id">
-		<p class="subscription-feed-text subscription-feed-name" >{{ feed.name }}</p>
+	<div
+		class="subscription-feed-text-container"
+		[routerLink]="'/feed/' + feed.id"
+	>
+		<p class="subscription-feed-text subscription-feed-name">{{ feed.name }}</p>
 		<p class="subscription-feed-text subscription-feed-description">
 			{{ feed.description }}
 		</p>

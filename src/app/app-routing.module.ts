@@ -15,7 +15,8 @@ const routes: Routes = [
 	{
 		path: 'subscriptions',
 		canActivate: [LoggedInGuard],
-		loadChildren: () => import('./pages/subscription-page/subscription-page.module').then(m => m.SubscriptionPageModule),
+		loadChildren: () =>
+			import('./pages/subscription-page/subscription-page.module').then((m) => m.SubscriptionPageModule),
 	},
 	{
 		path: 'bookmarks',

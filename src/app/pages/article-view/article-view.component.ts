@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
+import { KeycloakService } from 'keycloak-angular';
+import { CHANGE_BOOKMARK_MUTATION } from '../../core/mutations/bookmark';
 import { SINGLE_ARTICLE_QUERY, SINGLE_ARTICLE_QUERY_RESPONSE } from 'src/app/core/queries/singleArticle';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 
@@ -17,12 +19,19 @@ export class ArticleViewComponent implements OnInit {
 		feed: {
 			id: -1,
 		},
+		id: 0,
+		bookmarkStatus: false,
 	};
 	public recommendedArticles: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'] = [];
 	private skip = 0;
 	private take = 10;
 
-	constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {}
+	constructor(
+		private route: ActivatedRoute,
+		private apollo: Apollo,
+		private router: Router,
+		private readonly keycloak: KeycloakService
+	) {}
 
 	ngOnInit() {
 		this.route.params.subscribe((params) => {
@@ -56,20 +65,41 @@ export class ArticleViewComponent implements OnInit {
 				},
 			})
 			.valueChanges.subscribe(({ data }) => {
-				this.article = data.article;
+				this.article = JSON.parse(JSON.stringify(data.article));
 				this.recommendedArticles = data.similarArticles;
 			});
 	}
-
-	redirectToArticleId(id: number) {
-		this.router.navigate(['/article', id]);
-		this.loadArticle(id);
-	}
-	redirectToFeedId(id: number) {
-		this.router.navigate(['/feed', id]);
-	}
 	redirectToUrl(url: string) {
 		window.open(url, '_blank');
+	}
+
+	/**
+	 * @author Jonas Eppard
+	 * @summary Changes the bookmarked status of the article
+	 * @description Checks if user is logged in and if so, changes the bookmarked status of the article
+	 * @param {MouseEvent} event - The mouse event to stop propagation
+	 */
+	toggleBookmark(event: MouseEvent): void {
+		event.stopPropagation();
+		this.keycloak.isLoggedIn().then((loggedIn) => {
+			if (!loggedIn) {
+				this.keycloak.login();
+			} else {
+				this.apollo
+					.mutate({
+						mutation: CHANGE_BOOKMARK_MUTATION,
+						variables: {
+							isBookmarked: !this.article.bookmarkStatus,
+							articleId: this.article.id,
+						},
+					})
+					.subscribe((data) => {
+						if (!data.errors) {
+							this.article.bookmarkStatus = data.data!.changeBookmark;
+						}
+					});
+			}
+		});
 	}
 
 	getColorSeed(article: SINGLE_ARTICLE_QUERY_RESPONSE['similarArticles'][0]): number {

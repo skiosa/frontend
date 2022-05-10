@@ -7,12 +7,15 @@ export type SINGLE_ARTICLE_QUERY_RESPONSE = {
 		description: string;
 		url: string;
 		feed: { id: number };
+		bookmarkStatus: boolean;
+		id: number;
 	};
 	similarArticles: {
 		id: number;
 		title: string;
 		categories: { id: number }[];
 		description: string;
+		bookmarkStatus: boolean;
 	}[];
 };
 
@@ -31,11 +34,13 @@ export const SINGLE_ARTICLE_QUERY = gql<
 	query article($articleId: Float!, $PaginationArg: PaginationArg!) {
 		article(id: $articleId) {
 			title
+			id
 			description
 			url
 			feed {
 				id
 			}
+			bookmarkStatus
 		}
 		similarArticles(articleId: $articleId, PaginationArg: $PaginationArg) {
 			id
@@ -44,6 +49,7 @@ export const SINGLE_ARTICLE_QUERY = gql<
 				id
 			}
 			description
+			bookmarkStatus
 		}
 	}
 `;
