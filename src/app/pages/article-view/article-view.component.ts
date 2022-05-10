@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
-import { CHANGE_BOOKMARK_MUTATION } from 'src/app/core/queries/bookmarks';
+import { CHANGE_BOOKMARK_MUTATION } from '../../core/mutations/bookmark';
 import { SINGLE_ARTICLE_QUERY, SINGLE_ARTICLE_QUERY_RESPONSE } from 'src/app/core/queries/singleArticle';
 import { getColorSeedFromArticle } from 'src/app/util/randomColor';
 

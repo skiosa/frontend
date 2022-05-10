@@ -26,9 +26,3 @@ export const BOOKMARKS_QUERY = gql<BOOKMARKS_QUERY_RESPONSE, { PaginationArg: Pa
 		}
 	}
 `;
-
-export const CHANGE_BOOKMARK_MUTATION = gql<{ changeBookmark: boolean }, { isBookmarked: boolean; articleId: number }>`
-	mutation ChangeBookmark($isBookmarked: Boolean!, $articleId: Float!) {
-		changeBookmark(isBookmarked: $isBookmarked, articleId: $articleId)
-	}
-`;

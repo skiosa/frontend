@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
-import { CHANGE_BOOKMARK_MUTATION } from 'src/app/core/queries/bookmarks';
+import { CHANGE_BOOKMARK_MUTATION } from '../../core/mutations/bookmark';
 import { DEFAULT_PASTEL_COLOR, generateRandomColor } from 'src/app/util/randomColor';
 import { shortenedText } from 'src/app/util/textShorter';
 
