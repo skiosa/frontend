@@ -25,7 +25,7 @@
 				[id]="article.id"
 				class="feed-article"
 				[bookmarked]="article.bookmarkStatus"
-				[routerLink]="'/article/' + article.id"
+				[routerLink]="['/article', article.id]"
 				[id]="article.id"
 				[likeStatus]="article.likeStatus"
 			>
@@ -42,7 +42,7 @@
 				[id]="article.id"
 				class="feed-article"
 				[bookmarked]="article.bookmarkStatus"
-				[routerLink]="'/article/' + article.id"
+				[routerLink]="['/article', article.id]"
 				[id]="article.id"
 				[likeStatus]="article.likeStatus"
 			>
