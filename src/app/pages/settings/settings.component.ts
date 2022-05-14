@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
 import { ThemeService } from 'src/app/core/services/theme.service';
 import { Theme } from 'src/app/models/theme.enum';
-import { Location } from '@angular/common';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-settings',
@@ -13,6 +13,7 @@ export class SettingsComponent implements OnInit {
   username = ''
   usermail = ''
   isLight = true;
+  userEdit = environment.keycloakUserURL;
 
   constructor(private readonly keycloak: KeycloakService, private readonly theme: ThemeService) { }
 
