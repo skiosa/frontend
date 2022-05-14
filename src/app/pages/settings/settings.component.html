@@ -12,21 +12,21 @@
             <p>E-Mail:</p>
             <p>{{ usermail }}</p>
         </div>
+        <div class="settings_account_links">
+            <p>Edit User Profile</p>
+            <p><a (click)="logout()">Logout</a></p>
+        </div>
     </app-card>
 
-    <app-card cardTitle="Messages:">
-        <!-- TODO: add checkboxes -->
-    </app-card>
-    
     <app-card cardTitle="Design: ">
-        <!-- TODO: add light dark mode toggle button -->
+        <span class="settings_design_slider">
+            <p (click)="setTheme(true)" [ngClass]="isLight ? 'settings_design_slider_active' : ''">Light</p>
+            <p (click)="setTheme(false)" [ngClass]="isLight ? '' : 'settings_design_slider_active'">Dark</p>
+        </span>
     </app-card>
-    
+
     <app-card cardTitle="Contact">
         <p>need any help?</p>
         <p>contact us at: skiosa@anymail.com</p>
-    </app-card>
-    <app-card cardTitle="Recommendations: ">
-
     </app-card>
 </div>

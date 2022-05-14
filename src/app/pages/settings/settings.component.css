@@ -1,0 +1,50 @@
+.settings_heading-card {
+    background-color: var(--secondary-background);
+    padding: 1rem;
+    padding-top: 3rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
+    color: var(--primary-text-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.settings_heading-card_title {
+    margin: 0;
+    padding: 0;
+}
+
+.settings_design_slider {
+    border-radius: 2rem;
+    padding: 0;
+    background-color: var(--primary-background);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.settings_design_slider>p {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings_design_slider_active {
+    background-color: var(--secondary-text-color);
+    border-radius: 2rem;
+    display: inline-block;
+}
+
+
+@media screen and (min-width: 768px) {
+    .settings_heading-card {
+        margin: 1rem 3rem;
+    }
+}
