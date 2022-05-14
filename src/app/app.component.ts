@@ -8,7 +8,7 @@ import { ThemeService } from './core/services/theme.service';
 	styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-	constructor(private faviconService: FaviconService, private readonly theme: ThemeService) { }
+	constructor(private faviconService: FaviconService, private readonly theme: ThemeService) {}
 
 	ngOnInit(): void {
 		this.faviconService.changeFavicon();

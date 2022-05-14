@@ -64,7 +64,8 @@ body {
 	}
 
 	.reverseColor {
-		filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg) brightness(101%) contrast(91%);
+		filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg)
+			brightness(101%) contrast(91%);
 	}
 }
 
@@ -101,7 +102,8 @@ body {
 }
 
 [data-theme="1"].reverseColor {
-	filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg) brightness(101%) contrast(91%);
+	filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg)
+		brightness(101%) contrast(91%);
 }
 
 /*************************************/
