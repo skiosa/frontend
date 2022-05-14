@@ -7,7 +7,6 @@ import { Theme } from '../../models/theme.enum';
 })
 export class ThemeService {
 	private currentTheme = new BehaviorSubject(Theme.light);
-	constructor() {}
 
 	/**
 	 * @author Jonas Eppard
