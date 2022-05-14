@@ -17,20 +17,7 @@ export class SubscriptionComponent implements OnInit {
 	constructor(private apollo: Apollo) {}
 
 	ngOnInit(): void {
-		this.apollo
-			.watchQuery<SUBSCRIPTION_QUERY_RESPONSE>({
-				query: SUBSCRIPTION_QUERY,
-				variables: {
-					PaginationArg: {
-						skip: this.skip,
-						take: this.take,
-					},
-					desc: true,
-				},
-			})
-			.valueChanges.subscribe(({ data }) => {
-				this.subscriptions = data.subscriptions;
-			});
+		this.fetchSubscriptions();
 	}
 
 	/**
@@ -57,6 +44,29 @@ export class SubscriptionComponent implements OnInit {
 		return () => {
 			this.visibleSubscriptions.delete(feedId);
 		};
+	};
+
+	/**
+	 * @author Amos Gross
+	 * @summary fetches subscriptions
+	 * @description loads subscription data from graphql
+	 */
+	fetchSubscriptions = () => {
+		this.apollo
+			.watchQuery<SUBSCRIPTION_QUERY_RESPONSE>({
+				query: SUBSCRIPTION_QUERY,
+				fetchPolicy: 'network-only',
+				variables: {
+					PaginationArg: {
+						skip: this.skip,
+						take: this.take,
+					},
+					desc: true,
+				},
+			})
+			.valueChanges.subscribe(({ data }) => {
+				this.subscriptions = data.subscriptions;
+			});
 	};
 
 	getColorSeed(article: SUBSCRIPTION_QUERY_RESPONSE['subscriptions'][0]['articles'][0]): number {

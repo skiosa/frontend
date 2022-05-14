@@ -6,7 +6,6 @@ import { BookmarkComponent } from './pages/bookmark/bookmark.component';
 import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overview-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { SubscriptionComponent } from './pages/subscription/subscription.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 
 const routes: Routes = [
@@ -17,7 +16,8 @@ const routes: Routes = [
 	{
 		path: 'subscriptions',
 		canActivate: [LoggedInGuard],
-		component: SubscriptionComponent,
+		loadChildren: () =>
+			import('./pages/subscription-page/subscription-page.module').then((m) => m.SubscriptionPageModule),
 	},
 	{
 		path: 'bookmarks',
@@ -50,4 +50,4 @@ const routes: Routes = [
 	imports: [RouterModule.forRoot(routes)],
 	exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -17,12 +17,19 @@
 		</app-icon-button>
 		<app-icon-button
 			title="Like"
-			icon="assets/icons/heart.svg"
+			[icon]="'assets/icons/heart' + (likeStatus ? 'red' : '') + '.svg'"
+			(click)="changeLikeStatus($event)"
 		></app-icon-button>
 		<app-icon-button
 			title="Bookmark"
-			icon="assets/icons/bookmark.svg"
-		></app-icon-button>
+			[icon]="
+				'assets/icons/bookmark' +
+				(article.bookmarkStatus ? '-fill' : '') +
+				'.svg'
+			"
+			(click)="toggleBookmark($event)"
+		>
+		</app-icon-button>
 		<app-icon-button
 			title="Share"
 			icon="assets/icons/share.svg"
@@ -31,7 +38,7 @@
 		<app-icon-button
 			title="Feed"
 			icon="assets/icons/external-link.svg"
-			(click)="redirectToFeedId(article.feed.id)"
+			[routerLink]="['/feed', article.feed.id]"
 		>
 		</app-icon-button>
 	</div>
@@ -42,10 +49,13 @@
 		class="article_recommended-articles"
 	>
 		<app-article
+			[id]="a.id"
 			[articleTitle]="a.title"
 			[articleDescription]="a.description"
 			[colorSeed]="getColorSeed(a)"
-			(click)="redirectToArticleId(a.id)"
+			[likeStatus]="a.likeStatus"
+			[bookmarked]="a.bookmarkStatus"
+			[routerLink]="['/article', a.id]"
 		>
 		</app-article>
 	</div>

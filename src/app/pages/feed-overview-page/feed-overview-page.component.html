@@ -22,8 +22,12 @@
 				[articleTitle]="article.title"
 				[articleDescription]="article.description"
 				[colorSeed]="getColorSeed(article)"
+				[id]="article.id"
 				class="feed-article"
-				[routerLink]="'/article/' + article.id"
+				[bookmarked]="article.bookmarkStatus"
+				[routerLink]="['/article', article.id]"
+				[id]="article.id"
+				[likeStatus]="article.likeStatus"
 			>
 			</app-article>
 		</div>
@@ -35,8 +39,12 @@
 				[articleTitle]="article.title"
 				[articleDescription]="article.description"
 				[colorSeed]="getColorSeed(article)"
+				[id]="article.id"
 				class="feed-article"
-				[routerLink]="'/article/' + article.id"
+				[bookmarked]="article.bookmarkStatus"
+				[routerLink]="['/article', article.id]"
+				[id]="article.id"
+				[likeStatus]="article.likeStatus"
 			>
 			</app-article>
 		</div>

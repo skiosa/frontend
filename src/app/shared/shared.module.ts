@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
 import { ArticleComponent } from './article/article.component';
 import { FeedComponent } from './feed/feed.component';
-import { SubscriptionFeedComponent } from './subscription-feed/subscription-feed.component';
 import { IconButtonComponent } from './icon-button/icon-button.component';
 import { NavButtonComponent } from './nav-button/nav-button.component';
 import { ButtonComponent } from './button/button.component';
@@ -16,7 +15,6 @@ import { InputComponent } from './input/input.component';
 		CardComponent,
 		ArticleComponent,
 		FeedComponent,
-		SubscriptionFeedComponent,
 		NavButtonComponent,
 		ButtonComponent,
 		InputComponent,
@@ -27,7 +25,6 @@ import { InputComponent } from './input/input.component';
 		CardComponent,
 		ArticleComponent,
 		FeedComponent,
-		SubscriptionFeedComponent,
 		NavButtonComponent,
 		ButtonComponent,
 		InputComponent,
