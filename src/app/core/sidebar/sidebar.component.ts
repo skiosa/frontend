@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { KeycloakService } from 'keycloak-angular';
 import { ADD_FEED_MUTATION } from '../../core/queries/addFeed';
@@ -7,7 +7,8 @@ import { ADD_FEED_MUTATION } from '../../core/queries/addFeed';
 	templateUrl: './sidebar.component.html',
 	styleUrls: ['./sidebar.component.css'],
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
+	isLoggedIn = false;
 	navigationIsOpen = false;
 	popoverActive = false;
 	msg = '';
@@ -21,15 +22,22 @@ export class SidebarComponent {
 		loadedURL: boolean;
 		validURL?: boolean;
 	} = {
-		url: '',
-		name: '',
-		description: '',
-		ttl: undefined,
-		loadedURL: false,
-		validURL: undefined,
-	};
+			url: '',
+			name: '',
+			description: '',
+			ttl: undefined,
+			loadedURL: false,
+			validURL: undefined,
+		};
 
-	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) {}
+	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) { }
+
+	ngOnInit() {
+		this.keycloak.isLoggedIn().then((loggedIn) => {
+			this.isLoggedIn = loggedIn;
+		});
+	}
+
 
 	/**
 	 * @author Simon Morgenstern

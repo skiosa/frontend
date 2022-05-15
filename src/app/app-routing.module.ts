@@ -34,6 +34,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'settings',
+		canActivate: [LoggedInGuard],
 		component: SettingsComponent,
 	},
 	{
