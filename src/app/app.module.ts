@@ -13,6 +13,7 @@ import { FeedOverviewPageComponent } from './pages/feed-overview-page/feed-overv
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { WelcomePageComponent } from './pages/welcome/welcome-page.component';
 import { SharedModule } from './shared/shared.module';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
 	return () =>
@@ -38,6 +39,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
 		FeedOverviewPageComponent,
 		ArticleViewComponent,
 		BookmarkComponent,
+		SettingsComponent,
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule, KeycloakAngularModule, GraphQLModule],
 	providers: [

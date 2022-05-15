@@ -43,7 +43,8 @@
 			src="assets/icons/settings.svg"
 			alt="settings button"
 		/>
-		<h2 class="sidebar_button_text">Settings</h2>
+		<h2 class="sidebar_button_text" *ngIf="isLoggedIn">Settings</h2>
+		<h2 class="sidebar_button_text" *ngIf="!isLoggedIn">Login</h2>
 	</a>
 </div>
 

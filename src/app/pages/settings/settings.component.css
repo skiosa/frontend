@@ -1,0 +1,74 @@
+.settings_heading-card {
+	background-color: var(--secondary-background);
+	padding: 1rem;
+	padding-top: 3rem;
+	margin: 0.5rem;
+	margin-top: 5.5rem;
+	border-radius: 1rem;
+	color: var(--primary-text-color);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.settings_heading-card_title {
+	margin: 0;
+	padding: 0;
+}
+
+.settings_account_mail,
+.settings_account_user,
+.settings_account_links {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.settings_account_mail > p,
+.settings_account_user > p,
+.settings_account_links > p {
+	display: inline-block;
+	width: 50%;
+	overflow: wrap;
+	padding-right: 1rem;
+}
+
+.settings_account_links > p > a {
+	color: var(--primary-text-color);
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.settings_design_slider {
+	margin-top: 0.5rem;
+	border-radius: 1rem;
+	padding: 0;
+	background-color: var(--primary-background);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.settings_design_slider > p {
+	width: 50%;
+	height: 100%;
+	margin: 0;
+	padding: 0.5rem;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.settings_design_slider_active {
+	background-color: var(--secondary-text-color);
+	border-radius: 1rem;
+	display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+	.settings_heading-card {
+		margin: 1rem 3rem;
+	}
+}

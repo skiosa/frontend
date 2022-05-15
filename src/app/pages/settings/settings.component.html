@@ -1,0 +1,42 @@
+<div class="settings">
+	<div class="settings_heading-card">
+		<h1 class="settings_heading-card_title">Settings</h1>
+	</div>
+
+	<app-card class="settings_account" cardTitle="Account-Settings:">
+		<div class="settings_account_user">
+			<p>User-Name:</p>
+			<p>{{ username }}</p>
+		</div>
+		<div class="settings_account_mail">
+			<p>E-Mail:</p>
+			<p>{{ usermail }}</p>
+		</div>
+		<div class="settings_account_links">
+			<p><a [href]="userEdit">change account settings</a></p>
+			<p><a (click)="logout()">logout</a></p>
+		</div>
+	</app-card>
+
+	<app-card cardTitle="Design: ">
+		<span class="settings_design_slider">
+			<p
+				(click)="setTheme(true)"
+				[ngClass]="isLight ? 'settings_design_slider_active' : ''"
+			>
+				Light
+			</p>
+			<p
+				(click)="setTheme(false)"
+				[ngClass]="isLight ? '' : 'settings_design_slider_active'"
+			>
+				Dark
+			</p>
+		</span>
+	</app-card>
+
+	<app-card cardTitle="Contact">
+		<p>need any help?</p>
+		<p>contact us at: skiosa@anymail.com</p>
+	</app-card>
+</div>

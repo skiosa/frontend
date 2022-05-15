@@ -53,7 +53,7 @@ body {
 		--secondary-background: #1f2b25;
 
 		--primary-text-color: #eceff4;
-		--seconday-text-color: #cbcbcb;
+		--secondary-text-color: #cbcbcb;
 		--inverted-text-color: #000000;
 
 		--button-color: #cccccc;
@@ -67,6 +67,43 @@ body {
 		filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg)
 			brightness(101%) contrast(91%);
 	}
+}
+
+/* Light Mode */
+[data-theme="0"] {
+	--primary-background: #ececec;
+	--secondary-background: #ffffff;
+
+	--primary-text-color: #000000;
+	--secondary-text-color: #909090;
+	--inverted-text-color: #ffffff;
+
+	--button-color: #ececec;
+
+	--article-card-color: #ececec;
+
+	--secondary-subscription-background: #f6f6f6;
+}
+
+/* Dark Mode */
+[data-theme="1"] {
+	--primary-background: #131c18;
+	--secondary-background: #1f2b25;
+
+	--primary-text-color: #eceff4;
+	--secondary-text-color: #cbcbcb;
+	--inverted-text-color: #000000;
+
+	--button-color: #cccccc;
+
+	--article-card-color: #131c18;
+
+	--secondary-subscription-background: #000000;
+}
+
+[data-theme="1"].reverseColor {
+	filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg)
+		brightness(101%) contrast(91%);
 }
 
 /*************************************/
