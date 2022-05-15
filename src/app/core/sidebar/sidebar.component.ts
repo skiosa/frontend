@@ -22,22 +22,21 @@ export class SidebarComponent implements OnInit {
 		loadedURL: boolean;
 		validURL?: boolean;
 	} = {
-			url: '',
-			name: '',
-			description: '',
-			ttl: undefined,
-			loadedURL: false,
-			validURL: undefined,
-		};
+		url: '',
+		name: '',
+		description: '',
+		ttl: undefined,
+		loadedURL: false,
+		validURL: undefined,
+	};
 
-	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) { }
+	constructor(private apollo: Apollo, private readonly keycloak: KeycloakService) {}
 
 	ngOnInit() {
 		this.keycloak.isLoggedIn().then((loggedIn) => {
 			this.isLoggedIn = loggedIn;
 		});
 	}
-
 
 	/**
 	 * @author Simon Morgenstern

@@ -36,7 +36,7 @@ describe('SettingsComponent', () => {
 			providers: [
 				{ provide: KeycloakService, useValue: new KeycloakServiceMock() },
 				{ provide: ThemeService, useValue: new ThemeServiceMock() },
-			]
+			],
 		}).compileComponents();
 	});
 
