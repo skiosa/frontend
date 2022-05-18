@@ -52,6 +52,8 @@
 
 .article_action-icons_icon_like {
 	width: 100%;
+	filter: invert(39%) sepia(24%) saturate(1471%) hue-rotate(324deg)
+		brightness(90%) contrast(81%);
 }
 
 .article-color-a {
