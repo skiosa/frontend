@@ -56,10 +56,6 @@
 		brightness(90%) contrast(81%);
 }
 
-.article_action-icons_icon_like {
-	width: 100%;
-}
-
 .article-color-a {
 	background-color: var(--pastel-a-color);
 }
