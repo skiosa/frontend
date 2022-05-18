@@ -101,7 +101,7 @@ body {
 	--secondary-subscription-background: #000000;
 }
 
-[data-theme="1"].reverseColor {
+[data-theme="1"] .reverseColor {
 	filter: invert(100%) sepia(12%) saturate(3262%) hue-rotate(178deg)
 		brightness(101%) contrast(91%);
 }
