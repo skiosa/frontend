@@ -17,7 +17,7 @@
 		</div>
 		<div class="article_action-icons_icon">
 			<img
-				[src]="'assets/icons/heart' + (likeStatus ? 'red' : '') + '.svg'"
+				[src]="'assets/icons/heart' + (likeStatus ? '-fill' : '') + '.svg'"
 				class="article_action-icons_icon_like"
 				alt="Like"
 				(click)="changeLikeStatus($event)"

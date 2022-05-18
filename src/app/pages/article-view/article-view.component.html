@@ -17,7 +17,7 @@
 		</app-icon-button>
 		<app-icon-button
 			title="Like"
-			[icon]="'assets/icons/heart' + (likeStatus ? 'red' : '') + '.svg'"
+			[icon]="'assets/icons/heart' + (likeStatus ? '-fill' : '') + '.svg'"
 			(click)="changeLikeStatus($event)"
 		></app-icon-button>
 		<app-icon-button
